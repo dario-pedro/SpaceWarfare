@@ -16,7 +16,7 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    final String ola = "ola";
+    final String ola = "olaa";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
