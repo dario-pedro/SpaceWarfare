@@ -16,14 +16,14 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    final String ola = "olaa";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().hide(); //Hide action bar
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -82,17 +82,25 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_home) {
+            // Handle nav home
+        } else if (id == R.id.nav_resources) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_buildings) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_research) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_ships) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_defense) {
+
+        } else if (id == R.id.nav_attack) {
+
+        } else if (id == R.id.nav_outerspace) {
+
+        } else if (id == R.id.nav_conquers) {
+
+        } else if (id == R.id.nav_rankings) {
 
         }
 

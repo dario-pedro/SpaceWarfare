@@ -1,36 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_home"
+            android:icon="@drawable/icon_home"
+            android:title="@string/string_home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_resources"
+            android:icon="@drawable/icon_resources"
+            android:title="@string/string_resources" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/nav_buildings"
+            android:icon="@drawable/icon_buildings"
+            android:title="@string/string_buildings" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
-    </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
+            android:id="@+id/nav_research"
+            android:icon="@drawable/icon_research"
+            android:title="@string/string_research" />
+        <item
+            android:id="@+id/nav_ships"
+            android:icon="@drawable/icon_ships"
+            android:title="@string/string_ships" />
+        <item
+            android:id="@+id/nav_defense"
+            android:icon="@drawable/icon_defense"
+            android:title="@string/string_defense" />
+        <item
+            android:id="@+id/nav_attack"
+            android:icon="@drawable/icon_attack"
+            android:title="@string/string_attack" />
+        <item
+            android:id="@+id/nav_outerspace"
+            android:icon="@drawable/icon_outerspace"
+            android:title="@string/string_outerspace" />
+        <item
+            android:id="@+id/nav_conquers"
+            android:icon="@drawable/icon_conquers"
+            android:title="@string/string_conquers" />
+        <item
+            android:id="@+id/nav_rankings"
+            android:icon="@drawable/icon_rankings"
+            android:title="@string/string_ranking" />
 
 </menu>

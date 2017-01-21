@@ -5,4 +5,14 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="string_home">Home</string>
+    <string name="string_resources">Resources</string>
+    <string name="string_buildings">Buildings</string>
+    <string name="string_research">Research</string>
+    <string name="string_ships">Ships</string>
+    <string name="string_defense">Defense</string>
+    <string name="string_attack">Attack</string>
+    <string name="string_outerspace">Outerspace</string>
+    <string name="string_conquers">Conquers</string>
+    <string name="string_ranking">Ranking</string>
 </resources>
