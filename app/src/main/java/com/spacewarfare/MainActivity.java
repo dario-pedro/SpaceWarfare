@@ -1,8 +1,16 @@
 package com.spacewarfare;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,14 +20,48 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+
+import com.spacewarfare.Home.Renderer;
+import com.spacewarfare.navigation.NavigationMenuView;
+
+import org.rajawali3d.surface.IRajawaliSurface;
+import org.rajawali3d.surface.RajawaliSurfaceView;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
+    Renderer renderer;
+
+    private NavigationMenuView navigationMenuView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+///////////////////////////////////////////RENDERER CODE - TEST//////////////////
+      /*  final RajawaliSurfaceView surface = new RajawaliSurfaceView(this);
+        surface.setFrameRate(60.0);
+        surface.setRenderMode(IRajawaliSurface.RENDERMODE_WHEN_DIRTY);
+
+        // Add mSurface to your root view
+        addContentView(surface, new android.app.ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT));
+
+        renderer = new Renderer(this);
+        surface.setSurfaceRenderer(renderer);
+        surface.setOnTouchListener(renderer);*/
+////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -33,6 +75,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        onNavigationItemSelected(navigationMenuView.getCurrentMenuItem());
     }
 
     @Override
@@ -74,7 +117,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle nav home
+
         } else if (id == R.id.nav_resources) {
 
         } else if (id == R.id.nav_buildings) {
@@ -99,4 +142,10 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public NavigationMenuView getNavigationMenuView() {
+        return navigationMenuView;
+    }
+
+
 }
