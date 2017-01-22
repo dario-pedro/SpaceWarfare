@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.spacewarfare.Home.Renderer;
+import com.spacewarfare.navigation.NavigationMenu;
 import com.spacewarfare.navigation.NavigationMenuView;
 
 import org.rajawali3d.surface.IRajawaliSurface;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity
     Renderer renderer;
 
     private NavigationMenuView navigationMenuView;
+    private NavigationMenu startNavigationMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,9 +76,14 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        /*NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        onNavigationItemSelected(navigationMenuView.getCurrentMenuItem());*/
+
+        startNavigationMenu = NavigationMenu.HOME;
+        navigationMenuView = new NavigationMenuView(this, startNavigationMenu);
         onNavigationItemSelected(navigationMenuView.getCurrentMenuItem());
+
     }
 
     @Override
@@ -115,7 +122,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
+       /* int id = item.getItemId();
 
         if (id == R.id.nav_home) {
 
@@ -137,8 +144,8 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_rankings) {
 
-        }
-
+        }*/
+        NavigationMenu.find(item.getItemId()).activateNavigationMenu(this, item);
         closeDrawer();
         return true;
     }

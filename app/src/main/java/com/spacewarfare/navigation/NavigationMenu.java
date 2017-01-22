@@ -21,9 +21,13 @@ package com.spacewarfare.navigation;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
 
+import com.spacewarfare.Home.HomeFragment;
+import com.spacewarfare.MainActivity;
+import com.spacewarfare.R;
 
 
-public enum NavigationMenu {;
+public enum NavigationMenu {
+    HOME(R.drawable.icon_home, R.string.action_login, new FragmentItem(new HomeFragment()));
    /* LOGIN(R.drawable.ic_settings_grey_500_48dp, R.string.action_login, new ActivityItem(LoginActivity.class)),
 
 
@@ -50,14 +54,14 @@ public enum NavigationMenu {;
         this.title = title;
         this.item = item;
     }
-    /*
+
         public static NavigationMenu find(int index) {
             if (index < 0 || index >= values().length) {
-                return ACCESS_POINTS;
+                return HOME;
             }
             return values()[index];
         }
-    */
+
     public int getTitle() {
         return title;
     }
@@ -67,12 +71,12 @@ public enum NavigationMenu {;
     int getIcon() {
         return icon;
     }
-/*
+
     public void activateNavigationMenu(@NonNull MainActivity mainActivity, @NonNull MenuItem menuItem) {
         item.activate(mainActivity, menuItem, this);
     }
 
     NavigationMenuItem getItem() {
         return item;
-    }*/
+    }
 }
