@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.spacewarfare.home;
+package com.spacewarfare.outerspace;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -25,34 +25,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
 
-import org.rajawali3d.surface.IRajawaliSurface;
-import org.rajawali3d.surface.RajawaliSurfaceView;
 
-public class HomeFragment extends Fragment {
+public class OuterspaceFragment extends Fragment {
 
-    Renderer renderer;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View homeView =  inflater.inflate(R.layout.home_fragment, container, false);
-
-        final RajawaliSurfaceView surface = new RajawaliSurfaceView(MainContext.INSTANCE.getMainActivity());
-        surface.setFrameRate(60.0);
-        surface.setRenderMode(IRajawaliSurface.RENDERMODE_WHEN_DIRTY);
-
-        // Add mSurface to your root view
-        container.addView(surface, new android.app.ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT));
-
-        renderer = new Renderer(MainContext.INSTANCE.getMainActivity());
-        surface.setSurfaceRenderer(renderer);
-        surface.setOnTouchListener(renderer);
-
-        return homeView;
+        return inflater.inflate(R.layout.not_yet_imple_fragment, container, false);
     }
 
     @Override

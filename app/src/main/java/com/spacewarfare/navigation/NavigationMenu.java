@@ -21,28 +21,17 @@ package com.spacewarfare.navigation;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
 
-import com.spacewarfare.Home.HomeFragment;
+import com.spacewarfare.home.HomeFragment;
 import com.spacewarfare.MainActivity;
 import com.spacewarfare.R;
+import com.spacewarfare.resources.ResourcesFragment;
 
 
 public enum NavigationMenu {
-    HOME(R.drawable.icon_home, R.string.action_login, new FragmentItem(new HomeFragment()));
+    HOME(R.drawable.icon_home, R.string.action_login, new FragmentItem(new HomeFragment())),
+    RESOURCES(R.drawable.icon_resources, R.string.action_resources, new FragmentItem(new ResourcesFragment()));
    /* LOGIN(R.drawable.ic_settings_grey_500_48dp, R.string.action_login, new ActivityItem(LoginActivity.class)),
 
-
-    ACCESS_POINTS(R.drawable.ic_network_wifi_grey_500_48dp, R.string.action_access_points, true, new FragmentItem(new AccessPointsFragment())),
-    GOOGLE_MAPS(R.drawable.ic_media_play, R.string.action_gmaps, new ActivityItem(MapsActivity.class)),
-    CHANNEL_RATING(R.drawable.ic_wifi_tethering_grey_500_48dp, R.string.action_channel_rating, true, new FragmentItem(new ChannelRatingFragment())),
-    CHANNEL_GRAPH(R.drawable.ic_insert_chart_grey_500_48dp, R.string.action_channel_graph, true, new FragmentItem(new ChannelGraphFragment())),
-    TIME_GRAPH(R.drawable.ic_show_chart_grey_500_48dp, R.string.action_time_graph, true, new FragmentItem(new TimeGraphFragment())),
-
-    EXPORT(R.drawable.ic_import_export_grey_500_48dp, R.string.action_export, new ExportItem()),
-    CHANNEL_AVAILABLE(R.drawable.ic_location_on_grey_500_48dp, R.string.action_channel_available, new FragmentItem(new ChannelAvailableFragment())),
-    VENDOR_LIST(R.drawable.ic_list_grey_500_48dp, R.string.action_vendors, new FragmentItem(new VendorFragment())),
-
-    SETTINGS(R.drawable.ic_settings_grey_500_48dp, R.string.action_settings, new ActivityItem(SettingActivity.class)),
-    CONTACTS(R.drawable.ic_info_outline_grey_500_48dp, R.string.action_contacts, new FragmentItem(new ContactsFragment()));
 */
     private final int icon;
     private final int title;

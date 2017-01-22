@@ -1,4 +1,4 @@
-package com.spacewarfare.Home;
+package com.spacewarfare.home;
 
 import android.content.Context;
 import android.util.Log;
