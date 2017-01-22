@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    Renderer renderer;
+
 
     private NavigationMenuView navigationMenuView;
     private NavigationMenu startNavigationMenu;

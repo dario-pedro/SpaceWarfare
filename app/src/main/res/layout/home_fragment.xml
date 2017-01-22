@@ -9,37 +9,6 @@
         android:layout_height="match_parent">
 
 
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1" >
-
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <TextView
-                    style="@style/TextAppearance.AppCompat"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:layout_weight="1"
-                    android:text="NOT YET IMPLEMENTED"
-                    android:id="@+id/textView4"
-                    android:textColor="#9a7f52"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:gravity="center" />
-
-
-            </LinearLayout>
-        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
