@@ -59,7 +59,8 @@ public class MainActivity extends AppCompatActivity
 
 
 
-
+        MainContext mainContext = MainContext.INSTANCE;
+        mainContext.initialize(this);
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -138,9 +139,17 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        closeDrawer();
         return true;
+    }
+
+    private boolean closeDrawer() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
+        }
+        return false;
     }
 
     public NavigationMenuView getNavigationMenuView() {
