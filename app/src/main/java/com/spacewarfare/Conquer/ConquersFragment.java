@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.spacewarfare.buildings;
+package com.spacewarfare.Conquer;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -28,7 +28,7 @@ import android.view.ViewGroup;
 import com.spacewarfare.R;
 
 
-public class BuildingsFragment extends Fragment {
+public class ConquersFragment extends Fragment {
 
 
     @Nullable

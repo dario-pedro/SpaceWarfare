@@ -2,6 +2,7 @@ package com.spacewarfare;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -9,16 +10,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
-import com.spacewarfare.navigation.NavigationMenu;
-import com.spacewarfare.navigation.NavigationMenuView;
+import com.spacewarfare.Building.BuildingsFragment;
+import com.spacewarfare.Building.BuildingsAdapter;
+import com.spacewarfare.Defense.DefenseFragment;
+import com.spacewarfare.Navigation.NavigationMenu;
+import com.spacewarfare.Navigation.NavigationMenuView;
+
+import java.util.Arrays;
+import java.util.List;
+
+import com.spacewarfare.userInfo;
+import com.spacewarfare.Home.Planet;
+import com.spacewarfare.Building.Building;
 
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-
-
 
     private NavigationMenuView navigationMenuView;
     private NavigationMenu startNavigationMenu;
@@ -27,7 +40,6 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 ///////////////////////////////////////////RENDERER CODE - TEST//////////////////
       /*  final RajawaliSurfaceView surface = new RajawaliSurfaceView(this);
@@ -66,6 +78,11 @@ public class MainActivity extends AppCompatActivity
         startNavigationMenu = NavigationMenu.HOME;
         navigationMenuView = new NavigationMenuView(this, startNavigationMenu);
         onNavigationItemSelected(navigationMenuView.getCurrentMenuItem());
+
+        /*DefenseFragment fragment = new DefenseFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frame, fragment, "FragmentDefense");
+        fragmentTransaction.commit();*/
 
     }
 
@@ -108,16 +125,54 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            NavigationMenu.HOME.activateNavigationMenu(this,item);
+            //NavigationMenu.HOME.activateNavigationMenu(this,item);
         } else if (id == R.id.nav_resources) {
-            NavigationMenu.RESOURCES.activateNavigationMenu(this,item);
+            //NavigationMenu.RESOURCES.activateNavigationMenu(this,item);
         } else if (id == R.id.nav_buildings) {
+
+            setTitle("FragmentBuildings");
+            BuildingsFragment fragment = new BuildingsFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame, fragment, "FragmentBuildings");
+            fragmentTransaction.commit();
+
+            //TEST
+            userInfo userInfo = new userInfo("DD", "DD");
+            userInfo.firstPlanet();
+
+            //List<Building> allBuildings = Arrays.asList(Hangar, SpatialStation);
+            //ListAdapter buildingsAdapter = new BuildingsAdapter(this, allBuildings);
+
+            //System.out.println(userInfo.allPlanets.get(0).allBuildings.get(0).name);
+            //System.out.println(userInfo.allPlanets.get(0).allBuildings.get(1).name);
+
+            // get(0) stands for initial planet -> Earth
+            ListAdapter buildingsAdapter = new BuildingsAdapter(this, userInfo.allPlanets.get(0).allBuildings);
+            ListView buildingsListView = (ListView) findViewById(R.id.geralListView);
+            buildingsListView.setAdapter(buildingsAdapter);
+
+            buildingsListView.setOnItemClickListener(
+                    new AdapterView.OnItemClickListener(){
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Building b = (Building) parent.getItemAtPosition(position);
+                            Toast.makeText(MainActivity.this, b.name, Toast.LENGTH_LONG).show();
+                        }
+                    }
+            );
+
 
         } else if (id == R.id.nav_research) {
 
         } else if (id == R.id.nav_ships) {
 
         } else if (id == R.id.nav_defense) {
+
+            setTitle("FragmentDefense");
+            DefenseFragment fragment = new DefenseFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame, fragment, "FragmentDefense");
+            fragmentTransaction.commit();
 
         } else if (id == R.id.nav_attack) {
 
@@ -130,8 +185,10 @@ public class MainActivity extends AppCompatActivity
         }
         NavigationMenu.find(item.getItemId()).activateNavigationMenu(this, item);
         closeDrawer();
+
         return true;
     }
+
 
     private boolean closeDrawer() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

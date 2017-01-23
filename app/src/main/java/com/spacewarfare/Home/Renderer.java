@@ -1,4 +1,4 @@
-package com.spacewarfare.home;
+package com.spacewarfare.Home;
 
 import android.content.Context;
 import android.util.Log;
@@ -99,6 +99,7 @@ public class Renderer extends RajawaliRenderer implements View.OnTouchListener {
             material.setDiffuseMethod(new DiffuseMethod.Lambert());
             material.setColor(0);
 
+
             int draw = R.drawable.a10;
 
             switch (counter)
@@ -126,6 +127,7 @@ public class Renderer extends RajawaliRenderer implements View.OnTouchListener {
                 case 20:counter=0;break;
 
             }
+
 
 
             Texture earthTexture = new Texture("Earth", draw);

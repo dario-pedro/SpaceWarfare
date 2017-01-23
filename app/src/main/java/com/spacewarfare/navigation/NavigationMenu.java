@@ -16,15 +16,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.spacewarfare.navigation;
+package com.spacewarfare.Navigation;
 
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
 
-import com.spacewarfare.home.HomeFragment;
+import com.spacewarfare.Home.HomeFragment;
 import com.spacewarfare.MainActivity;
 import com.spacewarfare.R;
-import com.spacewarfare.resources.ResourcesFragment;
+import com.spacewarfare.Resource.ResourcesFragment;
 
 
 public enum NavigationMenu {

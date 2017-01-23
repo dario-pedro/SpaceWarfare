@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.spacewarfare.outerspace;
+package com.spacewarfare.Outerspace;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

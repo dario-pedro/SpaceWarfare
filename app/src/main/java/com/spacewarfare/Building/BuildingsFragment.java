@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.spacewarfare.conquers;
+package com.spacewarfare.Building;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -28,14 +28,18 @@ import android.view.ViewGroup;
 import com.spacewarfare.R;
 
 
-public class ConquersFragment extends Fragment {
-
+public class BuildingsFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.list_fragment, container, false);
+    }
 
-        return inflater.inflate(R.layout.not_yet_imple_fragment, container, false);
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getActivity().setTitle("Buildings");
     }
 
     @Override

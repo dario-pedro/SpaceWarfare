@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BUILDING NAME"
+        android:id="@+id/TextView_BuildingName"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_toRightOf="@+id/ImageView_Building"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:textColor="#b5bbe0" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="BUY"
+        android:id="@+id/Button_BuyBuilding"
+        android:layout_toRightOf="@+id/ImageView_Building"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/TextView_BuildingName"
+        android:background="@drawable/btn_buy"
+        android:textColor="#e5fff8" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:id="@+id/TextView_BuildingPrice"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_toRightOf="@+id/ImageView_Building"
+        android:layout_below="@+id/TextView_BuildingName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:textColor="#eaedec"
+        android:singleLine="false" />
+
+
+    <ImageView
+        android:layout_width="130dp"
+        android:layout_height="110dp"
+        android:id="@+id/ImageView_Building"
+        android:layout_margin="15dp"
+        android:scaleType="fitXY" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/Button_InfoBuilding"
+        android:scaleType="fitXY"
+        android:layout_alignTop="@+id/ImageView_Building"
+        android:layout_alignRight="@+id/ImageView_Building"
+        android:layout_alignEnd="@+id/ImageView_Building"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/info_icon" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/ImageView_BuildingChecked"
+        android:layout_toRightOf="@+id/Button_BuyBuilding"
+        android:layout_toEndOf="@+id/Button_BuyBuilding"
+        android:layout_below="@+id/TextView_BuildingName"
+        android:layout_marginTop="29dp"
+        android:layout_marginLeft="25dp" />
+
+
+</RelativeLayout>

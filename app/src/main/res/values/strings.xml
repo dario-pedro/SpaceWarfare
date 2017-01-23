@@ -31,4 +31,7 @@
     <string name="string_outerspace">Outerspace</string>
     <string name="string_conquers">Conquers</string>
     <string name="string_ranking">Ranking</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

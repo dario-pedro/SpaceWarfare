@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.spacewarfare.home;
+package com.spacewarfare.Home;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -32,7 +32,7 @@ import com.spacewarfare.R;
 
 public class HomeFragment extends Fragment {
 
-    Renderer renderer;
+    //Renderer renderer;
 
     @Nullable
     @Override
