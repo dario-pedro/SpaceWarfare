@@ -24,12 +24,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
 
-import org.rajawali3d.surface.IRajawaliSurface;
-import org.rajawali3d.surface.RajawaliSurfaceView;
 
 public class HomeFragment extends Fragment {
 
@@ -39,9 +38,9 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View homeView =  inflater.inflate(R.layout.home_fragment, container, false);
+        View homeView =  inflater.inflate(R.layout.not_yet_imple_fragment, container, false);
 
-        final RajawaliSurfaceView surface = new RajawaliSurfaceView(MainContext.INSTANCE.getMainActivity());
+        /*final RajawaliSurfaceView surface = new RajawaliSurfaceView(MainContext.INSTANCE.getMainActivity());
         surface.setFrameRate(60.0);
         surface.setRenderMode(IRajawaliSurface.RENDERMODE_WHEN_DIRTY);
 
@@ -51,8 +50,9 @@ public class HomeFragment extends Fragment {
         renderer = new Renderer(MainContext.INSTANCE.getMainActivity());
         surface.setSurfaceRenderer(renderer);
         surface.setOnTouchListener(renderer);
-
+*/
         return homeView;
+
     }
 
     @Override
