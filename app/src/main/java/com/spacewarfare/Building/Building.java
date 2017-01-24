@@ -6,14 +6,14 @@ package com.spacewarfare.Building;
 
 public class Building {
     public String name;
-    public String infoBuilding;
+    public String info;
     public boolean owned;
     public int image;
     public int price;
 
-    public Building(String name, String infoBuilding, boolean owned, int price, int image) {
+    public Building(String name, String info, boolean owned, int price, int image) {
         this.name = name;
-        this.infoBuilding = infoBuilding;
+        this.info= info;
         this.owned = owned;
         this.price = price;
         this.image = image;

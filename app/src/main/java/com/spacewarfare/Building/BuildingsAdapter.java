@@ -1,23 +1,18 @@
 package com.spacewarfare.Building;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Button;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.widget.Toast;
 
-import com.spacewarfare.R;
 
-import org.w3c.dom.Text;
+import com.spacewarfare.R;
 
 import java.util.List;
 
@@ -28,7 +23,7 @@ import java.util.List;
 public class BuildingsAdapter extends ArrayAdapter<Building> {
 
     public BuildingsAdapter(Context context, List<Building> buildings) {
-        super(context, R.layout.building_row, buildings);
+        super(context, R.layout.building_research_row, buildings);
     }
 
     @Override
@@ -37,7 +32,7 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
 
         if (convertView == null) {
             LayoutInflater fragmentInflater = LayoutInflater.from(getContext());
-            convertView = fragmentInflater.inflate(R.layout.building_row, parent, false);
+            convertView = fragmentInflater.inflate(R.layout.building_research_row, parent, false);
 
             holder = new ViewHolder(convertView);
             holder.infoView = fragmentInflater.inflate(R.layout.building_info_row, null, false);
@@ -71,13 +66,13 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
 
 
         public ViewHolder(View convertView) {
-            this.buildingName = (TextView) convertView.findViewById(R.id.TextView_BuildingName);
-            this.buyBuilding = (Button) convertView.findViewById(R.id.Button_BuyBuilding);
-            this.buildingPrice = (TextView) convertView.findViewById(R.id.TextView_BuildingPrice);
-            this.infoBuilding = (Button) convertView.findViewById(R.id.Button_InfoBuilding);
+            this.buildingName = (TextView) convertView.findViewById(R.id.TextView_Name);
+            this.buyBuilding = (Button) convertView.findViewById(R.id.Button_Buy);
+            this.buildingPrice = (TextView) convertView.findViewById(R.id.TextView_Price);
+            this.infoBuilding = (Button) convertView.findViewById(R.id.Button_Info);
             this.infoBuilding.setOnClickListener(infoBuildingClick);
-            this.building = (ImageView) convertView.findViewById(R.id.ImageView_Building);
-            this.buildingChecked = (ImageView) convertView.findViewById(R.id.ImageView_BuildingChecked);
+            this.building = (ImageView) convertView.findViewById(R.id.ImageView_Photo);
+            this.buildingChecked = (ImageView) convertView.findViewById(R.id.ImageView_Checked);
         }
 
         public void setParameters(Building singleBuildingItem){

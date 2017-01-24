@@ -26,6 +26,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import com.spacewarfare.Research.ResearchesAdapter;
+import com.spacewarfare.Research.ResearchesFragment;
 import com.spacewarfare.userInfo;
 import com.spacewarfare.Home.Planet;
 import com.spacewarfare.Building.Building;
@@ -118,6 +120,12 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
 
         } else if (id == R.id.nav_research) {
+
+            setTitle("FragmentResearch");
+            ResearchesFragment fragment = new ResearchesFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame, fragment, "FragmentResearches");
+            fragmentTransaction.commit();
 
         } else if (id == R.id.nav_ships) {
 

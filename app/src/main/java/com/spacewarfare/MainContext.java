@@ -32,8 +32,6 @@ public enum MainContext {
 
     private userInfo userInfo;
 
-
-
     public userInfo getUserI() {
         return userInfo;
     }

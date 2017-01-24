@@ -18,24 +18,45 @@ public class Planet {
     String name;
     List<Resource> allResources;
     public List<Building> allBuildings;
-    List<Research> allResearch;
+    public List<Research> allResearch;
     List<Ship> allShips;
     List<Defense> allDefenses;
 
     public Planet(String name) {
         this.name = name;
+
         this.allBuildings = new ArrayList<>();
         //Create Buildings to test
-        Building Hangar = new Building("Hangar", "Cheap", true, 1000, R.drawable.building_hangar);
-        Building ResearchLab = new Building("Research Lab", "Expensive", false, 30000, R.drawable.building_researchlab);
-        Building NaniteFactory = new Building("Nanite Factory", "Cheap", false, 50000, R.drawable.building_nanite);
-        Building RobotFactory = new Building("Robot Factory", "Expensive", false, 100000, R.drawable.building_robot);
-        Building TimeMachine = new Building("Time Machine", "Cheap", false, 1000000, R.drawable.building_timemachine);
+        Building Hangar = new Building("Hangar", "MISS", true, 1000, R.drawable.building_hangar);
+        Building ResearchLab = new Building("Research Lab", "MISS", false, 30000, R.drawable.building_researchlab);
+        Building NaniteFactory = new Building("Nanite Factory", "MISS", false, 50000, R.drawable.building_nanite);
+        Building RobotFactory = new Building("Robot Factory", "MISS", false, 100000, R.drawable.building_robot);
+        Building TimeMachine = new Building("Time Machine", "MISS", false, 1000000, R.drawable.building_timemachine);
         allBuildings.add(Hangar);
         allBuildings.add(ResearchLab);
         allBuildings.add(NaniteFactory);
         allBuildings.add(RobotFactory);
         allBuildings.add(TimeMachine);
+
+        this.allResearch = new ArrayList<>();
+        //Create Research to test
+        Research AsteroidPhysics = new Research("Asteroid Physics", "MISS", true, 1000, R.drawable.research_asteroidphysics);
+        Research BenitoiteAttracters = new Research("Benitoite Attracters", "MISS", false, 1000, R.drawable.research_benitoiteattracters);
+        Research BenitoiteGatheringSpeed = new Research("Benitoite Gathering Speed", "MISS", false, 1000, R.drawable.research_benitoitegatheringspeed);
+        Research CombustionMotors = new Research("Combustion Motors", "MISS", false, 1000, R.drawable.research_combustionmotors);
+        Research DarkMatterTech = new Research("Dark Matter Tech", "MISS", false, 1000, R.drawable.research_darkmattertech);
+        Research DeuteriumGatheringSpeed = new Research("Deuterium Gathering Speed", "MISS", false, 1000, R.drawable.research_deuteuriumgatheringspeed);
+        Research IronGatheringSpeed = new Research("Iron Gathering Speed", "MISS", false, 1000, R.drawable.research_irongatheringspeed);
+        Research IronMiner = new Research("Iron Miner", "MISS", false, 1000, R.drawable.research_ironminer);
+        allResearch.add(AsteroidPhysics);
+        allResearch.add(BenitoiteAttracters);
+        allResearch.add(BenitoiteGatheringSpeed);
+        allResearch.add(CombustionMotors);
+        allResearch. add(DarkMatterTech);
+        allResearch.add(DeuteriumGatheringSpeed);
+        allResearch. add(IronGatheringSpeed);
+        allResearch. add(IronMiner);
+
     }
 }
 

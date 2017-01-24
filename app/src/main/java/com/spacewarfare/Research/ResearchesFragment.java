@@ -24,18 +24,32 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
+import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
 
 
-public class ResearchFragment extends Fragment {
+public class ResearchesFragment extends Fragment {
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.list_fragment, container, false);
 
-        return inflater.inflate(R.layout.not_yet_imple_fragment, container, false);
+        ListAdapter researchesAdapter = new ResearchesAdapter(MainContext.INSTANCE.getMainActivity(), MainContext.INSTANCE.getUserI().allPlanets.get(0).allResearch);
+        ListView researchesListView = (ListView) v.findViewById(R.id.geralListView);
+        researchesListView.setAdapter(researchesAdapter);
+
+        return v;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getActivity().setTitle("Researches");
     }
 
     @Override
