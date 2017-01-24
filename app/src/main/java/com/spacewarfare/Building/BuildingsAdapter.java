@@ -6,11 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Button;
 import android.widget.Toast;
 
 
+import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
 
 import java.util.List;
@@ -23,6 +25,16 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
 
     public BuildingsAdapter(Context context, List<Building> buildings) {
         super(context, R.layout.default_row, buildings);
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return getCount();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
     }
 
     @Override
@@ -60,8 +72,11 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
         private ImageView building;
         private ImageView buildingChecked;
 
-        public View infoView;
-        //private RelativeLayout geralRelativeLayout;
+        //dialog
+        RelativeLayout rl;
+        View infoView;
+        Button infoLeftButton;
+        Button infoRightButton;
 
 
         public ViewHolder(View convertView) {
@@ -72,6 +87,7 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             this.infoBuilding.setOnClickListener(infoBuildingClick);
             this.building = (ImageView) convertView.findViewById(R.id.ImageView_Photo);
             this.buildingChecked = (ImageView) convertView.findViewById(R.id.ImageView_Checked);
+            this.rl = (RelativeLayout) (MainContext.INSTANCE.getMainActivity()).findViewById(R.id.geralRelativeLayout);
         }
 
         public void setParameters(Building singleBuildingItem){
@@ -88,13 +104,18 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
                 this.buildingChecked.setImageResource(R.drawable.checked);
                 this.buyBuilding.setText("OWNED");
             }
+
+            rl.addView(infoView);
+            infoView.setVisibility(View.GONE);
+            infoBuilding.setOnClickListener(infoBuildingClick);
+
         }
 
         private View.OnClickListener infoBuildingClick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //infoView.setVisibility(View.VISIBLE);
-                Toast.makeText(getContext(), "ZIMBORAAA, amanhã há mais", Toast.LENGTH_SHORT).show();
+                infoView.setVisibility(View.VISIBLE);
+                //Toast.makeText(getContext(), "ZIMBORAAA, amanhã há mais", Toast.LENGTH_SHORT).show();
             }
         };
     }

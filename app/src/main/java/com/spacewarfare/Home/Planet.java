@@ -76,7 +76,7 @@ public class Planet {
         Ship Messier = new Ship("Messier", "MISS", 3, 1000, R.drawable.ship_messier);
         Ship Mayal = new Ship("Mayal", "MISS", 0, 1000, R.drawable.ship_mayal);
         Ship Spyer = new Ship("Spyer", "MISS", 0, 1000, R.drawable.ship_spyer);
-        Ship Colonizer = new Ship("Colnizerr", "MISS", 0, 1000, R.drawable.ship_colonizer);
+        Ship Colonizer = new Ship("Colonizer", "MISS", 0, 1000, R.drawable.ship_colonizer);
         Ship Leviathan = new Ship("Leviathan", "MISS", 0, 1000, R.drawable.ship_leviathan);
         Ship Deathstar = new Ship("Deathstar", "MISS", 0, 1000, R.drawable.ship_deathstar);
         mapOfShips.put("Messier", Messier);
@@ -98,6 +98,14 @@ public class Planet {
         mapOfDefenses.put("PlasmaCannon", PlasmaCannon);
         mapOfDefenses.put("AntiAirRobot", AntiAirRobot);
         mapOfDefenses.put("HeavyLaser", HeavyLaser);
+
+        /*
+            exemplo de keys int num map
+
+         */
+
+        Map<Integer,Building> exemple = new LinkedHashMap<Integer, Building>();
+        exemple.put(R.string.hangar_key,Hangar);
 
         /*
         public List<Research> allResearch;
