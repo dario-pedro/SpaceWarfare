@@ -117,26 +117,6 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.frame, fragment, "FragmentBuildings");
             fragmentTransaction.commit();
 
-            //List<Building> allBuildings = Arrays.asList(Hangar, SpatialStation);
-            //ListAdapter buildingsAdapter = new BuildingsAdapter(this, allBuildings);
-
-            //System.out.println(userInfo.allPlanets.get(0).allBuildings.get(0).name);
-            //System.out.println(userInfo.allPlanets.get(0).allBuildings.get(1).name);
-
-            // get(0) stands for initial planet -> Earth
-
-            /*
-            buildingsListView.setOnItemClickListener(
-                    new AdapterView.OnItemClickListener(){
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            Building b = (Building) parent.getItemAtPosition(position);
-                            Toast.makeText(MainActivity.this, b.name, Toast.LENGTH_LONG).show();
-                        }
-                    }
-            );
-            */
-
         } else if (id == R.id.nav_research) {
 
         } else if (id == R.id.nav_ships) {

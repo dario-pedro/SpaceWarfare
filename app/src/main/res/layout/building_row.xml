@@ -48,8 +48,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginTop="4dp"
-        android:background="@drawable/info_icon"
-        android:onClick="infoBuildingClicked" />
+        android:background="@drawable/info_icon" />
 
     <ImageView
         android:layout_width="30dp"

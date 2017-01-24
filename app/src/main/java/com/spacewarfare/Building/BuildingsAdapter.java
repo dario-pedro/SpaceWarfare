@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Button;
 import android.support.v7.widget.RecyclerView.ViewHolder;
@@ -37,29 +39,12 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             LayoutInflater fragmentInflater = LayoutInflater.from(getContext());
             convertView = fragmentInflater.inflate(R.layout.building_row, parent, false);
 
-            holder = new ViewHolder();
-            holder.buildingName = (TextView) convertView.findViewById(R.id.TextView_BuildingName);
-            holder.buyBuilding = (Button) convertView.findViewById(R.id.Button_BuyBuilding);
-            holder.buildingPrice = (TextView) convertView.findViewById(R.id.TextView_BuildingPrice);
-            holder.infoBuilding = (Button) convertView.findViewById(R.id.Button_InfoBuilding);
-            holder.building = (ImageView) convertView.findViewById(R.id.ImageView_Building);
-            holder.buildingChecked = (ImageView) convertView.findViewById(R.id.ImageView_BuildingChecked);
-
+            holder = new ViewHolder(convertView);
             holder.infoView = fragmentInflater.inflate(R.layout.building_info_row, null, false);
 
-            Building singleBuildingItem = getItem(position);
-
-            holder.buildingName.setText(singleBuildingItem.name);
-            holder.building.setImageResource(singleBuildingItem.image);
-
-            if(!singleBuildingItem.owned){
-                holder.buildingPrice.setText("Price: " + singleBuildingItem.price + " cr.");
-                holder.buyBuilding.setText("BUY");
-            }
-            else{
-                holder.buildingChecked.setImageResource(R.drawable.checked);
-                holder.buyBuilding.setText("OWNED");
-            }
+            //holder.geralRelativeLayout = (RelativeLayout) convertView.findViewById(R.id.geralRelativeLayout);
+            //holder.geralRelativeLayout.addView(holder.infoView);
+            //holder.infoView.setVisibility(View.GONE);
 
             convertView.setTag(holder);
         }
@@ -67,59 +52,55 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
                 holder = (ViewHolder) convertView.getTag();
             }
 
-        holder.infoBuilding.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //holder.infoView.setVisibility(View.VISIBLE);
-                Toast.makeText(getContext(), "ZIMBORAAA, amanhã há mais", Toast.LENGTH_SHORT).show();
-            }
-        });
+        Building singleBuildingItem = getItem(position);
+        holder.setParameters(singleBuildingItem);
 
         return convertView;
     }
 
     private class ViewHolder {
-        public TextView buildingName;
-        public Button buyBuilding;
-        public TextView buildingPrice;
-        public Button infoBuilding;
-        public ImageView building;
-        public ImageView buildingChecked;
+        private TextView buildingName;
+        private Button buyBuilding;
+        private TextView buildingPrice;
+        private Button infoBuilding;
+        private ImageView building;
+        private ImageView buildingChecked;
+
         public View infoView;
-    }
+        //private RelativeLayout geralRelativeLayout;
 
-    /*
-    @NonNull
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater buildingInflater = LayoutInflater.from(getContext());
-        View buildingView = buildingInflater.inflate(R.layout.building_row, parent, false);
 
-        //buildingInflater.inflate(R.layout.building_info_row, parent, false);
-
-        Building singleBuildingItem = getItem(position);
-
-        TextView buildingName = (TextView) buildingView.findViewById(R.id.TextView_BuildingName);
-        Button buyBuilding = (Button) buildingView.findViewById(R.id.Button_BuyBuilding);
-        TextView buildingPrice = (TextView) buildingView.findViewById(R.id.TextView_BuildingPrice);
-        Button infoBuilding = (Button) buildingView.findViewById(R.id.Button_InfoBuilding);
-        ImageView building = (ImageView) buildingView.findViewById(R.id.ImageView_Building);
-        ImageView buildingChecked = (ImageView) buildingView.findViewById(R.id.ImageView_BuildingChecked);
-
-        buildingName.setText(singleBuildingItem.name);
-        building.setImageResource(singleBuildingItem.image);
-
-        if(!singleBuildingItem.owned){
-            buildingPrice.setText("Price: " + singleBuildingItem.price + " cr.");
-            buyBuilding.setText("BUY");
-        }
-        else{
-            buildingChecked.setImageResource(R.drawable.checked);
-            buyBuilding.setText("OWNED");
+        public ViewHolder(View convertView) {
+            this.buildingName = (TextView) convertView.findViewById(R.id.TextView_BuildingName);
+            this.buyBuilding = (Button) convertView.findViewById(R.id.Button_BuyBuilding);
+            this.buildingPrice = (TextView) convertView.findViewById(R.id.TextView_BuildingPrice);
+            this.infoBuilding = (Button) convertView.findViewById(R.id.Button_InfoBuilding);
+            this.infoBuilding.setOnClickListener(infoBuildingClick);
+            this.building = (ImageView) convertView.findViewById(R.id.ImageView_Building);
+            this.buildingChecked = (ImageView) convertView.findViewById(R.id.ImageView_BuildingChecked);
         }
 
-        return buildingView;
+        public void setParameters(Building singleBuildingItem){
+            this.buildingName.setText(singleBuildingItem.name);
+            this.building.setImageResource(singleBuildingItem.image);
+
+            if(!singleBuildingItem.owned){
+                this.buildingPrice.setText("Price: " + singleBuildingItem.price + " cr.");
+                this.buyBuilding.setText("BUY");
+            }
+            else{
+                this.buildingChecked.setImageResource(R.drawable.checked);
+                this.buyBuilding.setText("OWNED");
+            }
+        }
+
+        private View.OnClickListener infoBuildingClick = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //infoView.setVisibility(View.VISIBLE);
+                Toast.makeText(getContext(), "ZIMBORAAA, amanhã há mais", Toast.LENGTH_SHORT).show();
+            }
+        };
     }
-*/
 
 }

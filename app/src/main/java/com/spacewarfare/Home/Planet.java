@@ -12,10 +12,7 @@ import com.spacewarfare.Ship.Ship;
 import com.spacewarfare.Defense.Defense;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Vector;
 
 public class Planet {
     String name;
@@ -31,16 +28,14 @@ public class Planet {
         //Create Buildings to test
         Building Hangar = new Building("Hangar", "Cheap", true, 1000, R.drawable.building_hangar);
         Building ResearchLab = new Building("Research Lab", "Expensive", false, 30000, R.drawable.building_researchlab);
-        Building Hangar2 = new Building("Hangar2", "Cheap", true, 1000, R.drawable.building_hangar);
-        Building ResearchLab2 = new Building("Research Lab2", "Expensive", false, 30000, R.drawable.building_researchlab);
-        Building Hangar3 = new Building("Hangar3", "Cheap", true, 1000, R.drawable.building_hangar);
-        Building ResearchLab3 = new Building("Research Lab3", "Expensive", false, 30000, R.drawable.building_researchlab);
+        Building NaniteFactory = new Building("Nanite Factory", "Cheap", false, 50000, R.drawable.building_nanite);
+        Building RobotFactory = new Building("Robot Factory", "Expensive", false, 100000, R.drawable.building_robot);
+        Building TimeMachine = new Building("Time Machine", "Cheap", false, 1000000, R.drawable.building_timemachine);
         allBuildings.add(Hangar);
         allBuildings.add(ResearchLab);
-        allBuildings.add(Hangar2);
-        allBuildings.add(ResearchLab2);
-        allBuildings.add(Hangar3);
-        allBuildings.add(ResearchLab3);
+        allBuildings.add(NaniteFactory);
+        allBuildings.add(RobotFactory);
+        allBuildings.add(TimeMachine);
     }
 }
 

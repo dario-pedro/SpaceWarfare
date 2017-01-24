@@ -38,10 +38,8 @@ public class BuildingsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View v = inflater.inflate(R.layout.list_fragment, container, false);
 
-        //View v = findViewById(R.id.geralRelativeLayout);
         ListAdapter buildingsAdapter = new BuildingsAdapter(MainContext.INSTANCE.getMainActivity(), MainContext.INSTANCE.getUserI().allPlanets.get(0).allBuildings);
         ListView buildingsListView = (ListView) v.findViewById(R.id.geralListView);
         buildingsListView.setAdapter(buildingsAdapter);
