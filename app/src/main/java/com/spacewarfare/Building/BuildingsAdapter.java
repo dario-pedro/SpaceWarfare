@@ -43,8 +43,8 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             convertView.setTag(holder);
         }
         else{
-                holder = (ViewHolder) convertView.getTag();
-            }
+            holder = (ViewHolder) convertView.getTag();
+        }
 
         Building singleBuildingItem = getItem(position);
         holder.setParameters(singleBuildingItem);
