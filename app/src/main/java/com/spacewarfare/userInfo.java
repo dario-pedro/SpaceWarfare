@@ -2,6 +2,7 @@ package com.spacewarfare;
 
 import android.os.CountDownTimer;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 import java.util.List;
@@ -21,6 +22,7 @@ public class userInfo {
         this.name = _name;
         this.password = _password;
         this._id = name.hashCode();
+        this.allPlanets = new ArrayList<>();
     }
 
     public String get_password() {
@@ -45,6 +47,6 @@ public class userInfo {
 
     public void firstPlanet(){
         Planet Earth = new Planet("Earth");
-        allPlanets.add(Earth);
+        this.allPlanets.add(Earth);
     }
 }

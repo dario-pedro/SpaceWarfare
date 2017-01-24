@@ -24,6 +24,7 @@ import com.spacewarfare.Navigation.NavigationMenuView;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import com.spacewarfare.userInfo;
 import com.spacewarfare.Home.Planet;
@@ -41,21 +42,6 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-///////////////////////////////////////////RENDERER CODE - TEST//////////////////
-      /*  final RajawaliSurfaceView surface = new RajawaliSurfaceView(this);
-        surface.setFrameRate(60.0);
-        surface.setRenderMode(IRajawaliSurface.RENDERMODE_WHEN_DIRTY);
-
-        // Add mSurface to your root view
-        addContentView(surface, new android.app.ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT));
-
-        renderer = new Renderer(this);
-        surface.setSurfaceRenderer(renderer);
-        surface.setOnTouchListener(renderer);*/
-////////////////////////////////////////////////////////////////////////////////////
-
-
-
         MainContext mainContext = MainContext.INSTANCE;
         mainContext.initialize(this);
 
@@ -68,7 +54,7 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         /*NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -78,11 +64,6 @@ public class MainActivity extends AppCompatActivity
         startNavigationMenu = NavigationMenu.HOME;
         navigationMenuView = new NavigationMenuView(this, startNavigationMenu);
         onNavigationItemSelected(navigationMenuView.getCurrentMenuItem());
-
-        /*DefenseFragment fragment = new DefenseFragment();
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frame, fragment, "FragmentDefense");
-        fragmentTransaction.commit();*/
 
     }
 
@@ -136,10 +117,6 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.frame, fragment, "FragmentBuildings");
             fragmentTransaction.commit();
 
-            //TEST
-            userInfo userInfo = new userInfo("DD", "DD");
-            userInfo.firstPlanet();
-
             //List<Building> allBuildings = Arrays.asList(Hangar, SpatialStation);
             //ListAdapter buildingsAdapter = new BuildingsAdapter(this, allBuildings);
 
@@ -147,10 +124,8 @@ public class MainActivity extends AppCompatActivity
             //System.out.println(userInfo.allPlanets.get(0).allBuildings.get(1).name);
 
             // get(0) stands for initial planet -> Earth
-            ListAdapter buildingsAdapter = new BuildingsAdapter(this, userInfo.allPlanets.get(0).allBuildings);
-            ListView buildingsListView = (ListView) findViewById(R.id.geralListView);
-            buildingsListView.setAdapter(buildingsAdapter);
 
+            /*
             buildingsListView.setOnItemClickListener(
                     new AdapterView.OnItemClickListener(){
                         @Override
@@ -160,7 +135,7 @@ public class MainActivity extends AppCompatActivity
                         }
                     }
             );
-
+            */
 
         } else if (id == R.id.nav_research) {
 

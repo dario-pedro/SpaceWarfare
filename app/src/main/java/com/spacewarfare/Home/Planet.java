@@ -11,8 +11,11 @@ import com.spacewarfare.Research.Research;
 import com.spacewarfare.Ship.Ship;
 import com.spacewarfare.Defense.Defense;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Vector;
 
 public class Planet {
     String name;
@@ -24,12 +27,20 @@ public class Planet {
 
     public Planet(String name) {
         this.name = name;
-
+        this.allBuildings = new ArrayList<>();
         //Create Buildings to test
-        Building Hangar = new Building("Hangar", "Cheap", false, 1000, 0);
-        Building SpatialStation = new Building("SpatialStation", "Expensive", false, 9999, 0);
+        Building Hangar = new Building("Hangar", "Cheap", true, 1000, R.drawable.building_hangar);
+        Building ResearchLab = new Building("Research Lab", "Expensive", false, 30000, R.drawable.building_researchlab);
+        Building Hangar2 = new Building("Hangar2", "Cheap", true, 1000, R.drawable.building_hangar);
+        Building ResearchLab2 = new Building("Research Lab2", "Expensive", false, 30000, R.drawable.building_researchlab);
+        Building Hangar3 = new Building("Hangar3", "Cheap", true, 1000, R.drawable.building_hangar);
+        Building ResearchLab3 = new Building("Research Lab3", "Expensive", false, 30000, R.drawable.building_researchlab);
         allBuildings.add(Hangar);
-        allBuildings.add(SpatialStation);
+        allBuildings.add(ResearchLab);
+        allBuildings.add(Hangar2);
+        allBuildings.add(ResearchLab2);
+        allBuildings.add(Hangar3);
+        allBuildings.add(ResearchLab3);
     }
 }
 

@@ -24,8 +24,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
+import com.spacewarfare.MainActivity;
+import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
+import com.spacewarfare.userInfo;
 
 
 public class BuildingsFragment extends Fragment {
@@ -33,7 +38,15 @@ public class BuildingsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.list_fragment, container, false);
+
+        View v = inflater.inflate(R.layout.list_fragment, container, false);
+
+        //View v = findViewById(R.id.geralRelativeLayout);
+        ListAdapter buildingsAdapter = new BuildingsAdapter(MainContext.INSTANCE.getMainActivity(), MainContext.INSTANCE.getUserI().allPlanets.get(0).allBuildings);
+        ListView buildingsListView = (ListView) v.findViewById(R.id.geralListView);
+        buildingsListView.setAdapter(buildingsAdapter);
+
+        return v;
     }
 
     @Override
