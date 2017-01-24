@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.spacewarfare.Research.Research;
 import com.spacewarfare.R;
 
 import java.util.List;
@@ -22,7 +21,7 @@ import java.util.List;
 public class ResearchesAdapter extends ArrayAdapter<Research> {
 
     public ResearchesAdapter(Context context, List<Research> researches) {
-        super(context, R.layout.building_research_row, researches);
+        super(context, R.layout.default_row, researches);
     }
 
     @Override
@@ -31,10 +30,10 @@ public class ResearchesAdapter extends ArrayAdapter<Research> {
 
         if (convertView == null) {
             LayoutInflater fragmentInflater = LayoutInflater.from(getContext());
-            convertView = fragmentInflater.inflate(R.layout.building_research_row, parent, false);
+            convertView = fragmentInflater.inflate(R.layout.default_row, parent, false);
 
             holder = new ViewHolder(convertView);
-            holder.infoView = fragmentInflater.inflate(R.layout.building_info_row, null, false);
+            holder.infoView = fragmentInflater.inflate(R.layout.default_info_row, null, false);
 
             //holder.geralRelativeLayout = (RelativeLayout) convertView.findViewById(R.id.geralRelativeLayout);
             //holder.geralRelativeLayout.addView(holder.infoView);

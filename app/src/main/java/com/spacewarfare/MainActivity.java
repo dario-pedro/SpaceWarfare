@@ -10,27 +10,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import com.spacewarfare.Building.BuildingsFragment;
-import com.spacewarfare.Building.BuildingsAdapter;
-import com.spacewarfare.Defense.DefenseFragment;
+import com.spacewarfare.Defense.DefensesFragment;
 import com.spacewarfare.Navigation.NavigationMenu;
 import com.spacewarfare.Navigation.NavigationMenuView;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
-import com.spacewarfare.Research.ResearchesAdapter;
 import com.spacewarfare.Research.ResearchesFragment;
-import com.spacewarfare.userInfo;
-import com.spacewarfare.Home.Planet;
-import com.spacewarfare.Building.Building;
+import com.spacewarfare.Ship.ShipsFragment;
 
 
 public class MainActivity extends AppCompatActivity
@@ -129,10 +116,16 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_ships) {
 
+            setTitle("FragmentShip");
+            ShipsFragment fragment = new ShipsFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame, fragment, "FragmentShip");
+            fragmentTransaction.commit();
+
         } else if (id == R.id.nav_defense) {
 
             setTitle("FragmentDefense");
-            DefenseFragment fragment = new DefenseFragment();
+            DefensesFragment fragment = new DefensesFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame, fragment, "FragmentDefense");
             fragmentTransaction.commit();

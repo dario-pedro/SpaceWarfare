@@ -19,8 +19,8 @@ public class Planet {
     List<Resource> allResources;
     public List<Building> allBuildings;
     public List<Research> allResearch;
-    List<Ship> allShips;
-    List<Defense> allDefenses;
+    public List<Ship> allShips;
+    public List<Defense> allDefenses;
 
     public Planet(String name) {
         this.name = name;
@@ -39,7 +39,7 @@ public class Planet {
         allBuildings.add(TimeMachine);
 
         this.allResearch = new ArrayList<>();
-        //Create Research to test
+        //Create Researches to test
         Research AsteroidPhysics = new Research("Asteroid Physics", "MISS", true, 1000, R.drawable.research_asteroidphysics);
         Research BenitoiteAttracters = new Research("Benitoite Attracters", "MISS", false, 1000, R.drawable.research_benitoiteattracters);
         Research BenitoiteGatheringSpeed = new Research("Benitoite Gathering Speed", "MISS", false, 1000, R.drawable.research_benitoitegatheringspeed);
@@ -52,11 +52,38 @@ public class Planet {
         allResearch.add(BenitoiteAttracters);
         allResearch.add(BenitoiteGatheringSpeed);
         allResearch.add(CombustionMotors);
-        allResearch. add(DarkMatterTech);
+        allResearch.add(DarkMatterTech);
         allResearch.add(DeuteriumGatheringSpeed);
-        allResearch. add(IronGatheringSpeed);
-        allResearch. add(IronMiner);
+        allResearch.add(IronGatheringSpeed);
+        allResearch.add(IronMiner);
 
+        this.allDefenses = new ArrayList<>();
+        //Create Defenses to test
+        Defense MissileLauncher = new Defense("Missile Launcher", "MISS", 1, 1000, R.drawable.defense_missilelauncher);
+        Defense ResourceBunker = new Defense("Resource Bunker", "MISS", 0, 1000, R.drawable.defense_resourcebunker);
+        Defense PlasmaCannon = new Defense("Plasma Cannon", "MISS", 0, 1000, R.drawable.defense_plasmacannon);
+        Defense AntiAirRobot = new Defense("Anti Air Robot", "MISS", 0, 1000, R.drawable.defense_antiairrobot);
+        Defense HeavyLaser = new Defense("Heavy Laser", "MISS", 0, 1000, R.drawable.defense_heavylaser);
+        allDefenses.add(MissileLauncher);
+        allDefenses.add(ResourceBunker);
+        allDefenses.add(PlasmaCannon);
+        allDefenses.add(AntiAirRobot);
+        allDefenses.add(HeavyLaser);
+
+        this.allShips = new ArrayList<>();
+        //Create Ships to test
+        Ship Messier = new Ship("Messier", "MISS", 3, 1000, R.drawable.ship_messier);
+        Ship Mayal = new Ship("Mayal", "MISS", 0, 1000, R.drawable.ship_mayal);
+        Ship Spyer = new Ship("Spyer", "MISS", 0, 1000, R.drawable.ship_spyer);
+        Ship Colonizer = new Ship("Colnizerr", "MISS", 0, 1000, R.drawable.ship_colonizer);
+        Ship Leviathan = new Ship("Leviathan", "MISS", 0, 1000, R.drawable.ship_leviathan);
+        Ship Deathstar = new Ship("Deathstar", "MISS", 0, 1000, R.drawable.ship_deathstar);
+        allShips.add(Messier);
+        allShips.add(Mayal);
+        allShips.add(Spyer);
+        allShips.add(Colonizer);
+        allShips.add(Leviathan);
+        allShips.add(Deathstar);
     }
 }
 

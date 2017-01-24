@@ -24,18 +24,32 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
+import com.spacewarfare.Defense.DefensesAdapter;
+import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
 
 
 public class ShipsFragment extends Fragment {
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.list_fragment, container, false);
 
-        return inflater.inflate(R.layout.not_yet_imple_fragment, container, false);
+        ListAdapter shipsAdapter = new ShipsAdapter(MainContext.INSTANCE.getMainActivity(), MainContext.INSTANCE.getUserI().allPlanets.get(0).allShips);
+        ListView shipsListView = (ListView) v.findViewById(R.id.geralListView);
+        shipsListView.setAdapter(shipsAdapter);
+
+        return v;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getActivity().setTitle("Ships");
     }
 
     @Override

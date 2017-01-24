@@ -1,7 +1,6 @@
 package com.spacewarfare.Building;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,7 @@ import java.util.List;
 public class BuildingsAdapter extends ArrayAdapter<Building> {
 
     public BuildingsAdapter(Context context, List<Building> buildings) {
-        super(context, R.layout.building_research_row, buildings);
+        super(context, R.layout.default_row, buildings);
     }
 
     @Override
@@ -32,10 +31,10 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
 
         if (convertView == null) {
             LayoutInflater fragmentInflater = LayoutInflater.from(getContext());
-            convertView = fragmentInflater.inflate(R.layout.building_research_row, parent, false);
+            convertView = fragmentInflater.inflate(R.layout.default_row, parent, false);
 
             holder = new ViewHolder(convertView);
-            holder.infoView = fragmentInflater.inflate(R.layout.building_info_row, null, false);
+            holder.infoView = fragmentInflater.inflate(R.layout.default_info_row, null, false);
 
             //holder.geralRelativeLayout = (RelativeLayout) convertView.findViewById(R.id.geralRelativeLayout);
             //holder.geralRelativeLayout.addView(holder.infoView);
