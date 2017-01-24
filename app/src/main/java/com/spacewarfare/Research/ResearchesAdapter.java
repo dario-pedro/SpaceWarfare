@@ -79,8 +79,10 @@ public class ResearchesAdapter extends ArrayAdapter<Research> {
             if(!singleResearchItem.owned){
                 this.researchPrice.setText("Price: " + singleResearchItem.price + " cr.");
                 this.buyResearch.setText("BUY");
+                this.researchChecked.setVisibility(View.GONE);
             }
             else{
+                this.researchChecked.setVisibility(View.VISIBLE);
                 this.researchChecked.setImageResource(R.drawable.checked);
                 this.buyResearch.setText("OWNED");
             }

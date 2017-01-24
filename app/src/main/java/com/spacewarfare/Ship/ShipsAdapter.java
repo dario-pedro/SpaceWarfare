@@ -79,8 +79,13 @@ public class ShipsAdapter extends ArrayAdapter<Ship> {
             this.ship.setImageResource(singleShipItem.image);
             this.shipPrice.setText("Price: " + singleShipItem.price + " cr.");
             this.buyShip.setText("BUY");
-            if(singleShipItem.quantity>0)
+            if(singleShipItem.quantity>0){
+                this.shipQuantity.setVisibility(View.VISIBLE);
                 this.shipQuantity.setText("Quantity: " + singleShipItem.quantity);
+            }
+            else
+                this.shipQuantity.setVisibility(View.GONE);
+
         }
 
         private View.OnClickListener infoShipClick = new View.OnClickListener() {

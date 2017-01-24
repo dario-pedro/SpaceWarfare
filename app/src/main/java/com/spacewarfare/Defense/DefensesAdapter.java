@@ -79,8 +79,13 @@ public class DefensesAdapter extends ArrayAdapter<Defense> {
             this.defense.setImageResource(singleDefenseItem.image);
             this.defensePrice.setText("Price: " + singleDefenseItem.price + " cr.");
             this.buyDefense.setText("BUY");
-            if(singleDefenseItem.quantity>0)
+            if(singleDefenseItem.quantity>0){
+                this.defenseQuantity.setVisibility(View.VISIBLE);
                 this.defenseQuantity.setText("Quantity: " + singleDefenseItem.quantity);
+            }
+            else
+                this.defenseQuantity.setVisibility(View.GONE);
+
         }
 
         private View.OnClickListener infoDefenseClick = new View.OnClickListener() {

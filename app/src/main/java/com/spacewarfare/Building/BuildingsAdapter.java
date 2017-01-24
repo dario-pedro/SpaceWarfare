@@ -81,8 +81,10 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             if(!singleBuildingItem.owned){
                 this.buildingPrice.setText("Price: " + singleBuildingItem.price + " cr.");
                 this.buyBuilding.setText("BUY");
+                this.buildingChecked.setVisibility(View.GONE);
             }
             else{
+                this.buildingChecked.setVisibility(View.VISIBLE);
                 this.buildingChecked.setImageResource(R.drawable.checked);
                 this.buyBuilding.setText("OWNED");
             }

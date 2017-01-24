@@ -13,10 +13,16 @@ import com.spacewarfare.Defense.Defense;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Planet {
     String name;
     List<Resource> allResources;
+    public Map<String, Building> mapOfBuildings;// = new HashMap<String, String>();
+    public Map<String,Research> mapOfResearches;
+    public Map<String,Ship> mapOfShips;
+    public Map<String,Defense> mapOfDefenses;
+
     public List<Building> allBuildings;
     public List<Research> allResearch;
     public List<Ship> allShips;
@@ -48,6 +54,12 @@ public class Planet {
         Research DeuteriumGatheringSpeed = new Research("Deuterium Gathering Speed", "MISS", false, 1000, R.drawable.research_deuteuriumgatheringspeed);
         Research IronGatheringSpeed = new Research("Iron Gathering Speed", "MISS", false, 1000, R.drawable.research_irongatheringspeed);
         Research IronMiner = new Research("Iron Miner", "MISS", false, 1000, R.drawable.research_ironminer);
+        Research PlasmaTech = new Research("Plasma Tech", "MISS", false, 1000, R.drawable.research_plasmatech);
+        Research PropulsionMotors = new Research("Propulsion Motors", "MISS", false, 1000, R.drawable.research_propulsionmotors);
+        Research SilverGatheringRobot = new Research("Silver Gathering Robot", "MISS", false, 1000, R.drawable.research_silver_gathererrobot);
+        Research SuperSonicMotor = new Research("Super Sonic Motor", "MISS", false, 1000, R.drawable.research_supersonicmotor);
+        Research WeaponTech = new Research("Weapon Tech", "MISS", false, 1000, R.drawable.research_weapontech);
+
         allResearch.add(AsteroidPhysics);
         allResearch.add(BenitoiteAttracters);
         allResearch.add(BenitoiteGatheringSpeed);
@@ -56,6 +68,11 @@ public class Planet {
         allResearch.add(DeuteriumGatheringSpeed);
         allResearch.add(IronGatheringSpeed);
         allResearch.add(IronMiner);
+        allResearch.add(PlasmaTech);
+        allResearch.add(PropulsionMotors);
+        allResearch.add(SilverGatheringRobot);
+        allResearch.add(SuperSonicMotor);
+        allResearch.add(WeaponTech);
 
         this.allDefenses = new ArrayList<>();
         //Create Defenses to test
