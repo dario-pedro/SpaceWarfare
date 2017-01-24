@@ -32,6 +32,9 @@ import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
 import com.spacewarfare.userInfo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class BuildingsFragment extends Fragment {
 
@@ -40,7 +43,9 @@ public class BuildingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.list_fragment, container, false);
 
-        ListAdapter buildingsAdapter = new BuildingsAdapter(MainContext.INSTANCE.getMainActivity(), MainContext.INSTANCE.getUserI().allPlanets.get(0).allBuildings);
+        List<Building> buildings = new ArrayList<Building> (MainContext.INSTANCE.getUserI().allPlanets.get(0).mapOfBuildings.values());
+        ListAdapter buildingsAdapter = new BuildingsAdapter(MainContext.INSTANCE.getMainActivity(), buildings);
+
         ListView buildingsListView = (ListView) v.findViewById(R.id.geralListView);
         buildingsListView.setAdapter(buildingsAdapter);
 

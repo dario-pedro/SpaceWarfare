@@ -27,9 +27,13 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.spacewarfare.Building.Building;
 import com.spacewarfare.Defense.DefensesAdapter;
 import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ShipsFragment extends Fragment {
@@ -39,7 +43,9 @@ public class ShipsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.list_fragment, container, false);
 
-        ListAdapter shipsAdapter = new ShipsAdapter(MainContext.INSTANCE.getMainActivity(), MainContext.INSTANCE.getUserI().allPlanets.get(0).allShips);
+        List<Ship> ships = new ArrayList<Ship>(MainContext.INSTANCE.getUserI().allPlanets.get(0).mapOfShips.values());
+        ListAdapter shipsAdapter = new ShipsAdapter(MainContext.INSTANCE.getMainActivity(), ships);
+
         ListView shipsListView = (ListView) v.findViewById(R.id.geralListView);
         shipsListView.setAdapter(shipsAdapter);
 

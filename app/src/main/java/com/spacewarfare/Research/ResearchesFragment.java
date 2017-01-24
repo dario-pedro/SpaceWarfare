@@ -27,8 +27,12 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.spacewarfare.Building.Building;
 import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ResearchesFragment extends Fragment {
@@ -39,7 +43,9 @@ public class ResearchesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.list_fragment, container, false);
 
-        ListAdapter researchesAdapter = new ResearchesAdapter(MainContext.INSTANCE.getMainActivity(), MainContext.INSTANCE.getUserI().allPlanets.get(0).allResearch);
+        List<Research> researches = new ArrayList<Research>(MainContext.INSTANCE.getUserI().allPlanets.get(0).mapOfResearches.values());
+        ListAdapter researchesAdapter = new ResearchesAdapter(MainContext.INSTANCE.getMainActivity(), researches);
+
         ListView researchesListView = (ListView) v.findViewById(R.id.geralListView);
         researchesListView.setAdapter(researchesAdapter);
 

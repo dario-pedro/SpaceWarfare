@@ -10,9 +10,13 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.spacewarfare.Building.Building;
 import com.spacewarfare.Building.BuildingsAdapter;
 import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,7 +28,9 @@ public class DefensesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.list_fragment, container, false);
 
-        ListAdapter defensesAdapter = new DefensesAdapter(MainContext.INSTANCE.getMainActivity(), MainContext.INSTANCE.getUserI().allPlanets.get(0).allDefenses);
+        List<Defense> defenses = new ArrayList<Defense>(MainContext.INSTANCE.getUserI().allPlanets.get(0).mapOfDefenses.values());
+        ListAdapter defensesAdapter = new DefensesAdapter(MainContext.INSTANCE.getMainActivity(), defenses);
+
         ListView defensesListView = (ListView) v.findViewById(R.id.geralListView);
         defensesListView.setAdapter(defensesAdapter);
 
