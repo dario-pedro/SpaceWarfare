@@ -21,29 +21,29 @@ import java.util.Map;
 public class Planet {
     String name;
     List<Resource> allResources;
-    public Map<String, Building> mapOfBuildings;
-    public Map<String,Research> mapOfResearches;
-    public Map<String,Ship> mapOfShips;
-    public Map<String,Defense> mapOfDefenses;
+    public Map<Integer, Building> mapOfBuildings;
+    public Map<Integer,Research> mapOfResearches;
+    public Map<Integer,Ship> mapOfShips;
+    public Map<Integer,Defense> mapOfDefenses;
 
     public Planet(String name) {
         this.name = name;
 
         //Create Buildings
-        this.mapOfBuildings = new LinkedHashMap<String, Building>();
+        this.mapOfBuildings = new LinkedHashMap<Integer, Building>();
         Building Hangar = new Building("Hangar", "MISS", true, 1000, R.drawable.building_hangar);
         Building ResearchLab = new Building("Research Lab", "MISS", false, 30000, R.drawable.building_researchlab);
         Building NaniteFactory = new Building("Nanite Factory", "MISS", false, 50000, R.drawable.building_nanite);
         Building RobotFactory = new Building("Robot Factory", "MISS", false, 100000, R.drawable.building_robot);
         Building TimeMachine = new Building("Time Machine", "MISS", false, 1000000, R.drawable.building_timemachine);
-        mapOfBuildings.put("Hangar", Hangar);
-        mapOfBuildings.put("ResearchLab", ResearchLab);
-        mapOfBuildings.put("NaniteFactory", NaniteFactory);
-        mapOfBuildings.put("RobotFactory", RobotFactory);
-        mapOfBuildings.put("TimeMachine", TimeMachine);
+        mapOfBuildings.put(R.string.key_Building_Hangar, Hangar);
+        mapOfBuildings.put(R.string.key_Building_ResearchLab, ResearchLab);
+        mapOfBuildings.put(R.string.key_Building_NaniteFactory, NaniteFactory);
+        mapOfBuildings.put(R.string.key_Building_RobotFactory, RobotFactory);
+        mapOfBuildings.put(R.string.key_Building_TimeMachine, TimeMachine);
 
         //Create Researches
-        this.mapOfResearches = new LinkedHashMap<String, Research>();
+        this.mapOfResearches = new LinkedHashMap<Integer, Research>();
         Research AsteroidPhysics = new Research("Asteroid Physics", "MISS", true, 1000, R.drawable.research_asteroidphysics);
         Research BenitoiteAttracters = new Research("Benitoite Attracters", "MISS", false, 1000, R.drawable.research_benitoiteattracters);
         Research BenitoiteGatheringSpeed = new Research("Benitoite Gathering Speed", "MISS", false, 1000, R.drawable.research_benitoitegatheringspeed);
@@ -57,55 +57,47 @@ public class Planet {
         Research SilverGatheringRobot = new Research("Silver Gathering Robot", "MISS", false, 1000, R.drawable.research_silver_gathererrobot);
         Research SuperSonicMotor = new Research("Super Sonic Motor", "MISS", false, 1000, R.drawable.research_supersonicmotor);
         Research WeaponTech = new Research("Weapon Tech", "MISS", false, 1000, R.drawable.research_weapontech);
-        mapOfResearches.put("AsteroidPhysics", AsteroidPhysics);
-        mapOfResearches.put("BenitoiteAttracters", BenitoiteAttracters);
-        mapOfResearches.put("BenitoiteGatheringSpeed", BenitoiteGatheringSpeed);
-        mapOfResearches.put("CombustionMotors", CombustionMotors);
-        mapOfResearches.put("DarkMatterTech", DarkMatterTech);
-        mapOfResearches.put("DeuteriumGatheringSpeed", DeuteriumGatheringSpeed);
-        mapOfResearches.put("IronGatheringSpeed", IronGatheringSpeed);
-        mapOfResearches.put("IronMiner", IronMiner);
-        mapOfResearches.put("PlasmaTech", PlasmaTech);
-        mapOfResearches.put("PropulsionMotors", PropulsionMotors);
-        mapOfResearches.put("SilverGatheringRobot", SilverGatheringRobot);
-        mapOfResearches.put("SuperSonicMotor", SuperSonicMotor);
-        mapOfResearches.put("WeaponTech", WeaponTech);
+        mapOfResearches.put(R.string.key_Research_AsteroidPhysics, AsteroidPhysics);
+        mapOfResearches.put(R.string.key_Research_BenitoiteAttracters, BenitoiteAttracters);
+        mapOfResearches.put(R.string.key_Research_BenitoiteGatheringSpeed, BenitoiteGatheringSpeed);
+        mapOfResearches.put(R.string.key_Research_CombustionMotors, CombustionMotors);
+        mapOfResearches.put(R.string.key_Research_DarkMatterTech, DarkMatterTech);
+        mapOfResearches.put(R.string.key_Research_DeuteriumGatheringSpeed, DeuteriumGatheringSpeed);
+        mapOfResearches.put(R.string.key_Research_IronGatheringSpeed, IronGatheringSpeed);
+        mapOfResearches.put(R.string.key_Research_IronMiner, IronMiner);
+        mapOfResearches.put(R.string.key_Research_PlasmaTech, PlasmaTech);
+        mapOfResearches.put(R.string.key_Research_PropulsionMotors, PropulsionMotors);
+        mapOfResearches.put(R.string.key_Research_SilverGatheringRobot, SilverGatheringRobot);
+        mapOfResearches.put(R.string.key_Research_SuperSonicMotor, SuperSonicMotor);
+        mapOfResearches.put(R.string.key_Research_WeaponTech, WeaponTech);
 
         //Create Ships
-        this.mapOfShips = new LinkedHashMap<String, Ship>();
+        this.mapOfShips = new LinkedHashMap<Integer, Ship>();
         Ship Messier = new Ship("Messier", "MISS", 3, 1000, R.drawable.ship_messier);
         Ship Mayal = new Ship("Mayal", "MISS", 0, 1000, R.drawable.ship_mayal);
         Ship Spyer = new Ship("Spyer", "MISS", 0, 1000, R.drawable.ship_spyer);
         Ship Colonizer = new Ship("Colonizer", "MISS", 0, 1000, R.drawable.ship_colonizer);
         Ship Leviathan = new Ship("Leviathan", "MISS", 0, 1000, R.drawable.ship_leviathan);
         Ship Deathstar = new Ship("Deathstar", "MISS", 0, 1000, R.drawable.ship_deathstar);
-        mapOfShips.put("Messier", Messier);
-        mapOfShips.put("Mayal", Mayal);
-        mapOfShips.put("Spyer", Spyer);
-        mapOfShips.put("Colonizer", Colonizer);
-        mapOfShips.put("Leviathan", Leviathan);
-        mapOfShips.put("Deathstar", Deathstar);
+        mapOfShips.put(R.string.key_Ship_Messier, Messier);
+        mapOfShips.put(R.string.key_Ship_Mayal, Mayal);
+        mapOfShips.put(R.string.key_Ship_Spyer, Spyer);
+        mapOfShips.put(R.string.key_Ship_Colonizer, Colonizer);
+        mapOfShips.put(R.string.key_Ship_Leviathan, Leviathan);
+        mapOfShips.put(R.string.key_Ship_Deathstar, Deathstar);
 
         //Create Defenses
-        this.mapOfDefenses = new LinkedHashMap<String, Defense>();
+        this.mapOfDefenses = new LinkedHashMap<Integer, Defense>();
         Defense MissileLauncher = new Defense("Missile Launcher", "MISS", 1, 1000, R.drawable.defense_missilelauncher);
         Defense ResourceBunker = new Defense("Resource Bunker", "MISS", 0, 1000, R.drawable.defense_resourcebunker);
         Defense PlasmaCannon = new Defense("Plasma Cannon", "MISS", 0, 1000, R.drawable.defense_plasmacannon);
         Defense AntiAirRobot = new Defense("Anti Air Robot", "MISS", 0, 1000, R.drawable.defense_antiairrobot);
         Defense HeavyLaser = new Defense("Heavy Laser", "MISS", 0, 1000, R.drawable.defense_heavylaser);
-        mapOfDefenses.put("MissileLauncher", MissileLauncher);
-        mapOfDefenses.put("ResourceBunker", ResourceBunker);
-        mapOfDefenses.put("PlasmaCannon", PlasmaCannon);
-        mapOfDefenses.put("AntiAirRobot", AntiAirRobot);
-        mapOfDefenses.put("HeavyLaser", HeavyLaser);
-
-        /*
-            exemplo de keys int num map
-
-         */
-
-        Map<Integer,Building> exemple = new LinkedHashMap<Integer, Building>();
-        exemple.put(R.string.hangar_key,Hangar);
+        mapOfDefenses.put(R.string.key_Defense_MissileLauncher, MissileLauncher);
+        mapOfDefenses.put(R.string.key_Defense_ResourceBunker, ResourceBunker);
+        mapOfDefenses.put(R.string.key_Defense_PlasmaCannon, PlasmaCannon);
+        mapOfDefenses.put(R.string.key_Defense_AntiAirRobot, AntiAirRobot);
+        mapOfDefenses.put(R.string.key_Defense_HeavyLaser, HeavyLaser);
 
         /*
         public List<Research> allResearch;

@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity
         MainContext mainContext = MainContext.INSTANCE;
         mainContext.initialize(this);
 
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -119,7 +118,7 @@ public class MainActivity extends AppCompatActivity
             setTitle("FragmentShip");
             ShipsFragment fragment = new ShipsFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.frame, fragment, "FragmentShip");
+            fragmentTransaction.replace(R.id.frame, fragment, "FragmentDefense");
             fragmentTransaction.commit();
 
         } else if (id == R.id.nav_defense) {

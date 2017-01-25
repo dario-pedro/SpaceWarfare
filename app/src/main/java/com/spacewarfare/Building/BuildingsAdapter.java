@@ -28,36 +28,21 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
     }
 
     @Override
-    public int getViewTypeCount() {
-        return getCount();
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        return position;
-    }
-
-    @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         final ViewHolder holder;
 
         if (convertView == null) {
-            LayoutInflater fragmentInflater = LayoutInflater.from(getContext());
-            convertView = fragmentInflater.inflate(R.layout.default_row, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.default_row, parent, false);
 
             holder = new ViewHolder(convertView);
-            holder.infoView = fragmentInflater.inflate(R.layout.default_info_row, null, false);
-
-            //holder.geralRelativeLayout = (RelativeLayout) convertView.findViewById(R.id.geralRelativeLayout);
-            //holder.geralRelativeLayout.addView(holder.infoView);
-            //holder.infoView.setVisibility(View.GONE);
 
             convertView.setTag(holder);
         }
         else{
-            holder = (ViewHolder) convertView.getTag();
-        }
+                holder = (ViewHolder) convertView.getTag();
+            }
 
+        holder.infoView = LayoutInflater.from(getContext()).inflate(R.layout.default_info_row, null, false);
         Building singleBuildingItem = getItem(position);
         holder.setParameters(singleBuildingItem);
 
@@ -72,12 +57,10 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
         private ImageView building;
         private ImageView buildingChecked;
 
-        //dialog
-        RelativeLayout rl;
-        View infoView;
+        private RelativeLayout buildingInfoLayout;
+        public View infoView;
         Button infoLeftButton;
         Button infoRightButton;
-
 
         public ViewHolder(View convertView) {
             this.buildingName = (TextView) convertView.findViewById(R.id.TextView_Name);
@@ -87,7 +70,7 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             this.infoBuilding.setOnClickListener(infoBuildingClick);
             this.building = (ImageView) convertView.findViewById(R.id.ImageView_Photo);
             this.buildingChecked = (ImageView) convertView.findViewById(R.id.ImageView_Checked);
-            this.rl = (RelativeLayout) (MainContext.INSTANCE.getMainActivity()).findViewById(R.id.geralRelativeLayout);
+            this.buildingInfoLayout = (RelativeLayout) (MainContext.INSTANCE.getMainActivity()).findViewById(R.id.geralRelativeLayout);
         }
 
         public void setParameters(Building singleBuildingItem){
@@ -105,10 +88,8 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
                 this.buyBuilding.setText("OWNED");
             }
 
-            rl.addView(infoView);
+            buildingInfoLayout.addView(infoView);
             infoView.setVisibility(View.GONE);
-            infoBuilding.setOnClickListener(infoBuildingClick);
-
         }
 
         private View.OnClickListener infoBuildingClick = new View.OnClickListener() {

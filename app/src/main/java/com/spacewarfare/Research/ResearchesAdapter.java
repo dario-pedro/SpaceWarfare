@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
 
 import java.util.List;
@@ -29,15 +31,9 @@ public class ResearchesAdapter extends ArrayAdapter<Research> {
         final ViewHolder holder;
 
         if (convertView == null) {
-            LayoutInflater fragmentInflater = LayoutInflater.from(getContext());
-            convertView = fragmentInflater.inflate(R.layout.default_row, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.default_row, parent, false);
 
             holder = new ViewHolder(convertView);
-            holder.infoView = fragmentInflater.inflate(R.layout.default_info_row, null, false);
-
-            //holder.geralRelativeLayout = (RelativeLayout) convertView.findViewById(R.id.geralRelativeLayout);
-            //holder.geralRelativeLayout.addView(holder.infoView);
-            //holder.infoView.setVisibility(View.GONE);
 
             convertView.setTag(holder);
         }
@@ -45,6 +41,7 @@ public class ResearchesAdapter extends ArrayAdapter<Research> {
                 holder = (ViewHolder) convertView.getTag();
             }
 
+        holder.infoView = LayoutInflater.from(getContext()).inflate(R.layout.default_info_row, null, false);
         Research singleResearchItem = getItem(position);
         holder.setParameters(singleResearchItem);
 
@@ -59,8 +56,10 @@ public class ResearchesAdapter extends ArrayAdapter<Research> {
         private ImageView research;
         private ImageView researchChecked;
 
+        private RelativeLayout researchInfoLayout;
         public View infoView;
-        //private RelativeLayout geralRelativeLayout;
+        Button infoLeftButton;
+        Button infoRightButton;
 
         public ViewHolder(View convertView) {
             this.researchName = (TextView) convertView.findViewById(R.id.TextView_Name);
@@ -70,6 +69,7 @@ public class ResearchesAdapter extends ArrayAdapter<Research> {
             this.infoResearch.setOnClickListener(infoResearchClick);
             this.research = (ImageView) convertView.findViewById(R.id.ImageView_Photo);
             this.researchChecked = (ImageView) convertView.findViewById(R.id.ImageView_Checked);
+            this.researchInfoLayout = (RelativeLayout) (MainContext.INSTANCE.getMainActivity()).findViewById(R.id.geralRelativeLayout);
         }
 
         public void setParameters(Research singleResearchItem){
@@ -86,13 +86,15 @@ public class ResearchesAdapter extends ArrayAdapter<Research> {
                 this.researchChecked.setImageResource(R.drawable.checked);
                 this.buyResearch.setText("OWNED");
             }
+            researchInfoLayout.addView(infoView);
+            infoView.setVisibility(View.GONE);
         }
 
         private View.OnClickListener infoResearchClick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //infoView.setVisibility(View.VISIBLE);
-                Toast.makeText(getContext(), "ZIMBORAAA, amanhã há mais", Toast.LENGTH_SHORT).show();
+                infoView.setVisibility(View.VISIBLE);
+                //Toast.makeText(getContext(), "ZIMBORAAA, amanhã há mais", Toast.LENGTH_SHORT).show();
             }
         };
     }

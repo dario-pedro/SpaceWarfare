@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
 
 import java.util.List;
@@ -29,15 +31,9 @@ public class ShipsAdapter extends ArrayAdapter<Ship> {
         final ViewHolder holder;
 
         if (convertView == null) {
-            LayoutInflater fragmentInflater = LayoutInflater.from(getContext());
-            convertView = fragmentInflater.inflate(R.layout.default_row, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.default_row, parent, false);
 
             holder = new ViewHolder(convertView);
-            holder.infoView = fragmentInflater.inflate(R.layout.default_info_row, null, false);
-
-            //holder.geralRelativeLayout = (RelativeLayout) convertView.findViewById(R.id.geralRelativeLayout);
-            //holder.geralRelativeLayout.addView(holder.infoView);
-            //holder.infoView.setVisibility(View.GONE);
 
             convertView.setTag(holder);
         }
@@ -45,6 +41,7 @@ public class ShipsAdapter extends ArrayAdapter<Ship> {
                 holder = (ViewHolder) convertView.getTag();
             }
 
+        holder.infoView = LayoutInflater.from(getContext()).inflate(R.layout.default_info_row, null, false);
         Ship singleShipItem = getItem(position);
         holder.setParameters(singleShipItem);
 
@@ -58,11 +55,11 @@ public class ShipsAdapter extends ArrayAdapter<Ship> {
         private Button infoShip;
         private ImageView ship;
         private TextView shipQuantity;
-        //private ImageView buildingChecked;
 
+        private RelativeLayout shipInfoLayout;
         public View infoView;
-        //private RelativeLayout geralRelativeLayout;
-
+        Button infoLeftButton;
+        Button infoRightButton;
 
         public ViewHolder(View convertView) {
             this.shipName = (TextView) convertView.findViewById(R.id.TextView_Name);
@@ -72,6 +69,7 @@ public class ShipsAdapter extends ArrayAdapter<Ship> {
             this.infoShip.setOnClickListener(infoShipClick);
             this.ship = (ImageView) convertView.findViewById(R.id.ImageView_Photo);
             this.shipQuantity = (TextView) convertView.findViewById(R.id.TextView_Quantity);
+            this.shipInfoLayout = (RelativeLayout) (MainContext.INSTANCE.getMainActivity()).findViewById(R.id.geralRelativeLayout);
         }
 
         public void setParameters(Ship singleShipItem){
@@ -86,13 +84,15 @@ public class ShipsAdapter extends ArrayAdapter<Ship> {
             else
                 this.shipQuantity.setVisibility(View.GONE);
 
+            shipInfoLayout.addView(infoView);
+            infoView.setVisibility(View.GONE);
         }
 
         private View.OnClickListener infoShipClick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //infoView.setVisibility(View.VISIBLE);
-                Toast.makeText(getContext(), "ZIMBORAAA, amanhã há mais", Toast.LENGTH_SHORT).show();
+                infoView.setVisibility(View.VISIBLE);
+                //Toast.makeText(getContext(), "ZIMBORAAA, amanhã há mais", Toast.LENGTH_SHORT).show();
             }
         };
     }

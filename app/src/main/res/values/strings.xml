@@ -4,7 +4,6 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-
     <string name="action_home">Home</string>
     <string name="action_resources">Resources</string>
     <string name="action_buildings">Buildings</string>
@@ -18,7 +17,6 @@
     <string name="action_login">Log in</string>
     <string name="action_logout">Log out</string>
     <string name="action_register">Register</string>
-
 
     <string name="action_settings">Settings</string>
     <string name="string_home">Home</string>
@@ -35,7 +33,38 @@
 
     <!-- Objects keys -->
 
-    <string name="hangar_key" translatable="false">hangar_key</string>
+    <string name="key_Building_Hangar" translatable="false"> key_Building_hangar </string>
+    <string name="key_Building_ResearchLab" translatable="false"> key_Building_ResearchLab </string>
+    <string name="key_Building_NaniteFactory" translatable="false"> key_Building_NaniteFactory </string>
+    <string name="key_Building_RobotFactory" translatable="false"> key_Building_RobotFactory </string>
+    <string name="key_Building_TimeMachine" translatable="false"> key_Building_TimeMachine </string>
+
+    <string name="key_Research_AsteroidPhysics" translatable="false"> key_Research_AsteroidPhysics </string>
+    <string name="key_Research_BenitoiteAttracters" translatable="false"> key_Research_BenitoiteAttracters </string>
+    <string name="key_Research_BenitoiteGatheringSpeed" translatable="false"> key_Research_BenitoiteGatheringSpeed </string>
+    <string name="key_Research_CombustionMotors" translatable="false"> key_Research_CombustionMotors </string>
+    <string name="key_Research_DarkMatterTech" translatable="false"> key_Research_DarkMatterTech </string>
+    <string name="key_Research_DeuteriumGatheringSpeed" translatable="false"> key_Research_DeuteriumGatheringSpeed </string>
+    <string name="key_Research_IronGatheringSpeed" translatable="false"> key_Research_IronGatheringSpeed </string>
+    <string name="key_Research_IronMiner" translatable="false"> key_Research_IronMiner </string>
+    <string name="key_Research_PlasmaTech" translatable="false"> key_Research_PlasmaTech </string>
+    <string name="key_Research_PropulsionMotors" translatable="false"> key_Research_PropulsionMotors </string>
+    <string name="key_Research_SilverGatheringRobot" translatable="false"> key_Research_SilverGatheringRobot </string>
+    <string name="key_Research_SuperSonicMotor" translatable="false"> key_Research_SuperSonicMotors </string>
+    <string name="key_Research_WeaponTech" translatable="false"> key_Research_WeaponTech </string>
+
+    <string name="key_Ship_Messier" translatable="false"> key_Ship_Messier </string>
+    <string name="key_Ship_Mayal" translatable="false"> key_Ship_Mayal </string>
+    <string name="key_Ship_Spyer" translatable="false"> key_Ship_Spyer </string>
+    <string name="key_Ship_Colonizer" translatable="false"> key_Ship_Colonizer </string>
+    <string name="key_Ship_Leviathan" translatable="false"> key_Ship_Leviathan </string>
+    <string name="key_Ship_Deathstar" translatable="false"> key_Ship_Deathstar </string>
+
+    <string name="key_Defense_MissileLauncher" translatable="false"> key_Defense_MissileLauncher </string>
+    <string name="key_Defense_ResourceBunker" translatable="false"> key_Defense_ResourceBunker </string>
+    <string name="key_Defense_PlasmaCannon" translatable="false"> key_Defense_PlasmaCannon </string>
+    <string name="key_Defense_AntiAirRobot" translatable="false"> key_Defense_AntiAirRobot </string>
+    <string name="key_Defense_HeavyLaser" translatable="false"> key_Defense_HeavyLaser </string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
