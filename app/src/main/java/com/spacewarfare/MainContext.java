@@ -30,13 +30,13 @@ public enum MainContext {
     //private Database database;
     private Configuration configuration;
 
-    private userInfo userInfo;
+    private UserInfo userInfo;
 
-    public userInfo getUserI() {
+    public UserInfo getUserI() {
         return userInfo;
     }
 
-    void setUserI(userInfo ui) {
+    void setUserI(UserInfo ui) {
         this.userInfo = ui;
     }
 
@@ -63,7 +63,7 @@ public enum MainContext {
 
         setMainActivity(mainActivity);
         setConfiguration(configuration);
-        userInfo = new userInfo("DD", "DD");
+        userInfo = new UserInfo("DD", "DD");
         userInfo.firstPlanet();
         //setDatabase(new Database(mainActivity));
     }

@@ -9,20 +9,20 @@ import java.util.List;
 import com.spacewarfare.Home.Planet;
 
 
-public class userInfo {
+public class UserInfo {
 
     public String name;
     public String password;
     public int _id;
     public List<Planet> allPlanets;
+    public int money;
 
-    public final int START_MONEY = 1000000;
-
-    public userInfo(String _name, String _password) {
+    public UserInfo(String _name, String _password) {
         this.name = _name;
         this.password = _password;
         this._id = name.hashCode();
         this.allPlanets = new ArrayList<>();
+        this.money = 1000000;
     }
 
     public String get_password() {

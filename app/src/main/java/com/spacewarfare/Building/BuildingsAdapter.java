@@ -1,6 +1,7 @@
 package com.spacewarfare.Building;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
+import com.spacewarfare.UserInfo;
 
 import java.util.List;
 
@@ -43,8 +45,9 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             }
 
         holder.infoView = LayoutInflater.from(getContext()).inflate(R.layout.default_info_row, null, false);
-        Building singleBuildingItem = getItem(position);
-        holder.setParameters(singleBuildingItem);
+        //Building singleBuildingItem = getItem(position);
+        holder.setParameters(position);
+        parent.findViewById(R.id.moneyTextView);
 
         return convertView;
     }
@@ -54,8 +57,11 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
         private Button buyBuilding;
         private TextView buildingPrice;
         private Button infoBuilding;
-        private ImageView building;
+        private ImageView buildingPhoto;
         private ImageView buildingChecked;
+
+        public Building building;
+        public TextView currentMoney;
 
         private RelativeLayout buildingInfoLayout;
         public View infoView;
@@ -68,17 +74,22 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             this.buildingPrice = (TextView) convertView.findViewById(R.id.TextView_Price);
             this.infoBuilding = (Button) convertView.findViewById(R.id.Button_Info);
             this.infoBuilding.setOnClickListener(infoBuildingClick);
-            this.building = (ImageView) convertView.findViewById(R.id.ImageView_Photo);
+            this.buildingPhoto = (ImageView) convertView.findViewById(R.id.ImageView_Photo);
             this.buildingChecked = (ImageView) convertView.findViewById(R.id.ImageView_Checked);
             this.buildingInfoLayout = (RelativeLayout) (MainContext.INSTANCE.getMainActivity()).findViewById(R.id.geralRelativeLayout);
+            this.currentMoney = (TextView) this.buildingInfoLayout.findViewById(R.id.moneyTextView);
         }
 
-        public void setParameters(Building singleBuildingItem){
-            this.buildingName.setText(singleBuildingItem.name);
-            this.building.setImageResource(singleBuildingItem.image);
+        public void setParameters(int position){
+            this.building = getItem(position);
 
-            if(!singleBuildingItem.owned){
-                this.buildingPrice.setText("Price: " + singleBuildingItem.price + " cr.");
+            this.currentMoney.setText("" + MainContext.INSTANCE.getUserI().money);
+            this.buildingName.setText(this.building.name);
+            this.buildingPhoto.setImageResource(this.building.image);
+            this.buildingPrice.setText("Price: " + this.building.price + " cr.");
+
+            if(!this.building.owned){
+                this.buyBuilding.setOnClickListener(buyBuildingClick);
                 this.buyBuilding.setText("BUY");
                 this.buildingChecked.setVisibility(View.GONE);
             }
@@ -99,6 +110,35 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
                 //Toast.makeText(getContext(), "ZIMBORAAA, amanhã há mais", Toast.LENGTH_SHORT).show();
             }
         };
+
+        private View.OnClickListener buyBuildingClick = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(building.owned)
+                    Toast.makeText(getContext(), "You already have this building!", Toast.LENGTH_SHORT).show();
+                else
+                    if(!buyBuildingAction(ViewHolder.this, MainContext.INSTANCE.getUserI(), building))
+                        Toast.makeText(getContext(), "Not enough money!", Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        private boolean buyBuildingAction(ViewHolder viewHolder, UserInfo userInfo, Building building){
+            if(userInfo.money >= userInfo.allPlanets.get(0).mapOfBuildings.get(building.key).price){
+                // Update Info
+                userInfo.money -= userInfo.allPlanets.get(0).mapOfBuildings.get(building.key).price;
+                userInfo.allPlanets.get(0).mapOfBuildings.get(building.key).owned = true;
+                // Update Layout
+                viewHolder.currentMoney.setText("" + userInfo.money);
+                viewHolder.buildingChecked.setVisibility(View.VISIBLE);
+                viewHolder.buildingChecked.setImageResource(R.drawable.checked);
+                viewHolder.buyBuilding.setText("OWNED");
+                return true;
+            }
+            else
+                return false;
+        }
     }
+
+
 
 }

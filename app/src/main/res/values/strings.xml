@@ -67,6 +67,9 @@
     <string name="key_Defense_HeavyLaser" translatable="false"> key_Defense_HeavyLaser </string>
 
 
+    <string name="key_Building_Hangar2" translatable="false"> key_Building_hangar2 </string>
+    <string name="key_Building_Hangar3" translatable="false"> key_Building_hangar3 </string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
