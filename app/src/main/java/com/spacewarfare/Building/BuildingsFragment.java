@@ -41,9 +41,6 @@ public class BuildingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.list_fragment, container, false);
 
-        //TextView currentMoney = (TextView) v.findViewById(R.id.moneyTextView);
-        //currentMoney.setText("" + MainContext.INSTANCE.getUserI().money);
-
         List<Building> buildings = new ArrayList<Building> (MainContext.INSTANCE.getUserI().allPlanets.get(0).mapOfBuildings.values());
         ListAdapter buildingsAdapter = new BuildingsAdapter(MainContext.INSTANCE.getMainActivity(), buildings);
 

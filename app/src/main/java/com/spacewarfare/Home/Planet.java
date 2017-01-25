@@ -31,7 +31,7 @@ public class Planet {
 
         //Create Buildings
         this.mapOfBuildings = new LinkedHashMap<Integer, Building>();
-        Building Hangar = new Building(R.string.key_Building_Hangar, "Hangar", "MISS", true, 1000, R.drawable.building_hangar);
+        Building Hangar = new Building(R.string.key_Building_Hangar, "Hangar", "MISS", false, 1000, R.drawable.building_hangar);
         Building Hangar2 = new Building(R.string.key_Building_Hangar2, "Hangar2", "MISS", false, 2000, R.drawable.building_hangar);
         Building Hangar3 = new Building(R.string.key_Building_Hangar3, "Hangar3", "MISS", false, 3000, R.drawable.building_hangar);
         Building ResearchLab = new Building(R.string.key_Building_ResearchLab, "Research Lab", "MISS", false, 30000, R.drawable.building_researchlab);

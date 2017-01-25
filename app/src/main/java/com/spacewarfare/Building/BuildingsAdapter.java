@@ -1,7 +1,7 @@
 package com.spacewarfare.Building;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Button;
-import android.widget.Toast;
 
 
 import com.spacewarfare.MainContext;
@@ -45,7 +44,6 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             }
 
         holder.infoView = LayoutInflater.from(getContext()).inflate(R.layout.default_info_row, null, false);
-        //Building singleBuildingItem = getItem(position);
         holder.setParameters(position);
         parent.findViewById(R.id.moneyTextView);
 
@@ -60,45 +58,47 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
         private ImageView buildingPhoto;
         private ImageView buildingChecked;
 
+        private RelativeLayout buildingInfoLayout;
         public Building building;
         public TextView currentMoney;
 
-        private RelativeLayout buildingInfoLayout;
         public View infoView;
-        Button infoLeftButton;
-        Button infoRightButton;
+        private Button infoBuyBuilding;
+        private Button infoCancelBuilding;
 
         public ViewHolder(View convertView) {
-            this.buildingName = (TextView) convertView.findViewById(R.id.TextView_Name);
-            this.buyBuilding = (Button) convertView.findViewById(R.id.Button_Buy);
-            this.buildingPrice = (TextView) convertView.findViewById(R.id.TextView_Price);
-            this.infoBuilding = (Button) convertView.findViewById(R.id.Button_Info);
-            this.infoBuilding.setOnClickListener(infoBuildingClick);
-            this.buildingPhoto = (ImageView) convertView.findViewById(R.id.ImageView_Photo);
-            this.buildingChecked = (ImageView) convertView.findViewById(R.id.ImageView_Checked);
-            this.buildingInfoLayout = (RelativeLayout) (MainContext.INSTANCE.getMainActivity()).findViewById(R.id.geralRelativeLayout);
-            this.currentMoney = (TextView) this.buildingInfoLayout.findViewById(R.id.moneyTextView);
+            buildingName = (TextView) convertView.findViewById(R.id.TextView_Name);
+            buyBuilding = (Button) convertView.findViewById(R.id.Button_Buy);
+            buildingPrice = (TextView) convertView.findViewById(R.id.TextView_Price);
+            infoBuilding = (Button) convertView.findViewById(R.id.Button_Info);
+            infoBuilding.setOnClickListener(infoBuildingClick);
+            buildingPhoto = (ImageView) convertView.findViewById(R.id.ImageView_Photo);
+            buildingChecked = (ImageView) convertView.findViewById(R.id.ImageView_Checked);
+            buildingInfoLayout = (RelativeLayout) (MainContext.INSTANCE.getMainActivity()).findViewById(R.id.geralRelativeLayout);
+            currentMoney = (TextView) buildingInfoLayout.findViewById(R.id.moneyTextView);
         }
 
         public void setParameters(int position){
-            this.building = getItem(position);
+            building = getItem(position);
 
-            this.currentMoney.setText("" + MainContext.INSTANCE.getUserI().money);
-            this.buildingName.setText(this.building.name);
-            this.buildingPhoto.setImageResource(this.building.image);
-            this.buildingPrice.setText("Price: " + this.building.price + " cr.");
+            // Setup Building row
+            currentMoney.setText("" + MainContext.INSTANCE.getUserI().money);
+            buildingName.setText(building.name);
+            buildingPhoto.setImageResource(building.image);
+            buildingPrice.setText("Price: " + building.price + " cr.");
+            buyBuilding.setOnClickListener(buyBuildingClick);
 
-            if(!this.building.owned){
-                this.buyBuilding.setOnClickListener(buyBuildingClick);
-                this.buyBuilding.setText("BUY");
-                this.buildingChecked.setVisibility(View.GONE);
-            }
-            else{
-                this.buildingChecked.setVisibility(View.VISIBLE);
-                this.buildingChecked.setImageResource(R.drawable.checked);
-                this.buyBuilding.setText("OWNED");
-            }
-
+            // Setup Building info
+            TextView TextView_infoName = (TextView) infoView.findViewById(R.id.TextView_infoName);
+            TextView_infoName.setText(building.name);
+            ImageView ImageView_infoPhoto = (ImageView) infoView.findViewById(R.id.ImageView_infoPhoto);
+            ImageView_infoPhoto.setImageResource(building.image);
+            TextView TextView_infoDescription = (TextView) infoView.findViewById(R.id.TextView_infoDescription);
+            TextView_infoDescription.setText(building.description);
+            infoBuyBuilding = (Button) infoView.findViewById(R.id.Button_infoBuy);
+            infoBuyBuilding.setOnClickListener(infoBuyBuildingClick);
+            infoCancelBuilding = (Button) infoView.findViewById(R.id.Button_infoCancel);
+            infoCancelBuilding.setOnClickListener(infoCancelBuildingClick);
             buildingInfoLayout.addView(infoView);
             infoView.setVisibility(View.GONE);
         }
@@ -107,7 +107,6 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             @Override
             public void onClick(View v) {
                 infoView.setVisibility(View.VISIBLE);
-                //Toast.makeText(getContext(), "ZIMBORAAA, amanhã há mais", Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -115,23 +114,45 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             @Override
             public void onClick(View v) {
                 if(building.owned)
-                    Toast.makeText(getContext(), "You already have this building!", Toast.LENGTH_SHORT).show();
+                    Snackbar.make(v, "You already have this building!", Snackbar.LENGTH_SHORT).show();
                 else
-                    if(!buyBuildingAction(ViewHolder.this, MainContext.INSTANCE.getUserI(), building))
-                        Toast.makeText(getContext(), "Not enough money!", Toast.LENGTH_SHORT).show();
+                    if(!buyBuildingAction())
+                        Snackbar.make(v, "Not enough money!", Snackbar.LENGTH_SHORT).show();
             }
         };
 
-        private boolean buyBuildingAction(ViewHolder viewHolder, UserInfo userInfo, Building building){
+        private View.OnClickListener infoBuyBuildingClick = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(building.owned)
+                    Snackbar.make(v, "You already have this building!", Snackbar.LENGTH_SHORT).show();
+                else
+                    if(!buyBuildingAction())
+                        Snackbar.make(v, "Not enough money!", Snackbar.LENGTH_SHORT).show();
+                infoView.setVisibility(View.GONE);
+            }
+        };
+
+        private View.OnClickListener infoCancelBuildingClick = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                infoView.setVisibility(View.GONE);
+            }
+        };
+
+        private boolean buyBuildingAction(){
+            UserInfo userInfo = MainContext.INSTANCE.getUserI();
+
             if(userInfo.money >= userInfo.allPlanets.get(0).mapOfBuildings.get(building.key).price){
                 // Update Info
                 userInfo.money -= userInfo.allPlanets.get(0).mapOfBuildings.get(building.key).price;
                 userInfo.allPlanets.get(0).mapOfBuildings.get(building.key).owned = true;
                 // Update Layout
-                viewHolder.currentMoney.setText("" + userInfo.money);
-                viewHolder.buildingChecked.setVisibility(View.VISIBLE);
-                viewHolder.buildingChecked.setImageResource(R.drawable.checked);
-                viewHolder.buyBuilding.setText("OWNED");
+                currentMoney.setText("" + userInfo.money);
+                buildingChecked.setVisibility(View.VISIBLE);
+                buildingChecked.setImageResource(R.drawable.checked);
+                buyBuilding.setText("OWNED");
+                infoBuyBuilding.setText("OWNED");
                 return true;
             }
             else

@@ -13,8 +13,9 @@
         android:layout_toRightOf="@+id/ImageView_Photo"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/TextView_Name"
-        android:background="@drawable/btn"
-        android:textColor="#e5fff8" />
+        android:background="@drawable/btn_s"
+        android:textColor="#e5fff8"
+        android:text="BUY" />
 
     <TextView
         android:layout_width="wrap_content"
