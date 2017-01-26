@@ -2,6 +2,7 @@ package com.spacewarfare.Building;
 
 import android.content.Context;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,9 +44,9 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
                 holder = (ViewHolder) convertView.getTag();
             }
 
+        parent.findViewById(R.id.moneyTextView);
         holder.infoView = LayoutInflater.from(getContext()).inflate(R.layout.default_info_row, null, false);
         holder.setParameters(position);
-        parent.findViewById(R.id.moneyTextView);
 
         return convertView;
     }
@@ -87,6 +88,14 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             buildingPhoto.setImageResource(building.image);
             buildingPrice.setText("Price: " + building.price + " cr.");
             buyBuilding.setOnClickListener(buyBuildingClick);
+            buildingChecked.setImageResource(R.drawable.checked);
+
+            if(building.owned){
+                buildingChecked.setVisibility(View.VISIBLE);
+                infoBuyBuilding.setText("OWNED");
+            }
+            else
+                buildingChecked.setVisibility(View.GONE);
 
             // Setup Building info
             TextView TextView_infoName = (TextView) infoView.findViewById(R.id.TextView_infoName);
@@ -116,7 +125,7 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
                 if(building.owned)
                     Snackbar.make(v, "You already have this building!", Snackbar.LENGTH_SHORT).show();
                 else
-                    if(!buyBuildingAction())
+                    if(!buyBuildingAction(ViewHolder.this))
                         Snackbar.make(v, "Not enough money!", Snackbar.LENGTH_SHORT).show();
             }
         };
@@ -127,7 +136,7 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
                 if(building.owned)
                     Snackbar.make(v, "You already have this building!", Snackbar.LENGTH_SHORT).show();
                 else
-                    if(!buyBuildingAction())
+                    if(!buyBuildingAction(ViewHolder.this))
                         Snackbar.make(v, "Not enough money!", Snackbar.LENGTH_SHORT).show();
                 infoView.setVisibility(View.GONE);
             }
@@ -139,25 +148,25 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
                 infoView.setVisibility(View.GONE);
             }
         };
+    }
 
-        private boolean buyBuildingAction(){
-            UserInfo userInfo = MainContext.INSTANCE.getUserI();
+    private boolean buyBuildingAction(ViewHolder viewHolder){
+        UserInfo userInfo = MainContext.INSTANCE.getUserI();
+        Building building = viewHolder.building;
 
-            if(userInfo.money >= userInfo.allPlanets.get(0).mapOfBuildings.get(building.key).price){
-                // Update Info
-                userInfo.money -= userInfo.allPlanets.get(0).mapOfBuildings.get(building.key).price;
-                userInfo.allPlanets.get(0).mapOfBuildings.get(building.key).owned = true;
-                // Update Layout
-                currentMoney.setText("" + userInfo.money);
-                buildingChecked.setVisibility(View.VISIBLE);
-                buildingChecked.setImageResource(R.drawable.checked);
-                buyBuilding.setText("OWNED");
-                infoBuyBuilding.setText("OWNED");
-                return true;
-            }
-            else
-                return false;
+        if(userInfo.money >= userInfo.allPlanets.get(0).mapOfBuildings.get(building.key).price){
+            // Update Info
+            userInfo.money -= userInfo.allPlanets.get(0).mapOfBuildings.get(building.key).price;
+            userInfo.allPlanets.get(0).mapOfBuildings.get(building.key).owned = true;
+            // Update Layout
+            viewHolder.currentMoney.setText("" + userInfo.money);
+            viewHolder.buildingChecked.setVisibility(View.VISIBLE);
+            viewHolder.buyBuilding.setText("OWNED");
+            viewHolder.infoBuyBuilding.setText("OWNED");
+            return true;
         }
+
+        return false;
     }
 
 
