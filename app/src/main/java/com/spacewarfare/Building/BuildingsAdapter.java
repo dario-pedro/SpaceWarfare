@@ -100,9 +100,13 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             if(building.owned){
                 buildingChecked.setVisibility(View.VISIBLE);
                 infoBuyBuilding.setText("OWNED");
+                buyBuilding.setText("OWNED");
             }
-            else
+            else{
                 buildingChecked.setVisibility(View.GONE);
+                buyBuilding.setText("BUY");
+            }
+
 
             // Setup Building info
             TextView TextView_infoName = (TextView) infoView.findViewById(R.id.TextView_infoName);
