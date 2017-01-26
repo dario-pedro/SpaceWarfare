@@ -1,84 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="true">
 
-    <Button
-        android:layout_width="130dp"
-        android:layout_height="90dp"
-        android:id="@+id/Button_Buy"
-        android:layout_toRightOf="@+id/ImageView_Photo"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/TextView_Name"
-        android:background="@drawable/btn_s"
-        android:textColor="#e5fff8"
-        android:text="BUY" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        android:weightSum="100" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/TextView_Price"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_toRightOf="@+id/ImageView_Photo"
-        android:layout_below="@+id/TextView_Name"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:textColor="#eaedec"
-        android:singleLine="false" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="40"
+            android:orientation="vertical"
+            android:weightSum="100" >
 
-    <ImageView
-        android:layout_width="130dp"
-        android:layout_height="110dp"
-        android:id="@+id/ImageView_Photo"
-        android:layout_margin="15dp"
-        android:scaleType="fitXY" />
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:id="@+id/Button_Info"
-        android:scaleType="fitXY"
-        android:layout_alignTop="@+id/ImageView_Photo"
-        android:layout_alignLeft="@+id/ImageView_Photo"
-        android:layout_alignStart="@+id/ImageView_Photo"
-        android:layout_marginRight="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/info_icon" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/ImageView_Photo"
+                    android:layout_margin="10dp"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/building_hangar" />
 
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:id="@+id/ImageView_Checked"
-        android:layout_toRightOf="@+id/Button_Buy"
-        android:layout_toEndOf="@+id/Button_Buy"
-        android:layout_below="@+id/TextView_Name"
-        android:layout_marginTop="29dp"
-        android:layout_marginLeft="25dp" />
+                <Button
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:id="@+id/Button_Info"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/info_icon"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="top|left" />
 
-    <TextView
-        android:layout_height="30dp"
-        android:id="@+id/TextView_Quantity"
-        android:layout_toEndOf="@+id/Button_Buy"
-        android:layout_below="@+id/TextView_Name"
-        android:layout_marginTop="29dp"
-        android:layout_marginLeft="10dp"
-        android:textColor="#eaedec"
-        android:layout_alignBottom="@+id/Button_Buy"
-        android:layout_width="100dp"
-        android:gravity="center_horizontal"/>
+            </FrameLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/TextView_Name"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#b5bbe0"
-        android:layout_alignTop="@+id/ImageView_Photo"
-        android:layout_toEndOf="@+id/ImageView_Photo" />
+        </LinearLayout>
 
-</RelativeLayout>
+        <!-- Below is the second modification to layout_width -->
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="60"
+            android:orientation="vertical"
+            android:weightSum="100" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="35"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
+                android:weightSum="100"
+                android:layout_marginRight="15dp">
+
+                <TextView
+                    android:id="@+id/TextView_Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#FFFFFF"
+                    android:text="Hangar Building" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="45"
+                android:weightSum="100"
+                android:orientation="vertical"
+                android:layout_marginRight="15dp" >
+
+                <TextView
+                    android:id="@+id/TextView_Price"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:gravity="center_vertical"
+                    android:text="Price: 100000 cr."
+                    android:textColor="#FFFFFF" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:weightSum="100"
+                android:orientation="horizontal"
+                android:layout_marginRight="15dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="35"
+                    android:orientation="vertical"
+                    android:weightSum="100" >
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Button_Buy"
+                        android:background="@drawable/btn_s"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#FFFFFF"
+                        android:text="BUY"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="65"
+                    android:orientation="vertical"
+                    android:weightSum="100" >
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:id="@+id/ImageView_Checked"
+                            android:scaleType="fitXY"
+                            android:background="@drawable/checked"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/TextView_Quantity"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:gravity="center"
+                            android:textColor="#FFFFFF" />
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+
+

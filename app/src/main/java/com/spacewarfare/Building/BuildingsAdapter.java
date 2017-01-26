@@ -1,8 +1,11 @@
 package com.spacewarfare.Building;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +20,7 @@ import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
 import com.spacewarfare.UserInfo;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 /**
@@ -86,7 +90,10 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             currentMoney.setText("" + MainContext.INSTANCE.getUserI().money);
             buildingName.setText(building.name);
             buildingPhoto.setImageResource(building.image);
-            buildingPrice.setText("Price: " + building.price + " cr.");
+            SpannableString spannableString =  new SpannableString("Price: ");
+            spannableString.setSpan(new StyleSpan(Typeface.BOLD), 0, spannableString.length(), 0);
+            buildingPrice.setText(spannableString);
+            buildingPrice.append(building.price + " cr.");
             buyBuilding.setOnClickListener(buyBuildingClick);
             buildingChecked.setImageResource(R.drawable.checked);
 
