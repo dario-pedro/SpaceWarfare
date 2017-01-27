@@ -1,4 +1,4 @@
-package com.spacewarfare.Building;
+package com.spacewarfare.building;
 
 /**
  * Created by DidierRodriguesLopes on 23/01/17.

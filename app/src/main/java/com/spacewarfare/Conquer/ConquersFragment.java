@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.spacewarfare.Conquer;
+package com.spacewarfare.conquer;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

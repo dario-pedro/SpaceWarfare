@@ -11,13 +11,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.spacewarfare.Building.BuildingsFragment;
-import com.spacewarfare.Defense.DefensesFragment;
-import com.spacewarfare.Navigation.NavigationMenu;
-import com.spacewarfare.Navigation.NavigationMenuView;
-
-import com.spacewarfare.Research.ResearchesFragment;
-import com.spacewarfare.Ship.ShipsFragment;
+import com.spacewarfare.building.BuildingsFragment;
+import com.spacewarfare.defense.DefensesFragment;
+import com.spacewarfare.navigation.*;
+import com.spacewarfare.research.ResearchesFragment;
+import com.spacewarfare.ship.ShipsFragment;
 
 
 public class MainActivity extends AppCompatActivity

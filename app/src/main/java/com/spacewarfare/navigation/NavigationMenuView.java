@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.spacewarfare.Navigation;
+package com.spacewarfare.navigation;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;

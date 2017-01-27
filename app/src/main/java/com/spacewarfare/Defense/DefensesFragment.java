@@ -1,4 +1,4 @@
-package com.spacewarfare.Defense;
+package com.spacewarfare.defense;
 
 
 import android.os.Bundle;
@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.spacewarfare.Building.Building;
-import com.spacewarfare.Building.BuildingsAdapter;
 import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
 

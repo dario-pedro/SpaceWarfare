@@ -1,4 +1,4 @@
-package com.spacewarfare.Ship;
+package com.spacewarfare.ship;
 
 import android.content.Context;
 import android.view.LayoutInflater;

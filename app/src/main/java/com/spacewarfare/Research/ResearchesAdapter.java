@@ -1,4 +1,4 @@
-package com.spacewarfare.Research;
+package com.spacewarfare.research;
 
 import android.content.Context;
 import android.view.LayoutInflater;

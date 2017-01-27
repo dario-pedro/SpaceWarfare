@@ -1,4 +1,4 @@
-package com.spacewarfare.Defense;
+package com.spacewarfare.defense;
 
 import android.content.Context;
 import android.view.LayoutInflater;

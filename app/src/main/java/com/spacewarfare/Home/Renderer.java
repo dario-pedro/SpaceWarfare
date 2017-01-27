@@ -1,4 +1,4 @@
-package com.spacewarfare.Home;
+package com.spacewarfare.home;
 
 import android.content.Context;
 import android.util.Log;
@@ -49,7 +49,7 @@ public class Renderer extends RajawaliRenderer implements View.OnTouchListener {
         material.setDiffuseMethod(new DiffuseMethod.Lambert());
         material.setColor(0);
 
-        Texture earthTexture = new Texture("Earth", R.drawable.earthtruecolor_nasa_big);
+        Texture earthTexture = new Texture("Earth", R.drawable.planet_10);
         try{
             material.addTexture(earthTexture);
 
@@ -100,30 +100,30 @@ public class Renderer extends RajawaliRenderer implements View.OnTouchListener {
             material.setColor(0);
 
 
-            int draw = R.drawable.a10;
+            int draw = R.drawable.planet1;
 
             switch (counter)
             {
                // case 0:draw = R.drawable.bac;break;
-                case 1:draw = R.drawable.a10;break;
-                case 2:draw = R.drawable.a11;break;
+                case 1:draw = R.drawable.planet1;break;
+                case 2:draw = R.drawable.planet2;break;
                // case 3:draw = R.drawable.a12;break;
-                case 4:draw = R.drawable.a14;break;
+                case 4:draw = R.drawable.planet3;break;
                // case 5:draw = R.drawable.a2;break;
-                case 6:draw = R.drawable.a20;break;
-                case 7:draw = R.drawable.a21;break;
-                case 8:draw = R.drawable.a23;break;
+                case 6:draw = R.drawable.planet4;break;
+                case 7:draw = R.drawable.planet5;break;
+                case 8:draw = R.drawable.planet7;break;
                // case 9:draw = R.drawable.a3;break;
-                case 10:draw = R.drawable.a30;break;
+                case 10:draw = R.drawable.planet6;break;
                // case 11:draw = R.drawable.a40;break;
               //  case 12:draw = R.drawable.a5;break;
               //  case 13:draw = R.drawable.a6;break;
-                case 14:draw = R.drawable.a7;break;
-                case 15:draw = R.drawable.a8;break;
-                case 16:draw = R.drawable.earthtruecolor_nasa_big;break;
+                case 14:draw = R.drawable.planet8;break;
+                case 15:draw = R.drawable.planet9;break;
+                case 16:draw = R.drawable.planet_10;break;
                // case 17:draw = R.drawable.ground;break;
               //  case 18:draw = R.drawable.groundor;break;
-                case 19:draw = R.drawable.test;break;
+                case 19:draw = R.drawable.planet_11;break;
                 case 20:counter=0;break;
 
             }

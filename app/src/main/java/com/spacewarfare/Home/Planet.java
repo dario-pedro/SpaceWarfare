@@ -1,19 +1,16 @@
-package com.spacewarfare.Home;
+package com.spacewarfare.home;
 
 /**
  * Created by DidierRodriguesLopes on 23/01/17.
  */
 
 import com.spacewarfare.R;
-import com.spacewarfare.Resource.Resource;
-import com.spacewarfare.Building.Building;
-import com.spacewarfare.Research.Research;
-import com.spacewarfare.Ship.Ship;
-import com.spacewarfare.Defense.Defense;
+import com.spacewarfare.resource.Resource;
+import com.spacewarfare.building.Building;
+import com.spacewarfare.research.Research;
+import com.spacewarfare.ship.Ship;
+import com.spacewarfare.defense.Defense;
 
-import java.sql.Time;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;

@@ -99,18 +99,19 @@
                 android:layout_weight="20"
                 android:weightSum="100"
                 android:orientation="horizontal"
-                android:layout_marginRight="15dp" >
+                android:layout_marginRight="15dp"
+                android:id="@+id/linear_layout_buttonANDcheck">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="35"
+                    android:layout_weight="20"
                     android:orientation="vertical"
                     android:weightSum="100" >
 
                     <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:id="@+id/Button_Buy"
                         android:background="@drawable/btn_s"
                         android:textAppearance="?android:attr/textAppearanceSmall"
@@ -123,7 +124,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="65"
+                    android:layout_weight="80"
                     android:orientation="vertical"
                     android:weightSum="100" >
 

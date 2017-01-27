@@ -1,9 +1,8 @@
-package com.spacewarfare.Building;
+package com.spacewarfare.building;
 
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.design.widget.Snackbar;
-import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
@@ -20,7 +19,6 @@ import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
 import com.spacewarfare.UserInfo;
 
-import java.lang.reflect.Type;
 import java.util.List;
 
 /**

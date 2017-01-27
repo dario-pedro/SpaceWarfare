@@ -1,4 +1,4 @@
-package com.spacewarfare.Research;
+package com.spacewarfare.research;
 
 /**
  * Created by DidierRodriguesLopes on 23/01/17.

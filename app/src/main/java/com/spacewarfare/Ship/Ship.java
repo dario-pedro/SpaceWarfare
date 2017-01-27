@@ -1,4 +1,4 @@
-package com.spacewarfare.Ship;
+package com.spacewarfare.ship;
 
 /**
  * Created by DidierRodriguesLopes on 23/01/17.

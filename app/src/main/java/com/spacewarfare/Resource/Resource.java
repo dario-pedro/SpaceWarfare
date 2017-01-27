@@ -1,4 +1,4 @@
-package com.spacewarfare.Resource;
+package com.spacewarfare.resource;
 
 /**
  * Created by DidierRodriguesLopes on 23/01/17.

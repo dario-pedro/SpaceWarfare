@@ -1,4 +1,4 @@
-package com.spacewarfare.Defense;
+package com.spacewarfare.defense;
 
 /**
  * Created by DidierRodriguesLopes on 23/01/17.

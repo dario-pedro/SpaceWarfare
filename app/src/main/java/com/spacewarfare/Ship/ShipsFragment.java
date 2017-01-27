@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.spacewarfare.Ship;
+package com.spacewarfare.ship;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -27,8 +27,6 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.spacewarfare.Building.Building;
-import com.spacewarfare.Defense.DefensesAdapter;
 import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
 
