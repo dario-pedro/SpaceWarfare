@@ -5,15 +5,17 @@ package com.spacewarfare.ship;
  */
 
 public class Ship {
+    public int key;
     public String name;
-    public String info;
+    public String description;
     public int quantity;
     public int image;
     public int price;
 
-    public Ship(String name, String info, int quantity, int price, int image) {
+    public Ship(int key, String name, String description, int quantity, int price, int image) {
+        this.key = key;
         this.name = name;
-        this.info= info;
+        this.description = description;
         this.quantity = quantity;
         this.price = price;
         this.image = image;

@@ -74,12 +74,12 @@ public class Planet {
 
         //Create Ships
         this.mapOfShips = new LinkedHashMap<Integer, Ship>();
-        Ship Messier = new Ship("Messier", "MISS", 3, 1000, R.drawable.ship_messier);
-        Ship Mayal = new Ship("Mayal", "MISS", 0, 1000, R.drawable.ship_mayal);
-        Ship Spyer = new Ship("Spyer", "MISS", 0, 1000, R.drawable.ship_spyer);
-        Ship Colonizer = new Ship("Colonizer", "MISS", 0, 1000, R.drawable.ship_colonizer);
-        Ship Leviathan = new Ship("Leviathan", "MISS", 0, 1000, R.drawable.ship_leviathan);
-        Ship Deathstar = new Ship("Deathstar", "MISS", 0, 1000, R.drawable.ship_deathstar);
+        Ship Messier = new Ship(R.string.key_Ship_Messier, "Messier", "MISS", 3, 1000, R.drawable.ship_messier);
+        Ship Mayal = new Ship(R.string.key_Ship_Mayal, "Mayal", "MISS", 0, 1000, R.drawable.ship_mayal);
+        Ship Spyer = new Ship(R.string.key_Ship_Spyer, "Spyer", "MISS", 0, 1000, R.drawable.ship_spyer);
+        Ship Colonizer = new Ship(R.string.key_Ship_Colonizer, "Colonizer", "MISS", 0, 1000, R.drawable.ship_colonizer);
+        Ship Leviathan = new Ship(R.string.key_Ship_Leviathan, "Leviathan", "MISS", 0, 1000, R.drawable.ship_leviathan);
+        Ship Deathstar = new Ship(R.string.key_Ship_Deathstar, "Deathstar", "MISS", 0, 1000, R.drawable.ship_deathstar);
         mapOfShips.put(R.string.key_Ship_Messier, Messier);
         mapOfShips.put(R.string.key_Ship_Mayal, Mayal);
         mapOfShips.put(R.string.key_Ship_Spyer, Spyer);

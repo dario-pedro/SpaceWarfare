@@ -168,6 +168,4 @@ public class DefensesAdapter extends ArrayAdapter<Defense> {
         return false;
     }
 
-
-
 }
