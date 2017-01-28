@@ -89,11 +89,11 @@ public class Planet {
 
         //Create Defenses
         this.mapOfDefenses = new LinkedHashMap<Integer, Defense>();
-        Defense MissileLauncher = new Defense("Missile Launcher", "MISS", 1, 1000, R.drawable.defense_missilelauncher);
-        Defense ResourceBunker = new Defense("Resource Bunker", "MISS", 0, 1000, R.drawable.defense_resourcebunker);
-        Defense PlasmaCannon = new Defense("Plasma Cannon", "MISS", 0, 1000, R.drawable.defense_plasmacannon);
-        Defense AntiAirRobot = new Defense("Anti Air Robot", "MISS", 0, 1000, R.drawable.defense_antiairrobot);
-        Defense HeavyLaser = new Defense("Heavy Laser", "MISS", 0, 1000, R.drawable.defense_heavylaser);
+        Defense MissileLauncher = new Defense(R.string.key_Defense_MissileLauncher, "Missile Launcher", "MISS", 2, 1000, R.drawable.defense_missilelauncher);
+        Defense ResourceBunker = new Defense(R.string.key_Defense_ResourceBunker, "Resource Bunker", "MISS", 0, 1000, R.drawable.defense_resourcebunker);
+        Defense PlasmaCannon = new Defense(R.string.key_Defense_PlasmaCannon, "Plasma Cannon", "MISS", 0, 1000, R.drawable.defense_plasmacannon);
+        Defense AntiAirRobot = new Defense(R.string.key_Defense_AntiAirRobot, "Anti Air Robot", "MISS", 0, 1000, R.drawable.defense_antiairrobot);
+        Defense HeavyLaser = new Defense(R.string.key_Defense_HeavyLaser, "Heavy Laser", "MISS", 0, 1000, R.drawable.defense_heavylaser);
         mapOfDefenses.put(R.string.key_Defense_MissileLauncher, MissileLauncher);
         mapOfDefenses.put(R.string.key_Defense_ResourceBunker, ResourceBunker);
         mapOfDefenses.put(R.string.key_Defense_PlasmaCannon, PlasmaCannon);

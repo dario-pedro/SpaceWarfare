@@ -1,6 +1,10 @@
 package com.spacewarfare.defense;
 
 import android.content.Context;
+import android.graphics.Typeface;
+import android.support.design.widget.Snackbar;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +16,11 @@ import android.widget.TextView;
 
 import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
+import com.spacewarfare.UserInfo;
+import com.spacewarfare.building.Building;
+import com.spacewarfare.building.BuildingsAdapter;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -40,9 +49,9 @@ public class DefensesAdapter extends ArrayAdapter<Defense> {
                 holder = (ViewHolder) convertView.getTag();
             }
 
+        parent.findViewById(R.id.moneyTextView);
         holder.infoView = LayoutInflater.from(getContext()).inflate(R.layout.default_info_row, null, false);
-        Defense singleDefenseItem = getItem(position);
-        holder.setParameters(singleDefenseItem);
+        holder.setParameters(position);
 
         return convertView;
     }
@@ -52,48 +61,113 @@ public class DefensesAdapter extends ArrayAdapter<Defense> {
         private Button buyDefense;
         private TextView defensePrice;
         private Button infoDefense;
-        private ImageView defense;
+        private ImageView defensePhoto;
         private TextView defenseQuantity;
 
         private RelativeLayout defenseInfoLayout;
+        public Defense defense;
+        public TextView currentMoney;
+
         public View infoView;
-        Button infoLeftButton;
-        Button infoRightButton;
+        private Button infoBuyDefense;
+        private Button infoCancelDefense;
 
         public ViewHolder(View convertView) {
-            this.defenseName = (TextView) convertView.findViewById(R.id.TextView_Name);
-            this.buyDefense = (Button) convertView.findViewById(R.id.Button_Buy);
-            this.defensePrice = (TextView) convertView.findViewById(R.id.TextView_Price);
-            this.infoDefense = (Button) convertView.findViewById(R.id.Button_Info);
-            this.infoDefense.setOnClickListener(infoDefenseClick);
-            this.defense = (ImageView) convertView.findViewById(R.id.ImageView_Photo);
-            this.defenseQuantity = (TextView) convertView.findViewById(R.id.TextView_Quantity);
-            this.defenseInfoLayout = (RelativeLayout) (MainContext.INSTANCE.getMainActivity()).findViewById(R.id.geralRelativeLayout);
+            defenseName = (TextView) convertView.findViewById(R.id.TextView_Name);
+            buyDefense = (Button) convertView.findViewById(R.id.Button_Buy);
+            defensePrice = (TextView) convertView.findViewById(R.id.TextView_Price);
+            infoDefense = (Button) convertView.findViewById(R.id.Button_Info);
+            infoDefense.setOnClickListener(infoDefenseClick);
+            defensePhoto = (ImageView) convertView.findViewById(R.id.ImageView_Photo);
+            defenseQuantity = (TextView) convertView.findViewById(R.id.TextView_Quantity);
+            defenseInfoLayout = (RelativeLayout) (MainContext.INSTANCE.getMainActivity()).findViewById(R.id.geralRelativeLayout);
+            currentMoney = (TextView) defenseInfoLayout.findViewById(R.id.moneyTextView);
         }
 
-        public void setParameters(Defense singleDefenseItem){
-            this.defenseName.setText(singleDefenseItem.name);
-            this.defense.setImageResource(singleDefenseItem.image);
-            this.defensePrice.setText("Price: " + singleDefenseItem.price + " cr.");
-            this.buyDefense.setText("BUY");
-            if(singleDefenseItem.quantity>0){
-                this.defenseQuantity.setVisibility(View.VISIBLE);
-                this.defenseQuantity.setText("Quantity: " + singleDefenseItem.quantity);
-            }
-            else
-                this.defenseQuantity.setVisibility(View.GONE);
+        public void setParameters(int position){
+            defense = getItem(position);
 
+            // Setup Defense row
+            currentMoney.setText("" + MainContext.INSTANCE.getUserI().money);
+            defenseName.setText(defense.name);
+            defensePhoto.setImageResource(defense.image);
+            SpannableString spannableString =  new SpannableString("Price: ");
+            spannableString.setSpan(new StyleSpan(Typeface.BOLD), 0, spannableString.length(), 0);
+            defensePrice.setText(spannableString);
+            defensePrice.append(defense.price + " cr.");
+            buyDefense.setOnClickListener(buyDefenseClick);
+            defenseQuantity.setVisibility(View.VISIBLE);
+            //SpannableString spannableString2 =  new SpannableString("Quantity: ");
+            //spannableString2.setSpan(new StyleSpan(Typeface.BOLD), 0, spannableString2.length(), 0);
+            //defenseQuantity.setText(spannableString2);
+            //defenseQuantity.append(String.valueOf(defense.quantity));
+            defenseQuantity.setText("" + defense.quantity);
+
+            // Setup Defense info
+            TextView TextView_infoName = (TextView) infoView.findViewById(R.id.TextView_infoName);
+            TextView_infoName.setText(defense.name);
+            ImageView ImageView_infoPhoto = (ImageView) infoView.findViewById(R.id.ImageView_infoPhoto);
+            ImageView_infoPhoto.setImageResource(defense.image);
+            TextView TextView_infoDescription = (TextView) infoView.findViewById(R.id.TextView_infoDescription);
+            TextView_infoDescription.setText(defense.description);
+            infoBuyDefense = (Button) infoView.findViewById(R.id.Button_infoBuy);
+            infoBuyDefense.setOnClickListener(infoBuyDefenseClick);
+            infoCancelDefense = (Button) infoView.findViewById(R.id.Button_infoCancel);
+            infoCancelDefense.setOnClickListener(infoCancelDefenseClick);
             defenseInfoLayout.addView(infoView);
             infoView.setVisibility(View.GONE);
+
         }
 
         private View.OnClickListener infoDefenseClick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 infoView.setVisibility(View.VISIBLE);
-                //Toast.makeText(getContext(), "ZIMBORAAA, amanhã há mais", Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        private View.OnClickListener buyDefenseClick = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!buyDefenseAction(DefensesAdapter.ViewHolder.this))
+                    Snackbar.make(v, "Not enough money!", Snackbar.LENGTH_SHORT).show();
+            }
+        };
+
+        private View.OnClickListener infoBuyDefenseClick = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!buyDefenseAction(DefensesAdapter.ViewHolder.this))
+                    Snackbar.make(v, "Not enough money!", Snackbar.LENGTH_SHORT).show();
+                infoView.setVisibility(View.GONE);
+            }
+        };
+
+        private View.OnClickListener infoCancelDefenseClick = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                infoView.setVisibility(View.GONE);
             }
         };
     }
+
+    private boolean buyDefenseAction(DefensesAdapter.ViewHolder viewHolder){
+        UserInfo userInfo = MainContext.INSTANCE.getUserI();
+        Defense defense = viewHolder.defense;
+
+        if(userInfo.money >= userInfo.allPlanets.get(0).mapOfDefenses.get(defense.key).price){
+            // Update Info
+            userInfo.money -= userInfo.allPlanets.get(0).mapOfDefenses.get(defense.key).price;
+            int quant = userInfo.allPlanets.get(0).mapOfDefenses.get(defense.key).quantity++;
+            // Update Layout
+            viewHolder.currentMoney.setText("" + userInfo.money);
+            viewHolder.defenseQuantity.setText(""  + (quant+1));
+            return true;
+        }
+
+        return false;
+    }
+
+
 
 }
