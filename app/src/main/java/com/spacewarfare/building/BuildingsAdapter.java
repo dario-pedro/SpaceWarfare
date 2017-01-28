@@ -88,10 +88,7 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             currentMoney.setText("" + MainContext.INSTANCE.getUserI().money);
             buildingName.setText(building.name);
             buildingPhoto.setImageResource(building.image);
-            SpannableString spannableString =  new SpannableString("Price: ");
-            spannableString.setSpan(new StyleSpan(Typeface.BOLD), 0, spannableString.length(), 0);
-            buildingPrice.setText(spannableString);
-            buildingPrice.append(building.price + " cr.");
+            buildingPrice.setText("" + building.price + " cr.");
             buyBuilding.setOnClickListener(buyBuildingClick);
             buildingChecked.setImageResource(R.drawable.checked);
 
@@ -118,8 +115,6 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
                 buildingChecked.setVisibility(View.GONE);
                 buyBuilding.setText("BUY");
             }
-
-
         }
 
         private View.OnClickListener infoBuildingClick = new View.OnClickListener() {

@@ -74,7 +74,7 @@ public class Planet {
 
         //Create Ships
         this.mapOfShips = new LinkedHashMap<Integer, Ship>();
-        Ship Messier = new Ship(R.string.key_Ship_Messier, "Messier", "MISS", 3, 1000, R.drawable.ship_messier);
+        Ship Messier = new Ship(R.string.key_Ship_Messier, "Messier", "MISS", 0, 1000, R.drawable.ship_messier);
         Ship Mayal = new Ship(R.string.key_Ship_Mayal, "Mayal", "MISS", 0, 1000, R.drawable.ship_mayal);
         Ship Spyer = new Ship(R.string.key_Ship_Spyer, "Spyer", "MISS", 0, 1000, R.drawable.ship_spyer);
         Ship Colonizer = new Ship(R.string.key_Ship_Colonizer, "Colonizer", "MISS", 0, 1000, R.drawable.ship_colonizer);
@@ -89,7 +89,7 @@ public class Planet {
 
         //Create Defenses
         this.mapOfDefenses = new LinkedHashMap<Integer, Defense>();
-        Defense MissileLauncher = new Defense(R.string.key_Defense_MissileLauncher, "Missile Launcher", "MISS", 2, 1000, R.drawable.defense_missilelauncher);
+        Defense MissileLauncher = new Defense(R.string.key_Defense_MissileLauncher, "Missile Launcher", "MISS", 0, 1000, R.drawable.defense_missilelauncher);
         Defense ResourceBunker = new Defense(R.string.key_Defense_ResourceBunker, "Resource Bunker", "MISS", 0, 1000, R.drawable.defense_resourcebunker);
         Defense PlasmaCannon = new Defense(R.string.key_Defense_PlasmaCannon, "Plasma Cannon", "MISS", 0, 1000, R.drawable.defense_plasmacannon);
         Defense AntiAirRobot = new Defense(R.string.key_Defense_AntiAirRobot, "Anti Air Robot", "MISS", 0, 1000, R.drawable.defense_antiairrobot);

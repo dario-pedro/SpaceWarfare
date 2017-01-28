@@ -88,10 +88,7 @@ public class ResearchesAdapter extends ArrayAdapter<Research> {
             currentMoney.setText("" + MainContext.INSTANCE.getUserI().money);
             researchName.setText(research.name);
             researchPhoto.setImageResource(research.image);
-            SpannableString spannableString =  new SpannableString("Price: ");
-            spannableString.setSpan(new StyleSpan(Typeface.BOLD), 0, spannableString.length(), 0);
-            researchPrice.setText(spannableString);
-            researchPrice.append(research.price + " cr.");
+            researchPrice.setText("" + research.price + " cr.");
             buyResearch.setOnClickListener(buyResearchClick);
             researchChecked.setImageResource(R.drawable.checked);
 

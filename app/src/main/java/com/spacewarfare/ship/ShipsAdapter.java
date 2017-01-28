@@ -89,16 +89,9 @@ public class ShipsAdapter extends ArrayAdapter<Ship> {
             currentMoney.setText("" + MainContext.INSTANCE.getUserI().money);
             shipName.setText(ship.name);
             shipPhoto.setImageResource(ship.image);
-            SpannableString spannableString =  new SpannableString("Price: ");
-            spannableString.setSpan(new StyleSpan(Typeface.BOLD), 0, spannableString.length(), 0);
-            shipPrice.setText(spannableString);
-            shipPrice.append(ship.price + " cr.");
+            shipPrice.setText("" + ship.price + " cr.");
             buyShip.setOnClickListener(buyShipClick);
             shipQuantity.setVisibility(View.VISIBLE);
-            //SpannableString spannableString2 =  new SpannableString("Quantity: ");
-            //spannableString2.setSpan(new StyleSpan(Typeface.BOLD), 0, spannableString2.length(), 0);
-            //shipQuantity.setText(spannableString2);
-            //shipQuantity.append(String.valueOf(ship.quantity));
             shipQuantity.setText("" + ship.quantity);
 
             // Setup Ship info

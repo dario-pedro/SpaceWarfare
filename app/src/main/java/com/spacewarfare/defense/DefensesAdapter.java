@@ -91,16 +91,9 @@ public class DefensesAdapter extends ArrayAdapter<Defense> {
             currentMoney.setText("" + MainContext.INSTANCE.getUserI().money);
             defenseName.setText(defense.name);
             defensePhoto.setImageResource(defense.image);
-            SpannableString spannableString =  new SpannableString("Price: ");
-            spannableString.setSpan(new StyleSpan(Typeface.BOLD), 0, spannableString.length(), 0);
-            defensePrice.setText(spannableString);
-            defensePrice.append(defense.price + " cr.");
+            defensePrice.setText("" + defense.price + " cr.");
             buyDefense.setOnClickListener(buyDefenseClick);
             defenseQuantity.setVisibility(View.VISIBLE);
-            //SpannableString spannableString2 =  new SpannableString("Quantity: ");
-            //spannableString2.setSpan(new StyleSpan(Typeface.BOLD), 0, spannableString2.length(), 0);
-            //defenseQuantity.setText(spannableString2);
-            //defenseQuantity.append(String.valueOf(defense.quantity));
             defenseQuantity.setText("" + defense.quantity);
 
             // Setup Defense info
