@@ -19,7 +19,7 @@ public class LauncherActivity extends Activity {
         final ImageView iv = (ImageView) findViewById(R.id.imageView);
         final TextView tv = (TextView) findViewById(R.id.launcher_text);
 
-        final Animation rotate = AnimationUtils.loadAnimation(getBaseContext(),R.anim.rotate);
+        final Animation rotate = AnimationUtils.loadAnimation(getBaseContext(), R.anim.rotate);
         final Animation fade = AnimationUtils.loadAnimation(getBaseContext(),R.anim.abc_fade_out);
 
         iv.startAnimation(rotate);
@@ -43,5 +43,7 @@ public class LauncherActivity extends Activity {
 
             }
         });
+
     }
+
 }

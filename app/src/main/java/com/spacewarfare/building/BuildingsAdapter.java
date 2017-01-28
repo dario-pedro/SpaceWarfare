@@ -95,17 +95,6 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             buyBuilding.setOnClickListener(buyBuildingClick);
             buildingChecked.setImageResource(R.drawable.checked);
 
-            if(building.owned){
-                buildingChecked.setVisibility(View.VISIBLE);
-                infoBuyBuilding.setText("OWNED");
-                buyBuilding.setText("OWNED");
-            }
-            else{
-                buildingChecked.setVisibility(View.GONE);
-                buyBuilding.setText("BUY");
-            }
-
-
             // Setup Building info
             TextView TextView_infoName = (TextView) infoView.findViewById(R.id.TextView_infoName);
             TextView_infoName.setText(building.name);
@@ -119,6 +108,18 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             infoCancelBuilding.setOnClickListener(infoCancelBuildingClick);
             buildingInfoLayout.addView(infoView);
             infoView.setVisibility(View.GONE);
+
+            if(building.owned){
+                buildingChecked.setVisibility(View.VISIBLE);
+                infoBuyBuilding.setText("OWNED");
+                buyBuilding.setText("OWNED");
+            }
+            else{
+                buildingChecked.setVisibility(View.GONE);
+                buyBuilding.setText("BUY");
+            }
+
+
         }
 
         private View.OnClickListener infoBuildingClick = new View.OnClickListener() {

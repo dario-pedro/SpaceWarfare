@@ -19,7 +19,7 @@ public class Planet {
     String name;
     List<Resource> allResources;
     public Map<Integer, Building> mapOfBuildings;
-    public Map<Integer,Research> mapOfResearches;
+    public Map<Integer, Research> mapOfResearches;
     public Map<Integer,Ship> mapOfShips;
     public Map<Integer,Defense> mapOfDefenses;
 
@@ -45,19 +45,19 @@ public class Planet {
 
         //Create Researches
         this.mapOfResearches = new LinkedHashMap<Integer, Research>();
-        Research AsteroidPhysics = new Research("Asteroid Physics", "MISS", true, 1000, R.drawable.research_asteroidphysics);
-        Research BenitoiteAttracters = new Research("Benitoite Attracters", "MISS", false, 1000, R.drawable.research_benitoiteattracters);
-        Research BenitoiteGatheringSpeed = new Research("Benitoite Gathering Speed", "MISS", false, 1000, R.drawable.research_benitoitegatheringspeed);
-        Research CombustionMotors = new Research("Combustion Motors", "MISS", false, 1000, R.drawable.research_combustionmotors);
-        Research DarkMatterTech = new Research("Dark Matter Tech", "MISS", false, 1000, R.drawable.research_darkmattertech);
-        Research DeuteriumGatheringSpeed = new Research("Deuterium Gathering Speed", "MISS", false, 1000, R.drawable.research_deuteuriumgatheringspeed);
-        Research IronGatheringSpeed = new Research("Iron Gathering Speed", "MISS", false, 1000, R.drawable.research_irongatheringspeed);
-        Research IronMiner = new Research("Iron Miner", "MISS", false, 1000, R.drawable.research_ironminer);
-        Research PlasmaTech = new Research("Plasma Tech", "MISS", false, 1000, R.drawable.research_plasmatech);
-        Research PropulsionMotors = new Research("Propulsion Motors", "MISS", false, 1000, R.drawable.research_propulsionmotors);
-        Research SilverGatheringRobot = new Research("Silver Gathering Robot", "MISS", false, 1000, R.drawable.research_silver_gathererrobot);
-        Research SuperSonicMotor = new Research("Super Sonic Motor", "MISS", false, 1000, R.drawable.research_supersonicmotor);
-        Research WeaponTech = new Research("Weapon Tech", "MISS", false, 1000, R.drawable.research_weapontech);
+        Research AsteroidPhysics = new Research(R.string.key_Research_AsteroidPhysics, "Asteroid Physics", "MISS", false, 1000, R.drawable.research_asteroidphysics);
+        Research BenitoiteAttracters = new Research(R.string.key_Research_BenitoiteAttracters, "Benitoite Attracters", "MISS", false, 1000, R.drawable.research_benitoiteattracters);
+        Research BenitoiteGatheringSpeed = new Research(R.string.key_Research_BenitoiteGatheringSpeed, "Benitoite Gathering Speed", "MISS", false, 1000, R.drawable.research_benitoitegatheringspeed);
+        Research CombustionMotors = new Research(R.string.key_Research_CombustionMotors, "Combustion Motors", "MISS", false, 1000, R.drawable.research_combustionmotors);
+        Research DarkMatterTech = new Research(R.string.key_Research_DarkMatterTech, "Dark Matter Tech", "MISS", false, 1000, R.drawable.research_darkmattertech);
+        Research DeuteriumGatheringSpeed = new Research(R.string.key_Research_DeuteriumGatheringSpeed, "Deuterium Gathering Speed", "MISS", false, 1000, R.drawable.research_deuteuriumgatheringspeed);
+        Research IronGatheringSpeed = new Research(R.string.key_Research_IronGatheringSpeed, "Iron Gathering Speed", "MISS", false, 1000, R.drawable.research_irongatheringspeed);
+        Research IronMiner = new Research(R.string.key_Research_IronMiner, "Iron Miner", "MISS", false, 1000, R.drawable.research_ironminer);
+        Research PlasmaTech = new Research(R.string.key_Research_PlasmaTech, "Plasma Tech", "MISS", false, 1000, R.drawable.research_plasmatech);
+        Research PropulsionMotors = new Research(R.string.key_Research_PropulsionMotors, "Propulsion Motors", "MISS", false, 1000, R.drawable.research_propulsionmotors);
+        Research SilverGatheringRobot = new Research(R.string.key_Research_SilverGatheringRobot, "Silver Gathering Robot", "MISS", false, 1000, R.drawable.research_silver_gathererrobot);
+        Research SuperSonicMotor = new Research(R.string.key_Research_SuperSonicMotor, "Super Sonic Motor", "MISS", false, 1000, R.drawable.research_supersonicmotor);
+        Research WeaponTech = new Research(R.string.key_Research_WeaponTech, "Weapon Tech", "MISS", false, 1000, R.drawable.research_weapontech);
         mapOfResearches.put(R.string.key_Research_AsteroidPhysics, AsteroidPhysics);
         mapOfResearches.put(R.string.key_Research_BenitoiteAttracters, BenitoiteAttracters);
         mapOfResearches.put(R.string.key_Research_BenitoiteGatheringSpeed, BenitoiteGatheringSpeed);
