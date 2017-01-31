@@ -79,7 +79,7 @@ public class DefensesAdapter extends ArrayAdapter<Defense> {
             infoDefense = (Button) convertView.findViewById(R.id.Button_Info);
             infoDefense.setOnClickListener(infoDefenseClick);
             defensePhoto = (ImageView) convertView.findViewById(R.id.ImageView_Photo);
-            defenseQuantity = (TextView) convertView.findViewById(R.id.TextView_Quantity);
+            defenseQuantity = (TextView) convertView.findViewById(R.id.TextView_QuantityLevel);
             defenseInfoLayout = (RelativeLayout) (MainContext.INSTANCE.getMainActivity()).findViewById(R.id.geralRelativeLayout);
             currentMoney = (TextView) defenseInfoLayout.findViewById(R.id.moneyTextView);
         }

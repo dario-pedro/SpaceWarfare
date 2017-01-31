@@ -39,6 +39,18 @@
     <string name="key_Building_RobotFactory" translatable="false"> key_Building_RobotFactory </string>
     <string name="key_Building_TimeMachine" translatable="false"> key_Building_TimeMachine </string>
 
+    <string name="key_Building_MineIron" translatable="false"> key_Building_MineIron </string>
+    <string name="key_Building_MineBronze" translatable="false"> key_Building_MineBronze </string>
+    <string name="key_Building_MineSilver" translatable="false"> key_Building_MineSilver </string>
+    <string name="key_Building_MineGold" translatable="false"> key_Building_MineGold </string>
+    <string name="key_Building_MinePlatinum" translatable="false"> key_Building_MinePlatinum </string>
+    <string name="key_Building_MineRhodium" translatable="false"> key_Building_MineRhodium </string>
+    <string name="key_Building_MinePlutonium" translatable="false"> key_Building_MinePlutonium </string>
+    <string name="key_Building_MineDiamond" translatable="false"> key_Building_MineDiamond </string>
+    <string name="key_Building_MinePainite" translatable="false"> key_Building_MinePainite </string>
+    <string name="key_Building_MineBenitoite" translatable="false"> key_Building_MineBenitoite </string>
+    <string name="key_Building_MineDeuterium" translatable="false"> key_Building_MineDeuterium </string>
+
     <string name="key_Research_AsteroidPhysics" translatable="false"> key_Research_AsteroidPhysics </string>
     <string name="key_Research_BenitoiteAttracters" translatable="false"> key_Research_BenitoiteAttracters </string>
     <string name="key_Research_BenitoiteGatheringSpeed" translatable="false"> key_Research_BenitoiteGatheringSpeed </string>

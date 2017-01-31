@@ -59,7 +59,8 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
         private TextView buildingPrice;
         private Button infoBuilding;
         private ImageView buildingPhoto;
-        private ImageView buildingChecked;
+        private TextView buildingLevel;
+        //private ImageView buildingChecked;
 
         private RelativeLayout buildingInfoLayout;
         public Building building;
@@ -76,9 +77,10 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             infoBuilding = (Button) convertView.findViewById(R.id.Button_Info);
             infoBuilding.setOnClickListener(infoBuildingClick);
             buildingPhoto = (ImageView) convertView.findViewById(R.id.ImageView_Photo);
-            buildingChecked = (ImageView) convertView.findViewById(R.id.ImageView_Checked);
+            //buildingChecked = (ImageView) convertView.findViewById(R.id.ImageView_Checked);
             buildingInfoLayout = (RelativeLayout) (MainContext.INSTANCE.getMainActivity()).findViewById(R.id.geralRelativeLayout);
             currentMoney = (TextView) buildingInfoLayout.findViewById(R.id.moneyTextView);
+            buildingLevel = (TextView) convertView.findViewById(R.id.TextView_QuantityLevel);
         }
 
         public void setParameters(int position){
@@ -88,9 +90,10 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             currentMoney.setText("" + MainContext.INSTANCE.getUserI().money);
             buildingName.setText(building.name);
             buildingPhoto.setImageResource(building.image);
-            buildingPrice.setText("" + building.price + " cr.");
+            buildingPrice.setText("" + (int) (building.price * Math.pow(3.0, (double) building.level)));
             buyBuilding.setOnClickListener(buyBuildingClick);
-            buildingChecked.setImageResource(R.drawable.checked);
+            buildingLevel.setText("" + building.level);
+            //buildingChecked.setImageResource(R.drawable.checked);
 
             // Setup Building info
             TextView TextView_infoName = (TextView) infoView.findViewById(R.id.TextView_infoName);
@@ -106,13 +109,13 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             buildingInfoLayout.addView(infoView);
             infoView.setVisibility(View.GONE);
 
-            if(building.owned){
-                buildingChecked.setVisibility(View.VISIBLE);
-                infoBuyBuilding.setText("OWNED");
-                buyBuilding.setText("OWNED");
+            if(building.level > 0){
+                buildingLevel.setVisibility(View.VISIBLE);
+                infoBuyBuilding.setText("UPGRADE");
+                buyBuilding.setText("UPGRADE");
             }
             else{
-                buildingChecked.setVisibility(View.GONE);
+                buildingLevel.setVisibility(View.GONE);
                 buyBuilding.setText("BUY");
             }
         }
@@ -127,22 +130,16 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
         private View.OnClickListener buyBuildingClick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(building.owned)
-                    Snackbar.make(v, "You already have this building!", Snackbar.LENGTH_SHORT).show();
-                else
-                    if(!buyBuildingAction(ViewHolder.this))
-                        Snackbar.make(v, "Not enough money!", Snackbar.LENGTH_SHORT).show();
+                if(!buyBuildingAction(ViewHolder.this))
+                    Snackbar.make(v, "Not enough money!", Snackbar.LENGTH_SHORT).show();
             }
         };
 
         private View.OnClickListener infoBuyBuildingClick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(building.owned)
-                    Snackbar.make(v, "You already have this building!", Snackbar.LENGTH_SHORT).show();
-                else
-                    if(!buyBuildingAction(ViewHolder.this))
-                        Snackbar.make(v, "Not enough money!", Snackbar.LENGTH_SHORT).show();
+                if(!buyBuildingAction(ViewHolder.this))
+                    Snackbar.make(v, "Not enough money!", Snackbar.LENGTH_SHORT).show();
                 infoView.setVisibility(View.GONE);
             }
         };
@@ -157,19 +154,30 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
 
     private boolean buyBuildingAction(ViewHolder viewHolder){
         UserInfo userInfo = MainContext.INSTANCE.getUserI();
-        Building building = viewHolder.building;
 
-        if(userInfo.money >= userInfo.allPlanets.get(0).mapOfBuildings.get(building.key).price){
-            // Update Info
-            userInfo.money -= userInfo.allPlanets.get(0).mapOfBuildings.get(building.key).price;
-            userInfo.allPlanets.get(0).mapOfBuildings.get(building.key).owned = true;
-            // Update Layout
+
+        if(viewHolder.building.level == 0 && userInfo.money >= viewHolder.building.price){
+            userInfo.money -= viewHolder.building.price;
+            userInfo.allPlanets.get(0).mapOfBuildings.get(viewHolder.building.key).level++;
+            viewHolder.buyBuilding.setText("UPGRADE");
+            viewHolder.infoBuyBuilding.setText("UPGRADE");
+            viewHolder.buildingLevel.setText("1");
+            viewHolder.buildingLevel.setVisibility(View.VISIBLE);
+            viewHolder.buildingPrice.setText("" + (int) (viewHolder.building.price * Math.pow(3.0, (double) viewHolder.building.level)));
             viewHolder.currentMoney.setText("" + userInfo.money);
-            viewHolder.buildingChecked.setVisibility(View.VISIBLE);
-            viewHolder.buyBuilding.setText("OWNED");
-            viewHolder.infoBuyBuilding.setText("OWNED");
             return true;
         }
+        else
+            if(viewHolder.building.level > 0 && userInfo.money >=(int) (viewHolder.building.price * Math.pow(3.0, (double) viewHolder.building.level))){
+                // Update Info
+                userInfo.money -= (int) (viewHolder.building.price * Math.pow(3.0, (double) (viewHolder.building.level)));
+                userInfo.allPlanets.get(0).mapOfBuildings.get(viewHolder.building.key).level++;
+                // Update Layout
+                viewHolder.currentMoney.setText("" + userInfo.money);
+                viewHolder.buildingLevel.setText(""  + (viewHolder.building.level));
+                viewHolder.buildingPrice.setText("" + (int) (viewHolder.building.price * Math.pow(3.0, (double) (viewHolder.building.level))));
+                return true;
+            }
 
         return false;
     }

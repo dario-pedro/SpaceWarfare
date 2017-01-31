@@ -43,6 +43,19 @@
                     android:layout_marginTop="15dp"
                     android:layout_gravity="top|left" />
 
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="0"
+                    android:id="@+id/resource_level"
+                    android:textColor="#AC2DFF"
+                    android:textColorHighlight="#FFFFFF"
+                    android:background="@drawable/resource_level"
+                    android:gravity="center"
+                    android:layout_marginBottom="15dp"
+                    android:layout_gravity="bottom|center" />
+
             </FrameLayout>
 
         </LinearLayout>
@@ -59,14 +72,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="35"
+                android:layout_weight="30"
                 android:layout_marginTop="15dp"
                 android:orientation="vertical"
                 android:weightSum="100"
                 android:layout_marginRight="15dp">
 
                 <TextView
-                    android:id="@+id/TextView_Name"
+                    android:id="@+id/TextView_NameResource"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -77,7 +90,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="45"
+                android:layout_weight="30"
                 android:weightSum="100"
                 android:orientation="vertical"
                 android:layout_marginRight="15dp" >
@@ -88,6 +101,8 @@
                     android:weightSum="100"
                     android:orientation="horizontal"
                     android:layout_marginRight="15dp" >
+
+                    <!-- Progress bar -->
 
                     <TextView
                         android:id="@+id/TextView_PriceTag"
@@ -108,14 +123,14 @@
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:gravity="center_vertical"
                         android:textColor="#FFFFFF" />
-                    </LinearLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="20"
+                android:layout_weight="40"
                 android:weightSum="100"
                 android:orientation="horizontal"
                 android:layout_marginRight="15dp">
@@ -124,18 +139,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="30"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:weightSum="100" >
 
-                    <Button
+                    <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="75"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Time: "
+                    android:id="@+id/TextView_TimeTag"
+                    android:textColor="#ffffff" />
+
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/Button_Buy"
-                        android:background="@drawable/btn_s"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="#FFFFFF"
-                        android:text="BUY"
-                        android:gravity="center" />
+                        android:layout_weight="25"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="00:00:00"
+                        android:id="@+id/TextView_Timer"
+                        android:textColor="#ffffff" />
 
                 </LinearLayout>
 
@@ -169,7 +192,6 @@
                             android:visibility="gone" />
 
                     </FrameLayout>
-
 
                 </LinearLayout>
             </LinearLayout>

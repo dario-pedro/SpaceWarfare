@@ -28,20 +28,41 @@ public class Planet {
 
         //Create Buildings
         this.mapOfBuildings = new LinkedHashMap<Integer, Building>();
-        Building Hangar = new Building(R.string.key_Building_Hangar, "Hangar", "MISS", false, 1000, R.drawable.building_hangar);
-        Building Hangar2 = new Building(R.string.key_Building_Hangar2, "Hangar2", "MISS", false, 2000, R.drawable.building_hangar);
-        Building Hangar3 = new Building(R.string.key_Building_Hangar3, "Hangar3", "MISS", false, 3000, R.drawable.building_hangar);
-        Building ResearchLab = new Building(R.string.key_Building_ResearchLab, "Research Lab", "MISS", false, 30000, R.drawable.building_researchlab);
-        Building NaniteFactory = new Building(R.string.key_Building_NaniteFactory, "Nanite Factory", "MISS", false, 50000, R.drawable.building_nanite);
-        Building RobotFactory = new Building(R.string.key_Building_RobotFactory, "Robot Factory", "MISS", false, 100000, R.drawable.building_robot);
-        Building TimeMachine = new Building(R.string.key_Building_TimeMachine, "Time Machine", "MISS", false, 1000000, R.drawable.building_timemachine);
+        Building mineIron = new Building(R.string.key_Building_MineIron, "Iron Mine", "Responsible for Iron extraction. Each Iron values 10 crystals.", 0, 1000, R.drawable.building_hangar);
+        Building mineBronze = new Building(R.string.key_Building_MineBronze, "Bronze Mine", "Responsible for Bronze extraction. Each Bronze values 50 crystals.", 0, 2000, R.drawable.building_hangar);
+        Building mineSilver = new Building(R.string.key_Building_MineSilver, "Silver Mine", "Responsible for Silver extraction. Each Silver values 100 crystals.", 0, 3000, R.drawable.building_hangar);
+        Building mineGold = new Building(R.string.key_Building_MineGold, "Gold Mine", "Responsible for Gold extraction. Each Gold values 500 crystals.", 0, 4000, R.drawable.building_hangar);
+        Building minePlatinum = new Building(R.string.key_Building_MinePlatinum, "Platinum Mine", "Responsible for Platinum extraction. Each Platinum values 1000 crystals.", 0, 5000, R.drawable.building_hangar);
+        Building mineRhodium = new Building(R.string.key_Building_MineRhodium, "Rhodium Mine", "Responsible for Rhodium extraction. Each Rhodium values 5000 crystals.", 0, 6000, R.drawable.building_hangar);
+        Building minePlutonium = new Building(R.string.key_Building_MinePlutonium, "Plutonium Mine", "Responsible for Plutonium extraction. Each Plutonium values 10000 crystals.", 0, 7000, R.drawable.building_hangar);
+        Building mineDiamond = new Building(R.string.key_Building_MineDiamond, "Diamond Mine", "Responsible for Diamond extraction. Each Diamond values 50000 crystals.", 0, 8000, R.drawable.building_hangar);
+        Building minePainite = new Building(R.string.key_Building_MinePainite, "Painite Mine", "Responsible for Painite extraction. Each Painite values 100000 crystals.", 0, 9000, R.drawable.building_hangar);
+        Building mineBenitoite = new Building(R.string.key_Building_MineBenitoite, "Benitoite Mine", "Responsible for Benitoite extraction. Each Benitoite values 500000 crystals.", 0, 10000, R.drawable.building_hangar);
+        Building mineDeuterium = new Building(R.string.key_Building_MineDeuterium, "Deuterium Mine", "Responsible for Deuterium extraction. Each Deuterium values 1000000 crystals.", 0, 11000, R.drawable.building_hangar);
+        mapOfBuildings.put(R.string.key_Building_MineIron, mineIron);
+        mapOfBuildings.put(R.string.key_Building_MineBronze, mineBronze);
+        mapOfBuildings.put(R.string.key_Building_MineSilver, mineSilver);
+        mapOfBuildings.put(R.string.key_Building_MineGold, mineGold);
+        mapOfBuildings.put(R.string.key_Building_MinePlatinum, minePlatinum);
+        mapOfBuildings.put(R.string.key_Building_MineRhodium, mineRhodium);
+        mapOfBuildings.put(R.string.key_Building_MinePlutonium, minePlutonium);
+        mapOfBuildings.put(R.string.key_Building_MineDiamond, mineDiamond);
+        mapOfBuildings.put(R.string.key_Building_MinePainite, minePainite);
+        mapOfBuildings.put(R.string.key_Building_MineBenitoite, mineBenitoite);
+        mapOfBuildings.put(R.string.key_Building_MineDeuterium, mineDeuterium);
+
+/*
+        Building Hangar = new Building(R.string.key_Building_Hangar, "Hangar", "MISS", 0, 1000, R.drawable.building_hangar);
+        Building ResearchLab = new Building(R.string.key_Building_ResearchLab, "Research Lab", "MISS", 0,  1000, R.drawable.building_researchlab);
+        Building NaniteFactory = new Building(R.string.key_Building_NaniteFactory, "Nanite Factory", "MISS", 0, 1000, R.drawable.building_nanite);
+        Building RobotFactory = new Building(R.string.key_Building_RobotFactory, "Robot Factory", "MISS", 0, 1000, R.drawable.building_robot);
+        Building TimeMachine = new Building(R.string.key_Building_TimeMachine, "Time Machine", "MISS", 0, 1000, R.drawable.building_timemachine);
         mapOfBuildings.put(R.string.key_Building_Hangar, Hangar);
-        mapOfBuildings.put(R.string.key_Building_Hangar2, Hangar2);
-        mapOfBuildings.put(R.string.key_Building_Hangar3, Hangar3);
         mapOfBuildings.put(R.string.key_Building_ResearchLab, ResearchLab);
         mapOfBuildings.put(R.string.key_Building_NaniteFactory, NaniteFactory);
         mapOfBuildings.put(R.string.key_Building_RobotFactory, RobotFactory);
         mapOfBuildings.put(R.string.key_Building_TimeMachine, TimeMachine);
+*/
 
         //Create Researches
         this.mapOfResearches = new LinkedHashMap<Integer, Research>();

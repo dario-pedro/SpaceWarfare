@@ -77,7 +77,7 @@ public class ShipsAdapter extends ArrayAdapter<Ship> {
             infoShip = (Button) convertView.findViewById(R.id.Button_Info);
             infoShip.setOnClickListener(infoShipClick);
             shipPhoto = (ImageView) convertView.findViewById(R.id.ImageView_Photo);
-            shipQuantity = (TextView) convertView.findViewById(R.id.TextView_Quantity);
+            shipQuantity = (TextView) convertView.findViewById(R.id.TextView_QuantityLevel);
             shipInfoLayout = (RelativeLayout) (MainContext.INSTANCE.getMainActivity()).findViewById(R.id.geralRelativeLayout);
             currentMoney = (TextView) shipInfoLayout.findViewById(R.id.moneyTextView);
         }
