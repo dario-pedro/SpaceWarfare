@@ -21,9 +21,9 @@
     <string name="action_settings">Settings</string>
     <string name="string_home">Home</string>
     <string name="string_resources">Resources</string>
-    <string name="string_buildings">Buildings</string>
+    <string name="string_buildings">Facilities</string>
     <string name="string_research">Research</string>
-    <string name="string_ships">Ships</string>
+    <string name="string_ships">SpaceCraft</string>
     <string name="string_defense">Defense</string>
     <string name="string_attack">Attack</string>
     <string name="string_outerspace">Outerspace</string>
@@ -66,10 +66,13 @@
     <string name="key_Research_WeaponTech" translatable="false"> key_Research_WeaponTech </string>
 
     <string name="key_Ship_Messier" translatable="false"> key_Ship_Messier </string>
-    <string name="key_Ship_Mayal" translatable="false"> key_Ship_Mayal </string>
+    <string name="key_Ship_Mayalls" translatable="false"> key_Ship_Mayalls </string>
     <string name="key_Ship_Spyer" translatable="false"> key_Ship_Spyer </string>
-    <string name="key_Ship_Colonizer" translatable="false"> key_Ship_Colonizer </string>
     <string name="key_Ship_Leviathan" translatable="false"> key_Ship_Leviathan </string>
+    <string name="key_Ship_BattlestarPegasus" translatable="false"> key_Ship_BattlestarPegasus </string>
+    <string name="key_Ship_CylonBasestar" translatable="false"> key_Ship_CylonBasestar </string>
+    <string name="key_Ship_GiantMayalls" translatable="false"> key_Ship_GiantMayalls </string>
+    <string name="key_Ship_Colonizer" translatable="false"> key_Ship_Colonizer </string>
     <string name="key_Ship_Deathstar" translatable="false"> key_Ship_Deathstar </string>
 
     <string name="key_Defense_MissileLauncher" translatable="false"> key_Defense_MissileLauncher </string>
@@ -77,6 +80,10 @@
     <string name="key_Defense_PlasmaCannon" translatable="false"> key_Defense_PlasmaCannon </string>
     <string name="key_Defense_AntiAirRobot" translatable="false"> key_Defense_AntiAirRobot </string>
     <string name="key_Defense_HeavyLaser" translatable="false"> key_Defense_HeavyLaser </string>
+    <string name="key_Defense_IonCannon" translatable="false"> key_Defense_IonCannon </string>
+    <string name="key_Defense_planetShield" translatable="false"> key_Defense_planetShield </string>
+    <string name="key_Defense_AsteroidManipulator" translatable="false"> key_Defense_AsteroidManipulator </string>
+    <string name="key_Defense_DarkMatterBeam" translatable="false"> key_Defense_DarkMatterBeam </string>
 
 
     <string name="key_Building_Hangar2" translatable="false"> key_Building_hangar2 </string>

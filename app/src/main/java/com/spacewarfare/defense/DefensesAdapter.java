@@ -50,7 +50,7 @@ public class DefensesAdapter extends ArrayAdapter<Defense> {
             }
 
         parent.findViewById(R.id.moneyTextView);
-        holder.infoView = LayoutInflater.from(getContext()).inflate(R.layout.default_info_row, null, false);
+        holder.infoView = LayoutInflater.from(getContext()).inflate(R.layout.ship_defense_info_row, null, false);
         holder.setParameters(position);
 
         return convertView;

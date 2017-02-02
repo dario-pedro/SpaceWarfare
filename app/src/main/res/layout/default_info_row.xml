@@ -14,40 +14,56 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="4"
             android:gravity="center_vertical">
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:weightSum="2"
-                android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:orientation="horizontal"
+                android:weightSum="100" >
 
-                <ImageView android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/ImageView_infoPhoto"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/btn"
-                    android:scaleType="fitXY"
-                    android:padding="10dp"
-                    android:paddingTop="20dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginLeft="5dp"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="40"
+                    android:orientation="vertical"
+                    android:weightSum="100" >
 
-                <TextView android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/TextView_infoName"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:gravity="center"
-                    android:textColor="#FFFFFF" />
+                    <ImageView android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:id="@+id/ImageView_infoPhoto"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/btn"
+                        android:scaleType="fitXY"
+                        android:padding="10dp"
+                        android:paddingTop="20dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginLeft="5dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="60"
+                    android:orientation="vertical"
+                    android:weightSum="100" >
+
+                    <TextView android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:id="@+id/TextView_infoName"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:gravity="center"
+                        android:textColor="#FFFFFF" />
+
+                </LinearLayout>
             </LinearLayout>
-
         </RelativeLayout>
 
         <RelativeLayout
@@ -64,14 +80,14 @@
 
             <TextView
                 android:id="@+id/TextView_infoDescription"
-                android:layout_marginTop="50dp"
-                android:layout_marginLeft="50dp"
+                android:layout_marginTop="55dp"
+                android:layout_marginLeft="45dp"
                 android:layout_marginBottom="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginRight="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textAppearance="?android:attr/textAppearance"
+                android:gravity="left"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#e5fff8" />
 
         </RelativeLayout>

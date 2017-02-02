@@ -10,6 +10,7 @@ import com.spacewarfare.building.Building;
 import com.spacewarfare.research.Research;
 import com.spacewarfare.ship.Ship;
 import com.spacewarfare.defense.Defense;
+import com.spacewarfare.temporary.Stats;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -93,68 +94,69 @@ public class Planet {
         mapOfResearches.put(R.string.key_Research_SuperSonicMotor, SuperSonicMotor);
         mapOfResearches.put(R.string.key_Research_WeaponTech, WeaponTech);
 
-        //Create Ships
         this.mapOfShips = new LinkedHashMap<Integer, Ship>();
-        Ship Messier = new Ship(R.string.key_Ship_Messier, "Messier", "MISS", 0, 1000, R.drawable.ship_messier);
-        Ship Mayal = new Ship(R.string.key_Ship_Mayal, "Mayal", "MISS", 0, 1000, R.drawable.ship_mayal);
-        Ship Spyer = new Ship(R.string.key_Ship_Spyer, "Spyer", "MISS", 0, 1000, R.drawable.ship_spyer);
-        Ship Colonizer = new Ship(R.string.key_Ship_Colonizer, "Colonizer", "MISS", 0, 1000, R.drawable.ship_colonizer);
-        Ship Leviathan = new Ship(R.string.key_Ship_Leviathan, "Leviathan", "MISS", 0, 1000, R.drawable.ship_leviathan);
-        Ship Deathstar = new Ship(R.string.key_Ship_Deathstar, "Deathstar", "MISS", 0, 1000, R.drawable.ship_deathstar);
+        //Set original stats
+        Stats statMessier83 = new Stats(4000, 500, 1000, 2000);
+        Stats statMayalls = new Stats(1000, 8000, 10000, 3000);
+        Stats statSpyer = new Stats(100, 200, 1000, 10000);
+        Stats statLeviathan = new Stats(7000, 7000, 5000, 2000);
+        Stats statBattlestarPegasus = new Stats(10000, 9000, 7000, 5000);
+        Stats statCylonBasestar= new Stats(15000, 3000, 5000, 3000);
+        Stats statGiantMayalls = new Stats(3000, 12000, 12000, 2000);
+        Stats statColonizer = new Stats(500, 500, 10000, 1000);
+        Stats statDeathStar = new Stats(20000, 15000, 10000, 6000);
+        //Create spacecraft
+        Ship Messier = new Ship(R.string.key_Ship_Messier, "Messier 83", statMessier83, 0, 3000, R.drawable.ship_messier, "A very fast and destructive ship. The Messier  burns away infantary units in a suicide mission.");
+        Ship Mayalls = new Ship(R.string.key_Ship_Mayalls, "Mayall's", statMayalls, 0, 6000, R.drawable.ship_mayal, "An eficient transportation ship for resource units. It can carry up to 5000 units.");
+        Ship Spyer = new Ship(R.string.key_Ship_Spyer, "SPY-ER", statSpyer, 0, 8000, R.drawable.ship_spyer, "Ever wonder what your neighbor looks like? This stealth ship is equipped with one of the best clocking devices, so you can see both resources and ships of an enemy planet.");
+        Ship Leviathan = new Ship(R.string.key_Ship_Leviathan, "Leviathan", statLeviathan, 0, 9000, R.drawable.ship_leviathan, "This robot-ship is all-rounder unit, it is designed for all-purpose combat. The Leviathan has the same amount off attack and defense, so it should be your standard unit against other colonies.");
+        Ship BattlestarPegasus = new Ship(R.string.key_Ship_BattlestarPegasus, "Battlestar Pegasus", statBattlestarPegasus, 0, 15000, R.drawable.ship_batlestarpegasus, "More seeker missiles and lazer beams, simply a Leviathan filled with better weapons and a faster engine (it no longer runs on space carrots). Making the Battlestar Pegasus an expensive but powerful unit.");
+        Ship CylonBasestar = new Ship(R.string.key_Ship_CylonBasestar, "Cylon Basestar", statCylonBasestar, 0, 20000, R.drawable.ship_cylonbasestar, "Cylon Basestar is expensive and lacks defense weapons, but is possibly the best offensive unit that can disintegrate several ships with a single blast of his massive cannons. Why bother with defense anyway?");
+        Ship GiantMayalls = new Ship(R.string.key_Ship_GiantMayalls, "Giant Mayall's", statGiantMayalls, 0, 15000, R.drawable.ship_giantmayal, "An Large transportation ship for resource units. It can carry up to 10000 units.");
+        Ship Colonizer = new Ship(R.string.key_Ship_Colonizer, "Colonizer", statColonizer, 0, 10000, R.drawable.ship_colonizer, "A ship with planet size, it is the ultimate death machine with a huge potential to conquer galaxies or simply turn it into space dust.");
+        Ship Deathstar = new Ship(R.string.key_Ship_Deathstar, "Deathstar", statDeathStar, 0, 40000, R.drawable.ship_deathstar, "The Colonizers are used to conquer new planets, they are shuttles who carry fat engineers and precious materials to build a new portion of the empire. ");
+        //Put spacecrafts in dictionary
         mapOfShips.put(R.string.key_Ship_Messier, Messier);
-        mapOfShips.put(R.string.key_Ship_Mayal, Mayal);
+        mapOfShips.put(R.string.key_Ship_Mayalls, Mayalls);
         mapOfShips.put(R.string.key_Ship_Spyer, Spyer);
-        mapOfShips.put(R.string.key_Ship_Colonizer, Colonizer);
         mapOfShips.put(R.string.key_Ship_Leviathan, Leviathan);
+        mapOfShips.put(R.string.key_Ship_BattlestarPegasus, BattlestarPegasus);
+        mapOfShips.put(R.string.key_Ship_CylonBasestar, CylonBasestar);
+        mapOfShips.put(R.string.key_Ship_GiantMayalls, GiantMayalls);
+        mapOfShips.put(R.string.key_Ship_Colonizer, Colonizer);
         mapOfShips.put(R.string.key_Ship_Deathstar, Deathstar);
 
-        //Create Defenses
         this.mapOfDefenses = new LinkedHashMap<Integer, Defense>();
-        Defense MissileLauncher = new Defense(R.string.key_Defense_MissileLauncher, "Missile Launcher", "MISS", 0, 1000, R.drawable.defense_missilelauncher);
-        Defense ResourceBunker = new Defense(R.string.key_Defense_ResourceBunker, "Resource Bunker", "MISS", 0, 1000, R.drawable.defense_resourcebunker);
-        Defense PlasmaCannon = new Defense(R.string.key_Defense_PlasmaCannon, "Plasma Cannon", "MISS", 0, 1000, R.drawable.defense_plasmacannon);
-        Defense AntiAirRobot = new Defense(R.string.key_Defense_AntiAirRobot, "Anti Air Robot", "MISS", 0, 1000, R.drawable.defense_antiairrobot);
-        Defense HeavyLaser = new Defense(R.string.key_Defense_HeavyLaser, "Heavy Laser", "MISS", 0, 1000, R.drawable.defense_heavylaser);
+        //Set original stats
+        Stats statMissileLauncher = new Stats(3000, 2000, 2000, 0);
+        Stats statResourceBunker = new Stats(0, 20000, 10000, 0);
+        Stats statPlasmaCannon = new Stats(6000, 1000, 4000, 0);
+        Stats statAntiAirRobot = new Stats(7000, 5000, 8000, 0);
+        Stats statHeavyLaser = new Stats(10000, 4000, 1000, 0);
+        Stats statIonCannon = new Stats(12000, 500, 3000, 0);
+        Stats statPlanetShield = new Stats(0, 30000, 15000, 0);
+        Stats statAsteroidManipulator = new Stats(15000, 5000, 2000, 0);
+        Stats statDarkMatterBeam = new Stats(30000, 9000, 8000, 0);
+        //Create defenses
+        Defense MissileLauncher = new Defense(R.string.key_Defense_MissileLauncher, "Missile Launcher", statMissileLauncher, 0, 7000, R.drawable.defense_missilelauncher, "Shoots 10 missiles at once that follows the space craft that has the bigger size. ");
+        Defense ResourceBunker = new Defense(R.string.key_Defense_ResourceBunker, "Resource Bunker", statResourceBunker, 0, 11000, R.drawable.defense_resourcebunker, "There is a myth about this bunker that says that it had even survived to an attack of 10 death stars. How could it not be safe? ");
+        Defense PlasmaCannon = new Defense(R.string.key_Defense_PlasmaCannon, "Plasma Cannon", statPlasmaCannon, 0, 8000, R.drawable.defense_plasmacannon, "This type of technology allows the Cannon to shoot 5 times faster than missiles, and it isn't 5 times weaker trust me I'm engineer. ");
+        Defense AntiAirRobot = new Defense(R.string.key_Defense_AntiAirRobot, "Anti Air Robot", statAntiAirRobot, 0, 10000, R.drawable.defense_antiairrobot, "Its name describe itself. It doesn't like to see anything above the ground, that's why you should keep your spacecrafts in the hangar. ");
+        Defense HeavyLaser = new Defense(R.string.key_Defense_HeavyLaser, "Heavy Laser", statHeavyLaser, 0, 12000, R.drawable.defense_heavylaser, "Massive destruction weapon. It can be used on top of the best spacecraft, however, it would only shoot once due to the high amount of energy necessary. ");
+        Defense IonCannon = new Defense(R.string.key_Defense_IonCannon, "Ion Cannon", statIonCannon, 0, 15000, R.drawable.defense_ioncannon, "And we thought that plasma was fast hein? You should try this one. If you don't see the tail don't panic because it's impossible to see at nude eyes. ");
+        Defense PlanetShield = new Defense(R.string.key_Defense_planetShield, "Planet Shield", statPlanetShield, 0, 23000, R.drawable.defense_planetshield, "A powerful magnetic field capable of sustaining a massive attack during long periods of time. As advantage, usually, your defenses won't be stopped in it. ");
+        Defense AsteroidManipulator = new Defense(R.string.key_Defense_AsteroidManipulator, "Asteroid Manipulator", statAsteroidManipulator, 0, 20000, R.drawable.defense_asteroidmanipulator, "Do you remember pluton? (considered a big asteroid instead of a planet) Now, imagine it moving toward you in flames. Yep, that's why this manipulator is capable of. ");
+        Defense DarkMatterBeam = new Defense(R.string.key_Defense_DarkMatterBeam, "Dark Matter Beam", statDarkMatterBeam, 300000, 1000, R.drawable.defense_darkmatterbeam, "No one ever survived to tells how it hit.");
+        //Put defenses in dictionary
         mapOfDefenses.put(R.string.key_Defense_MissileLauncher, MissileLauncher);
         mapOfDefenses.put(R.string.key_Defense_ResourceBunker, ResourceBunker);
         mapOfDefenses.put(R.string.key_Defense_PlasmaCannon, PlasmaCannon);
         mapOfDefenses.put(R.string.key_Defense_AntiAirRobot, AntiAirRobot);
         mapOfDefenses.put(R.string.key_Defense_HeavyLaser, HeavyLaser);
-
-        /*
-        public List<Research> allResearch;
-        this.allResearch = new ArrayList<>();
-        allResearch.add(AsteroidPhysics);
-        allResearch.add(BenitoiteAttracters);
-        allResearch.add(BenitoiteGatheringSpeed);
-        allResearch.add(CombustionMotors);
-        allResearch.add(DarkMatterTech);
-        allResearch.add(DeuteriumGatheringSpeed);
-        allResearch.add(IronGatheringSpeed);
-        allResearch.add(IronMiner);
-        allResearch.add(PlasmaTech);
-        allResearch.add(PropulsionMotors);
-        allResearch.add(SilverGatheringRobot);
-        allResearch.add(SuperSonicMotor);
-        allResearch.add(WeaponTech);
-
-        public List<Ship> allShips;
-        this.allShips = new ArrayList<>();
-        allShips.add(Messier);
-        allShips.add(Mayal);
-        allShips.add(Spyer);
-        allShips.add(Colonizer);
-        allShips.add(Leviathan);
-        allShips.add(Deathstar);
-
-        public List<Defense> allDefenses;
-        this.allDefenses = new ArrayList<>();
-        allDefenses.add(MissileLauncher);
-        allDefenses.add(ResourceBunker);
-        allDefenses.add(PlasmaCannon);
-        allDefenses.add(AntiAirRobot);
-        allDefenses.add(HeavyLaser);
-        */
+        mapOfDefenses.put(R.string.key_Defense_IonCannon, IonCannon);
+        mapOfDefenses.put(R.string.key_Defense_PlasmaCannon, PlanetShield);
+        mapOfDefenses.put(R.string.key_Defense_AntiAirRobot, AsteroidManipulator);
+        mapOfDefenses.put(R.string.key_Defense_HeavyLaser, DarkMatterBeam);
     }
 }
 
