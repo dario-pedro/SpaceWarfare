@@ -1,10 +1,7 @@
 package com.spacewarfare.building;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.support.design.widget.Snackbar;
-import android.text.SpannableString;
-import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +44,7 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             }
 
         parent.findViewById(R.id.moneyTextView);
-        holder.infoView = LayoutInflater.from(getContext()).inflate(R.layout.default_info_row, null, false);
+        holder.infoView = LayoutInflater.from(getContext()).inflate(R.layout.building_research_info_row, null, false);
         holder.setParameters(position);
 
         return convertView;

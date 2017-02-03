@@ -1,4 +1,4 @@
-package com.spacewarfare.temporary;
+package com.spacewarfare.others;
 
 /**
  * Created by DidierRodriguesLopes on 02/02/17.

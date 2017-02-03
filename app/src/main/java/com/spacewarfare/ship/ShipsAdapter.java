@@ -1,16 +1,21 @@
 package com.spacewarfare.ship;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.support.design.widget.Snackbar;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -20,6 +25,7 @@ import com.spacewarfare.UserInfo;
 import com.spacewarfare.defense.Defense;
 import com.spacewarfare.defense.DefensesAdapter;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 /**
@@ -69,6 +75,7 @@ public class ShipsAdapter extends ArrayAdapter<Ship> {
         public View infoView;
         private Button infoBuyShip;
         private Button infoCancelShip;
+        private NumberPicker infoNumberBuy;
 
         private TextView atk;
         private TextView def;
@@ -101,23 +108,32 @@ public class ShipsAdapter extends ArrayAdapter<Ship> {
 
             // Setup Ship info
             TextView TextView_infoName = (TextView) infoView.findViewById(R.id.TextView_infoName);
-            TextView_infoName.setText(ship.name);
             ImageView ImageView_infoPhoto = (ImageView) infoView.findViewById(R.id.ImageView_infoPhoto);
-            ImageView_infoPhoto.setImageResource(ship.image);
             TextView TextView_infoDescription = (TextView) infoView.findViewById(R.id.TextView_infoDescription);
-            TextView_infoDescription.setText(ship.description);
             atk = (TextView) infoView.findViewById(R.id.TextView_Attack);
             def = (TextView) infoView.findViewById(R.id.TextView_Defense);
             hp = (TextView) infoView.findViewById(R.id.TextView_Hp);
             speed = (TextView) infoView.findViewById(R.id.TextView_Speed);
-            atk.setText("" + ship.stats.atk);
-            def.setText("" + ship.stats.def);
-            hp.setText("" + ship.stats.hp);
-            speed.setText("" + ship.stats.speed);
+            infoNumberBuy = (NumberPicker) infoView.findViewById(R.id.infoNumberBuy);
+
             infoBuyShip = (Button) infoView.findViewById(R.id.Button_infoBuy);
             infoBuyShip.setOnClickListener(infoBuyShipClick);
             infoCancelShip = (Button) infoView.findViewById(R.id.Button_infoCancel);
             infoCancelShip.setOnClickListener(infoCancelShipClick);
+
+            infoNumberBuy.setMaxValue(99);
+            infoNumberBuy.setMinValue(1);
+            infoNumberBuy.setValue(1);
+            infoNumberBuy.setWrapSelectorWheel(true);
+            setNumberPickerTextColor(infoNumberBuy, Color.argb(255, 175, 255, 248));
+            TextView_infoName.setText(ship.name);
+            ImageView_infoPhoto.setImageResource(ship.image);
+            TextView_infoDescription.setText(ship.description);
+            atk.setText("" + ship.stats.atk);
+            def.setText("" + ship.stats.def);
+            hp.setText("" + ship.stats.hp);
+            speed.setText("" + ship.stats.speed);
+
             shipInfoLayout.addView(infoView);
             infoView.setVisibility(View.GONE);
 
@@ -135,15 +151,40 @@ public class ShipsAdapter extends ArrayAdapter<Ship> {
             public void onClick(View v) {
                 if(!buyShipAction(ShipsAdapter.ViewHolder.this))
                     Snackbar.make(v, "Not enough money!", Snackbar.LENGTH_SHORT).show();
+                else
+                    Snackbar.make(v, "1 spacecraft was bought!", Snackbar.LENGTH_SHORT).show();
             }
         };
 
         private View.OnClickListener infoBuyShipClick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!buyShipAction(ShipsAdapter.ViewHolder.this))
-                    Snackbar.make(v, "Not enough money!", Snackbar.LENGTH_SHORT).show();
-                infoView.setVisibility(View.GONE);
+                int shipsBought = 0;
+                int shipsToBuy = infoNumberBuy.getValue();
+
+                while (shipsBought < shipsToBuy){
+                    if(!buyShipAction(ShipsAdapter.ViewHolder.this)){
+                        if(shipsBought == 0){
+                            Snackbar.make(v, "Not enough money!", Snackbar.LENGTH_SHORT).show();
+                            infoView.setVisibility(View.GONE);
+                            return;
+                        }
+                        else{
+                            Snackbar.make(v, "It was only possible to buy " + shipsBought + " spacecrafts!" , Snackbar.LENGTH_SHORT).show();
+                            infoView.setVisibility(View.GONE);
+                            return;
+                        }
+                    }
+                    shipsBought++;
+                }
+                if(shipsToBuy == shipsBought){
+                    if(shipsToBuy == 1)
+                        Snackbar.make(v, "1 spacecraft was bought!", Snackbar.LENGTH_SHORT).show();
+                    else
+                        Snackbar.make(v, shipsBought + " spacecrafts were bought!", Snackbar.LENGTH_SHORT).show();
+                    infoView.setVisibility(View.GONE);
+                    return;
+                }
             }
         };
 
@@ -172,6 +213,32 @@ public class ShipsAdapter extends ArrayAdapter<Ship> {
         return false;
     }
 
-
+    public static boolean setNumberPickerTextColor(NumberPicker numberPicker, int color)
+    {
+        final int count = numberPicker.getChildCount();
+        for(int i = 0; i < count; i++){
+            View child = numberPicker.getChildAt(i);
+            if(child instanceof EditText){
+                try{
+                    Field selectorWheelPaintField = numberPicker.getClass().getDeclaredField("mSelectorWheelPaint");
+                    selectorWheelPaintField.setAccessible(true);
+                    ((Paint)selectorWheelPaintField.get(numberPicker)).setColor(color);
+                    ((EditText)child).setTextColor(color);
+                    numberPicker.invalidate();
+                    return true;
+                }
+                catch(NoSuchFieldException e){
+                    Log.w("setNumberPickerTextColo", e);
+                }
+                catch(IllegalAccessException e){
+                    Log.w("setNumberPickerTextColo", e);
+                }
+                catch(IllegalArgumentException e){
+                    Log.w("setNumberPickerTextColo", e);
+                }
+            }
+        }
+        return false;
+    }
 
 }

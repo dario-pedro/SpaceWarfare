@@ -10,7 +10,7 @@ import com.spacewarfare.building.Building;
 import com.spacewarfare.research.Research;
 import com.spacewarfare.ship.Ship;
 import com.spacewarfare.defense.Defense;
-import com.spacewarfare.temporary.Stats;
+import com.spacewarfare.others.Stats;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -145,7 +145,7 @@ public class Planet {
         Defense HeavyLaser = new Defense(R.string.key_Defense_HeavyLaser, "Heavy Laser", statHeavyLaser, 0, 12000, R.drawable.defense_heavylaser, "Massive destruction weapon. It can be used on top of the best spacecraft, however, it would only shoot once due to the high amount of energy necessary. ");
         Defense IonCannon = new Defense(R.string.key_Defense_IonCannon, "Ion Cannon", statIonCannon, 0, 15000, R.drawable.defense_ioncannon, "And we thought that plasma was fast hein? You should try this one. If you don't see the tail don't panic because it's impossible to see at nude eyes. ");
         Defense PlanetShield = new Defense(R.string.key_Defense_planetShield, "Planet Shield", statPlanetShield, 0, 23000, R.drawable.defense_planetshield, "A powerful magnetic field capable of sustaining a massive attack during long periods of time. As advantage, usually, your defenses won't be stopped in it. ");
-        Defense AsteroidManipulator = new Defense(R.string.key_Defense_AsteroidManipulator, "Asteroid Manipulator", statAsteroidManipulator, 0, 20000, R.drawable.defense_asteroidmanipulator, "Do you remember pluton? (considered a big asteroid instead of a planet) Now, imagine it moving toward you in flames. Yep, that's why this manipulator is capable of. ");
+        Defense AsteroidManipulator = new Defense(R.string.key_Defense_AsteroidManipulator, "AsteroidManipulate", statAsteroidManipulator, 0, 20000, R.drawable.defense_asteroidmanipulator, "Do you remember pluton? (considered a big asteroid instead of a planet) Now, imagine it moving toward you in flames. Yep, that's why this manipulator is capable of. ");
         Defense DarkMatterBeam = new Defense(R.string.key_Defense_DarkMatterBeam, "Dark Matter Beam", statDarkMatterBeam, 0, 30000, R.drawable.defense_darkmatterbeam, "No one ever survived to tells how it hit.");
         //Put defenses in dictionary
         mapOfDefenses.put(R.string.key_Defense_MissileLauncher, MissileLauncher);

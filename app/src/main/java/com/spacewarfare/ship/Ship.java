@@ -1,6 +1,6 @@
 package com.spacewarfare.ship;
 
-import com.spacewarfare.temporary.Stats;
+import com.spacewarfare.others.Stats;
 
 /**
  * Created by DidierRodriguesLopes on 23/01/17.

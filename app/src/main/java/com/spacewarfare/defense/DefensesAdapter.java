@@ -1,18 +1,24 @@
 package com.spacewarfare.defense;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.support.design.widget.Snackbar;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
@@ -22,6 +28,7 @@ import com.spacewarfare.building.BuildingsAdapter;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 /**
@@ -71,6 +78,7 @@ public class DefensesAdapter extends ArrayAdapter<Defense> {
         public View infoView;
         private Button infoBuyDefense;
         private Button infoCancelDefense;
+        private NumberPicker infoNumberBuy;
 
         private TextView atk;
         private TextView def;
@@ -103,23 +111,32 @@ public class DefensesAdapter extends ArrayAdapter<Defense> {
 
             // Setup Defense info
             TextView TextView_infoName = (TextView) infoView.findViewById(R.id.TextView_infoName);
-            TextView_infoName.setText(defense.name);
             ImageView ImageView_infoPhoto = (ImageView) infoView.findViewById(R.id.ImageView_infoPhoto);
-            ImageView_infoPhoto.setImageResource(defense.image);
             TextView TextView_infoDescription = (TextView) infoView.findViewById(R.id.TextView_infoDescription);
-            TextView_infoDescription.setText(defense.description);
             atk = (TextView) infoView.findViewById(R.id.TextView_Attack);
             def = (TextView) infoView.findViewById(R.id.TextView_Defense);
             hp = (TextView) infoView.findViewById(R.id.TextView_Hp);
             speed = (TextView) infoView.findViewById(R.id.TextView_Speed);
-            atk.setText("" + defense.stats.atk);
-            def.setText("" + defense.stats.def);
-            hp.setText("" + defense.stats.hp);
-            speed.setText("" + defense.stats.speed);
+            infoNumberBuy = (NumberPicker) infoView.findViewById(R.id.infoNumberBuy);
+
             infoBuyDefense = (Button) infoView.findViewById(R.id.Button_infoBuy);
             infoBuyDefense.setOnClickListener(infoBuyDefenseClick);
             infoCancelDefense = (Button) infoView.findViewById(R.id.Button_infoCancel);
             infoCancelDefense.setOnClickListener(infoCancelDefenseClick);
+
+            infoNumberBuy.setMaxValue(99);
+            infoNumberBuy.setMinValue(1);
+            infoNumberBuy.setValue(1);
+            infoNumberBuy.setWrapSelectorWheel(true);
+            setNumberPickerTextColor(infoNumberBuy, Color.argb(255, 175, 255, 248));
+            TextView_infoName.setText(defense.name);
+            ImageView_infoPhoto.setImageResource(defense.image);
+            TextView_infoDescription.setText(defense.description);
+            atk.setText("" + defense.stats.atk);
+            def.setText("" + defense.stats.def);
+            hp.setText("" + defense.stats.hp);
+            speed.setText("" + defense.stats.speed);
+
             defenseInfoLayout.addView(infoView);
             infoView.setVisibility(View.GONE);
         }
@@ -136,15 +153,40 @@ public class DefensesAdapter extends ArrayAdapter<Defense> {
             public void onClick(View v) {
                 if(!buyDefenseAction(DefensesAdapter.ViewHolder.this))
                     Snackbar.make(v, "Not enough money!", Snackbar.LENGTH_SHORT).show();
+                else
+                    Snackbar.make(v, "1 defense was bought!", Snackbar.LENGTH_SHORT).show();
             }
         };
 
         private View.OnClickListener infoBuyDefenseClick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!buyDefenseAction(DefensesAdapter.ViewHolder.this))
-                    Snackbar.make(v, "Not enough money!", Snackbar.LENGTH_SHORT).show();
-                infoView.setVisibility(View.GONE);
+                int defensesBought = 0;
+                int defensesToBuy = infoNumberBuy.getValue();
+
+                while (defensesBought < defensesToBuy){
+                    if(!buyDefenseAction(DefensesAdapter.ViewHolder.this)){
+                        if(defensesBought == 0){
+                            Snackbar.make(v, "Not enough money!", Snackbar.LENGTH_SHORT).show();
+                            infoView.setVisibility(View.GONE);
+                            return;
+                        }
+                        else{
+                                Snackbar.make(v, "It was only possible to buy " + defensesBought + " defenses!" , Snackbar.LENGTH_SHORT).show();
+                                infoView.setVisibility(View.GONE);
+                                return;
+                            }
+                    }
+                    defensesBought++;
+                }
+                if(defensesToBuy == defensesBought){
+                    if(defensesToBuy == 1)
+                        Snackbar.make(v, "1 defense was bought!", Snackbar.LENGTH_SHORT).show();
+                    else
+                        Snackbar.make(v, defensesBought + " defenses were bought!", Snackbar.LENGTH_SHORT).show();
+                    infoView.setVisibility(View.GONE);
+                    return;
+                }
             }
         };
 
@@ -172,5 +214,34 @@ public class DefensesAdapter extends ArrayAdapter<Defense> {
 
         return false;
     }
+
+    public static boolean setNumberPickerTextColor(NumberPicker numberPicker, int color)
+    {
+        final int count = numberPicker.getChildCount();
+        for(int i = 0; i < count; i++){
+            View child = numberPicker.getChildAt(i);
+            if(child instanceof EditText){
+                try{
+                    Field selectorWheelPaintField = numberPicker.getClass().getDeclaredField("mSelectorWheelPaint");
+                    selectorWheelPaintField.setAccessible(true);
+                    ((Paint)selectorWheelPaintField.get(numberPicker)).setColor(color);
+                    ((EditText)child).setTextColor(color);
+                    numberPicker.invalidate();
+                    return true;
+                }
+                catch(NoSuchFieldException e){
+                    Log.w("setNumberPickerTextColo", e);
+                }
+                catch(IllegalAccessException e){
+                    Log.w("setNumberPickerTextColo", e);
+                }
+                catch(IllegalArgumentException e){
+                    Log.w("setNumberPickerTextColo", e);
+                }
+            }
+        }
+        return false;
+    }
+
 
 }
