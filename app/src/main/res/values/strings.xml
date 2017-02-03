@@ -33,6 +33,19 @@
 
     <!-- Objects keys -->
 
+    <string name="key_Resource_Jeremejevite" translatable="false"> key_Resource_Jeremejevite </string>
+    <string name="key_Resource_FireOpal" translatable="false"> key_Resource_FireOpal </string>
+    <string name="key_Resource_Poudretteite" translatable="false"> key_Resource_Poudretteite </string>
+    <string name="key_Resource_Benitoite" translatable="false"> key_Resource_Benitoite </string>
+    <string name="key_Resource_Musgravite" translatable="false"> key_Resource_Musgravite </string>
+    <string name="key_Resource_RedBeryl" translatable="false"> key_Resource_RedBeryl </string>
+    <string name="key_Resource_Alexandrite" translatable="false"> key_Resource_Alexandrite </string>
+    <string name="key_Resource_Diamond" translatable="false"> key_Resource_Diamond </string>
+    <string name="key_Resource_Serendibite" translatable="false"> key_Resource_Serendibite </string>
+    <string name="key_Resource_Grandidierite" translatable="false"> key_Resource_Grandidierite </string>
+    <string name="key_Resource_Taaffeite" translatable="false"> key_Resource_Taaffeite </string>
+    <string name="key_Resource_RedDiamond" translatable="false"> key_Resource_RedDiamond </string>
+
     <string name="key_Building_Hangar" translatable="false"> key_Building_hangar </string>
     <string name="key_Building_ResearchLab" translatable="false"> key_Building_ResearchLab </string>
     <string name="key_Building_NaniteFactory" translatable="false"> key_Building_NaniteFactory </string>

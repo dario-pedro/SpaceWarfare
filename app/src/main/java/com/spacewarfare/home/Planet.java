@@ -17,8 +17,10 @@ import java.util.List;
 import java.util.Map;
 
 public class Planet {
+    public static final int min = 60;
+    public static final int hour = 3600;
     String name;
-    List<Resource> allResources;
+    public Map<Integer, Resource> mapOfResources;
     public Map<Integer, Building> mapOfBuildings;
     public Map<Integer, Research> mapOfResearches;
     public Map<Integer,Ship> mapOfShips;
@@ -27,7 +29,22 @@ public class Planet {
     public Planet(String name) {
         this.name = name;
 
-        //Create Buildings
+        //Create Buildings --> REDEFINE LATER!!
+        this.mapOfResources = new LinkedHashMap<Integer, Resource>();
+        Resource jeremejevite = new Resource(R.string.key_Resource_Jeremejevite, "Jeremejevite", 0.2, 1000, 0, 5, R.drawable.resource_jeremejevite, "Considered by ancients the Air Element. Also known as \"piece of sky\", due to its blue sky color. It is the easiest gem stones to catch via mining.");
+        Resource fireOpal = new Resource(R.string.key_Resource_FireOpal, "Fire Opal", 0.25, 2000, 0, 10, R.drawable.resource_fireopal, "Considered by ancients the Fire Element. The mineralogy of opal allows it to diffract light, causing it to shimmer various colors.");
+        Resource poudretteite = new Resource(R.string.key_Resource_Poudretteite, "Poudretteite", 0.3, 3000, 0, 30, R.drawable.resource_poudretteite, "According to some experts, they refer to it as the fifth element. The perfect element. The one who is responsible to create the stars. Its origin is still a mystery, since we still don’t know its composition. ");
+        Resource benitoite = new Resource(R.string.key_Resource_Benitoite, "Benitoite", 0.35, 4000, 0, 1*min, R.drawable.resource_benitoite, "Considered by ancients the Water Element. Benitoite will give off strong fluorescence and shines a bright blue color.");
+        Resource musgravite = new Resource(R.string.key_Resource_Musgravite, "Musgravite", 0.4, 5000, 0, 5*min, R.drawable.resource_musgravite, "Considered by ancients the Earth Element. It is an aluminum oxide with variable proportions of magnesium, iron, and zinc.");
+        Resource redBeryl = new Resource(R.string.key_Resource_RedBeryl, "Red Beryl", 0.45, 6000, 0, 10*min, R.drawable.resource_redberyl, "In nature, pure beryl is colorless but acquires its coloration due to proximity with magma.");
+        Resource alexandrite = new Resource(R.string.key_Resource_Alexandrite, "Alexandrite", 0.5, 7000, 0, 30*min, R.drawable.resource_alexandrite, "It appears to be emerald in light and ruby red in darkness. The rumors says that a physicist create it to sell this as Grandidierite by day and Taaffeite by night, increasing its price by more than 50%.");
+        Resource diamond = new Resource(R.string.key_Resource_Diamond, "Diamond", 0.55, 8000, 0, 1*hour, R.drawable.resource_diamond, "It is pure carbon arranged in a diamond lattice, which accounts for its incredible strength and durability. It is found in cooled kimberlites that formed over the course of 1 to 3 billion years.");
+        Resource serendibite = new Resource(R.string.key_Resource_Serendibite, "Serendibite", 0.6, 9000, 0, 3*hour, R.drawable.resource_serendibite, "It is an extremely rare gemstone. Also called \"Devil’s eye\" or even \"Black hole\". ");
+        Resource grandidierite = new Resource(R.string.key_Resource_Grandidierite, "Grandidierite", 0.65, 10000, 0, 6*hour, R.drawable.resource_grandidierite, "And you always thought that your grandmother earing was cheap. This gem stone is so rare that when somebody sees it thinks that it is fake.");
+        Resource taaffeite = new Resource(R.string.key_Resource_Taaffeite, "Taaffeite", 0.7, 11000, 0, 12*hour, R.drawable.resource_taaffeite, "After spending more than 10 years creating this stone. The Portuguese researcher who has created it yelled “Ta feite” and this mineral was baptized.");
+        Resource redDiamond = new Resource(R.string.key_Resource_RedDiamond, "Red Diamond", 0.75, 12000, 0, 24*hour, R.drawable.resource_reddiamond, "1 in 10 million have the chance to see one in his lifetime. It is by far the most precious stone in the galaxy. Miners had to spend their whole life to found some in a 20 miles deep hole, near to the center of their planet. ");
+
+        //Create Buildings --> REDEFINE LATER!!
         this.mapOfBuildings = new LinkedHashMap<Integer, Building>();
         Building mineIron = new Building(R.string.key_Building_MineIron, "Iron Mine", "Responsible for Iron extraction. Each Iron values 10 crystals.", 0, 1000, R.drawable.building_hangar);
         Building mineBronze = new Building(R.string.key_Building_MineBronze, "Bronze Mine", "Responsible for Bronze extraction. Each Bronze values 50 crystals.", 0, 2000, R.drawable.building_hangar);
