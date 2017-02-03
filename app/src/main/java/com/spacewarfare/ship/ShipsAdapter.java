@@ -70,6 +70,11 @@ public class ShipsAdapter extends ArrayAdapter<Ship> {
         private Button infoBuyShip;
         private Button infoCancelShip;
 
+        private TextView atk;
+        private TextView def;
+        private TextView hp;
+        private TextView speed;
+
         public ViewHolder(View convertView) {
             shipName = (TextView) convertView.findViewById(R.id.TextView_Name);
             buyShip = (Button) convertView.findViewById(R.id.Button_Buy);
@@ -101,6 +106,14 @@ public class ShipsAdapter extends ArrayAdapter<Ship> {
             ImageView_infoPhoto.setImageResource(ship.image);
             TextView TextView_infoDescription = (TextView) infoView.findViewById(R.id.TextView_infoDescription);
             TextView_infoDescription.setText(ship.description);
+            atk = (TextView) infoView.findViewById(R.id.TextView_Attack);
+            def = (TextView) infoView.findViewById(R.id.TextView_Defense);
+            hp = (TextView) infoView.findViewById(R.id.TextView_Hp);
+            speed = (TextView) infoView.findViewById(R.id.TextView_Speed);
+            atk.setText("" + ship.stats.atk);
+            def.setText("" + ship.stats.def);
+            hp.setText("" + ship.stats.hp);
+            speed.setText("" + ship.stats.speed);
             infoBuyShip = (Button) infoView.findViewById(R.id.Button_infoBuy);
             infoBuyShip.setOnClickListener(infoBuyShipClick);
             infoCancelShip = (Button) infoView.findViewById(R.id.Button_infoCancel);

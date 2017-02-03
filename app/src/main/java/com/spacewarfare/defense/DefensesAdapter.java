@@ -72,6 +72,11 @@ public class DefensesAdapter extends ArrayAdapter<Defense> {
         private Button infoBuyDefense;
         private Button infoCancelDefense;
 
+        private TextView atk;
+        private TextView def;
+        private TextView hp;
+        private TextView speed;
+
         public ViewHolder(View convertView) {
             defenseName = (TextView) convertView.findViewById(R.id.TextView_Name);
             buyDefense = (Button) convertView.findViewById(R.id.Button_Buy);
@@ -103,13 +108,20 @@ public class DefensesAdapter extends ArrayAdapter<Defense> {
             ImageView_infoPhoto.setImageResource(defense.image);
             TextView TextView_infoDescription = (TextView) infoView.findViewById(R.id.TextView_infoDescription);
             TextView_infoDescription.setText(defense.description);
+            atk = (TextView) infoView.findViewById(R.id.TextView_Attack);
+            def = (TextView) infoView.findViewById(R.id.TextView_Defense);
+            hp = (TextView) infoView.findViewById(R.id.TextView_Hp);
+            speed = (TextView) infoView.findViewById(R.id.TextView_Speed);
+            atk.setText("" + defense.stats.atk);
+            def.setText("" + defense.stats.def);
+            hp.setText("" + defense.stats.hp);
+            speed.setText("" + defense.stats.speed);
             infoBuyDefense = (Button) infoView.findViewById(R.id.Button_infoBuy);
             infoBuyDefense.setOnClickListener(infoBuyDefenseClick);
             infoCancelDefense = (Button) infoView.findViewById(R.id.Button_infoCancel);
             infoCancelDefense.setOnClickListener(infoCancelDefenseClick);
             defenseInfoLayout.addView(infoView);
             infoView.setVisibility(View.GONE);
-
         }
 
         private View.OnClickListener infoDefenseClick = new View.OnClickListener() {

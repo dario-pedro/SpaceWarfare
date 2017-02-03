@@ -77,23 +77,47 @@
                         android:layout_weight="40"
                         android:weightSum="100"
                         android:orientation="horizontal"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginRight="15dp" >
+                        android:layout_gravity="center_vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="50"
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             android:weightSum="100" >
 
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:gravity="left"
-                                android:textColor="#FFFFFF"
-                                android:textStyle="bold"
-                                android:text="Atk: "/>
+                                android:layout_weight="60"
+                                android:orientation="horizontal"
+                                android:weightSum="100" >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="left"
+                                    android:textColor="#FFFFFF"
+                                    android:textStyle="bold"
+                                    android:text="Atk: "/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="40"
+                                android:orientation="horizontal"
+                                android:weightSum="100" >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="left"
+                                    android:textColor="#FFFFFF"
+                                    android:id="@+id/TextView_Attack"/>
+
+                            </LinearLayout>
 
                         </LinearLayout>
 
@@ -101,16 +125,42 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="50"
-                            android:orientation="vertical"
-                            android:weightSum="100" >
+                            android:orientation="horizontal"
+                            android:weightSum="100"
+                            android:layout_marginLeft="5dp">
 
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:gravity="left"
-                                android:textColor="#FFFFFF"
-                                android:textStyle="bold"
-                                android:text="Hp: "/>
+                                android:layout_weight="65"
+                                android:orientation="horizontal"
+                                android:weightSum="100" >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="left"
+                                    android:textColor="#FFFFFF"
+                                    android:textStyle="bold"
+                                    android:text="Hp: "/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="35"
+                                android:orientation="horizontal"
+                                android:weightSum="100" >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="left"
+                                    android:textColor="#FFFFFF"
+                                    android:id="@+id/TextView_Hp"/>
+
+                            </LinearLayout>
 
                         </LinearLayout>
 
@@ -122,22 +172,47 @@
                         android:layout_weight="40"
                         android:weightSum="100"
                         android:orientation="horizontal"
-                        android:layout_marginRight="15dp" >
+                        android:layout_gravity="center_vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="50"
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             android:weightSum="100" >
 
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:gravity="left"
-                                android:textColor="#FFFFFF"
-                                android:textStyle="bold"
-                                android:text="Def: "/>
+                                android:layout_weight="60"
+                                android:orientation="horizontal"
+                                android:weightSum="100" >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="left"
+                                    android:textColor="#FFFFFF"
+                                    android:textStyle="bold"
+                                    android:text="Def: "/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="40"
+                                android:orientation="horizontal"
+                                android:weightSum="100" >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="left"
+                                    android:textColor="#FFFFFF"
+                                    android:id="@+id/TextView_Defense"/>
+
+                            </LinearLayout>
 
                         </LinearLayout>
 
@@ -145,21 +220,44 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="50"
-                            android:orientation="vertical"
-                            android:weightSum="100" >
+                            android:orientation="horizontal"
+                            android:weightSum="100"
+                            android:layout_marginLeft="5dp">
 
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:gravity="left"
-                                android:textColor="#FFFFFF"
-                                android:textStyle="bold"
-                                android:text="Speed: "/>
+                                android:layout_weight="55"
+                                android:orientation="horizontal"
+                                android:weightSum="100" >
 
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="left"
+                                    android:textColor="#FFFFFF"
+                                    android:textStyle="bold"
+                                    android:text="Spd: "/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="45"
+                                android:orientation="horizontal"
+                                android:weightSum="100" >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="left"
+                                    android:textColor="#FFFFFF"
+                                    android:id="@+id/TextView_Speed"/>
+
+                            </LinearLayout>
                         </LinearLayout>
-
                     </LinearLayout>
-
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
