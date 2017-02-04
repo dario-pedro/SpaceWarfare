@@ -128,13 +128,16 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
         private View.OnClickListener upgradeResourceClick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                infoView.setVisibility(View.GONE);
+                if(!upgradeResourceAction(ViewHolder.this))
+                    Snackbar.make(v, "Not enough money!", Snackbar.LENGTH_SHORT).show();
             }
         };
 
         private View.OnClickListener infoUpgradeResourceClick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!upgradeResourceAction(ViewHolder.this))
+                    Snackbar.make(v, "Not enough money!", Snackbar.LENGTH_SHORT).show();
                 infoView.setVisibility(View.GONE);
             }
         };
@@ -145,6 +148,23 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
                 infoView.setVisibility(View.GONE);
             }
         };
+
+        private boolean upgradeResourceAction(ResourcesAdapter.ViewHolder viewHolder){
+            UserInfo userInfo = MainContext.INSTANCE.getUserI();
+
+            if(userInfo.money >= viewHolder.resource.priceLevel){
+                // Update Info
+                userInfo.money -= viewHolder.resource.priceLevel;
+                // Update Layout
+                viewHolder.currentMoney.setText("" + userInfo.money);
+                viewHolder.resource.setLevelTransition();
+                viewHolder.resourceLevel.setText(""  + (viewHolder.resource.level));
+                viewHolder.priceToUpgradeResource.setText("" + viewHolder.resource.priceLevel);
+                viewHolder.crystalsReceived.setText("" + viewHolder.resource.crystalsLevel);
+                return true;
+            }
+            return false;
+        }
 
     }
 }

@@ -1,5 +1,7 @@
 package com.spacewarfare.resource;
 
+import static java.lang.Math.round;
+
 /**
  * Created by DidierRodriguesLopes on 23/01/17.
  */
@@ -32,7 +34,7 @@ public class Resource {
     public void setLevelTransition(){
         this.level++;
         this.priceLevel = (int) (this.startPrice * Math.pow(3, this.level));
-        this.efficiencyLevel =+ 0.05;
-        this.crystalsLevel = (int) (10*secondsTimer*efficiencyLevel);
+        this.efficiencyLevel += 0.05;
+        this.crystalsLevel = (int) Math.round(10*secondsTimer*efficiencyLevel);
     }
 }
