@@ -17,7 +17,8 @@ public class LauncherActivity extends Activity {
         setContentView(R.layout.activity_launcher);
 
         final ImageView iv = (ImageView) findViewById(R.id.imageView);
-        final TextView tv = (TextView) findViewById(R.id.launcher_text);
+        final TextView tv = (TextView) findViewById(R.id.launcher_text_Dario);
+        final TextView tvD = (TextView) findViewById(R.id.launcher_text_Didier);
 
         final Animation rotate = AnimationUtils.loadAnimation(getBaseContext(), R.anim.rotate);
         final Animation fade = AnimationUtils.loadAnimation(getBaseContext(),R.anim.abc_fade_out);
@@ -31,8 +32,10 @@ public class LauncherActivity extends Activity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                tv.startAnimation(fade);
                 iv.startAnimation(fade);
+                tv.startAnimation(fade);
+                tvD.startAnimation(fade);
+
                 finish();
                 Intent i = new Intent(getBaseContext(), MainActivity.class);
                 startActivity(i);

@@ -24,18 +24,37 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
+import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
+import com.spacewarfare.building.Building;
+import com.spacewarfare.building.BuildingsAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ResourcesFragment extends Fragment {
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.list_fragment, container, false);
 
-        return inflater.inflate(R.layout.not_yet_imple_fragment, container, false);
+        List<Resource> resources = new ArrayList<Resource>(MainContext.INSTANCE.getUserI().allPlanets.get(0).mapOfResources.values());
+        ListAdapter resourcesAdapter = new ResourcesAdapter(MainContext.INSTANCE.getMainActivity(), resources);
+
+        ListView resourcesListView = (ListView) v.findViewById(R.id.geralListView);
+        resourcesListView.setAdapter(resourcesAdapter);
+
+        return v;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getActivity().setTitle("Buildings");
     }
 
     @Override

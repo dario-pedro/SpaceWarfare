@@ -29,8 +29,8 @@ public class Planet {
     public Planet(String name) {
         this.name = name;
 
-        //Create Buildings --> REDEFINE LATER!!
         this.mapOfResources = new LinkedHashMap<Integer, Resource>();
+        //Create Resources
         Resource jeremejevite = new Resource(R.string.key_Resource_Jeremejevite, "Jeremejevite", 0.2, 1000, 0, 5, R.drawable.resource_jeremejevite, "Considered by ancients the Air Element. Also known as \"piece of sky\", due to its blue sky color. It is the easiest gem stones to catch via mining.");
         Resource fireOpal = new Resource(R.string.key_Resource_FireOpal, "Fire Opal", 0.25, 2000, 0, 10, R.drawable.resource_fireopal, "Considered by ancients the Fire Element. The mineralogy of opal allows it to diffract light, causing it to shimmer various colors.");
         Resource poudretteite = new Resource(R.string.key_Resource_Poudretteite, "Poudretteite", 0.3, 3000, 0, 30, R.drawable.resource_poudretteite, "According to some experts, they refer to it as the fifth element. The perfect element. The one who is responsible to create the stars. Its origin is still a mystery, since we still don’t know its composition. ");
@@ -43,44 +43,31 @@ public class Planet {
         Resource grandidierite = new Resource(R.string.key_Resource_Grandidierite, "Grandidierite", 0.65, 10000, 0, 6*hour, R.drawable.resource_grandidierite, "And you always thought that your grandmother earing was cheap. This gem stone is so rare that when somebody sees it thinks that it is fake.");
         Resource taaffeite = new Resource(R.string.key_Resource_Taaffeite, "Taaffeite", 0.7, 11000, 0, 12*hour, R.drawable.resource_taaffeite, "After spending more than 10 years creating this stone. The Portuguese researcher who has created it yelled “Ta feite” and this mineral was baptized.");
         Resource redDiamond = new Resource(R.string.key_Resource_RedDiamond, "Red Diamond", 0.75, 12000, 0, 24*hour, R.drawable.resource_reddiamond, "1 in 10 million have the chance to see one in his lifetime. It is by far the most precious stone in the galaxy. Miners had to spend their whole life to found some in a 20 miles deep hole, near to the center of their planet. ");
+        //Put resources in dictionary
+        mapOfResources.put(R.string.key_Resource_Jeremejevite, jeremejevite);
+        mapOfResources.put(R.string.key_Resource_FireOpal, fireOpal);
+        mapOfResources.put(R.string.key_Resource_Poudretteite, poudretteite);
+        mapOfResources.put(R.string.key_Resource_Benitoite, benitoite);
+        mapOfResources.put(R.string.key_Resource_Musgravite, musgravite);
+        mapOfResources.put(R.string.key_Resource_RedBeryl, redBeryl);
+        mapOfResources.put(R.string.key_Resource_Alexandrite, alexandrite);
+        mapOfResources.put(R.string.key_Resource_Diamond, diamond);
+        mapOfResources.put(R.string.key_Resource_Serendibite, serendibite);
+        mapOfResources.put(R.string.key_Resource_Grandidierite, grandidierite);
+        mapOfResources.put(R.string.key_Resource_Taaffeite, taaffeite);
+        mapOfResources.put(R.string.key_Resource_RedDiamond, redDiamond);
+
 
         //Create Buildings --> REDEFINE LATER!!
         this.mapOfBuildings = new LinkedHashMap<Integer, Building>();
-        Building mineIron = new Building(R.string.key_Building_MineIron, "Iron Mine", "Responsible for Iron extraction. Each Iron values 10 crystals.", 0, 1000, R.drawable.building_hangar);
-        Building mineBronze = new Building(R.string.key_Building_MineBronze, "Bronze Mine", "Responsible for Bronze extraction. Each Bronze values 50 crystals.", 0, 2000, R.drawable.building_hangar);
-        Building mineSilver = new Building(R.string.key_Building_MineSilver, "Silver Mine", "Responsible for Silver extraction. Each Silver values 100 crystals.", 0, 3000, R.drawable.building_hangar);
-        Building mineGold = new Building(R.string.key_Building_MineGold, "Gold Mine", "Responsible for Gold extraction. Each Gold values 500 crystals.", 0, 4000, R.drawable.building_hangar);
-        Building minePlatinum = new Building(R.string.key_Building_MinePlatinum, "Platinum Mine", "Responsible for Platinum extraction. Each Platinum values 1000 crystals.", 0, 5000, R.drawable.building_hangar);
-        Building mineRhodium = new Building(R.string.key_Building_MineRhodium, "Rhodium Mine", "Responsible for Rhodium extraction. Each Rhodium values 5000 crystals.", 0, 6000, R.drawable.building_hangar);
-        Building minePlutonium = new Building(R.string.key_Building_MinePlutonium, "Plutonium Mine", "Responsible for Plutonium extraction. Each Plutonium values 10000 crystals.", 0, 7000, R.drawable.building_hangar);
-        Building mineDiamond = new Building(R.string.key_Building_MineDiamond, "Diamond Mine", "Responsible for Diamond extraction. Each Diamond values 50000 crystals.", 0, 8000, R.drawable.building_hangar);
-        Building minePainite = new Building(R.string.key_Building_MinePainite, "Painite Mine", "Responsible for Painite extraction. Each Painite values 100000 crystals.", 0, 9000, R.drawable.building_hangar);
-        Building mineBenitoite = new Building(R.string.key_Building_MineBenitoite, "Benitoite Mine", "Responsible for Benitoite extraction. Each Benitoite values 500000 crystals.", 0, 10000, R.drawable.building_hangar);
-        Building mineDeuterium = new Building(R.string.key_Building_MineDeuterium, "Deuterium Mine", "Responsible for Deuterium extraction. Each Deuterium values 1000000 crystals.", 0, 11000, R.drawable.building_hangar);
-        mapOfBuildings.put(R.string.key_Building_MineIron, mineIron);
-        mapOfBuildings.put(R.string.key_Building_MineBronze, mineBronze);
-        mapOfBuildings.put(R.string.key_Building_MineSilver, mineSilver);
-        mapOfBuildings.put(R.string.key_Building_MineGold, mineGold);
-        mapOfBuildings.put(R.string.key_Building_MinePlatinum, minePlatinum);
-        mapOfBuildings.put(R.string.key_Building_MineRhodium, mineRhodium);
-        mapOfBuildings.put(R.string.key_Building_MinePlutonium, minePlutonium);
-        mapOfBuildings.put(R.string.key_Building_MineDiamond, mineDiamond);
-        mapOfBuildings.put(R.string.key_Building_MinePainite, minePainite);
-        mapOfBuildings.put(R.string.key_Building_MineBenitoite, mineBenitoite);
-        mapOfBuildings.put(R.string.key_Building_MineDeuterium, mineDeuterium);
-
-/*
-        Building Hangar = new Building(R.string.key_Building_Hangar, "Hangar", "MISS", 0, 1000, R.drawable.building_hangar);
-        Building ResearchLab = new Building(R.string.key_Building_ResearchLab, "Research Lab", "MISS", 0,  1000, R.drawable.building_researchlab);
-        Building NaniteFactory = new Building(R.string.key_Building_NaniteFactory, "Nanite Factory", "MISS", 0, 1000, R.drawable.building_nanite);
-        Building RobotFactory = new Building(R.string.key_Building_RobotFactory, "Robot Factory", "MISS", 0, 1000, R.drawable.building_robot);
-        Building TimeMachine = new Building(R.string.key_Building_TimeMachine, "Time Machine", "MISS", 0, 1000, R.drawable.building_timemachine);
-        mapOfBuildings.put(R.string.key_Building_Hangar, Hangar);
-        mapOfBuildings.put(R.string.key_Building_ResearchLab, ResearchLab);
-        mapOfBuildings.put(R.string.key_Building_NaniteFactory, NaniteFactory);
-        mapOfBuildings.put(R.string.key_Building_RobotFactory, RobotFactory);
-        mapOfBuildings.put(R.string.key_Building_TimeMachine, TimeMachine);
-*/
+        Building mine = new Building(R.string.key_Building_Mine, "Mine", "It is responsible for the extraction of valuable gem stones. Have you already met Red Diamond? If so you are doing it well.", 1, 500, R.drawable.building_mine);
+        Building hangar = new Building(R.string.key_Building_Hangar, "Hangar", "It is a closed building structure to hold space craft in protective storage. Their space crafts only leave to attack, spy, conquer or defend their planet.", 0, 1000, R.drawable.building_hangar);
+        Building defenseWall = new Building(R.string.key_Building_DefenseWall, "Defense Wall", "It is the first line the enemy sees when he wants to destroy, conquer or spy our planet. Believe me, they will wish their space crafts had never left.", 0, 1000, R.drawable.building_defensewall);
+        Building researchLab = new Building(R.string.key_Building_ResearchLab, "Research Lab", "It is a facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.", 0, 1000, R.drawable.building_researchlab);
+        mapOfBuildings.put(R.string.key_Building_Mine, mine);
+        mapOfBuildings.put(R.string.key_Building_Hangar, hangar);
+        mapOfBuildings.put(R.string.key_Building_DefenseWall, defenseWall);
+        mapOfBuildings.put(R.string.key_Building_ResearchLab, researchLab);
 
         //Create Researches
         this.mapOfResearches = new LinkedHashMap<Integer, Research>();

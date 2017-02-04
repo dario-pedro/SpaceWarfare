@@ -15,6 +15,7 @@ import com.spacewarfare.building.BuildingsFragment;
 import com.spacewarfare.defense.DefensesFragment;
 import com.spacewarfare.navigation.*;
 import com.spacewarfare.research.ResearchesFragment;
+import com.spacewarfare.resource.ResourcesFragment;
 import com.spacewarfare.ship.ShipsFragment;
 
 
@@ -94,7 +95,13 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             //NavigationMenu.HOME.activateNavigationMenu(this,item);
         } else if (id == R.id.nav_resources) {
-            //NavigationMenu.RESOURCES.activateNavigationMenu(this,item);
+
+            setTitle("FragmentResources");
+            ResourcesFragment fragment = new ResourcesFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame, fragment, "FragmentResources");
+            fragmentTransaction.commit();
+
         } else if (id == R.id.nav_buildings) {
 
             setTitle("FragmentBuildings");

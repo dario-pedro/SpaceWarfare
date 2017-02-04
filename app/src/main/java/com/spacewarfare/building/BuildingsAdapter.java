@@ -87,7 +87,7 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
             currentMoney.setText("" + MainContext.INSTANCE.getUserI().money);
             buildingName.setText(building.name);
             buildingPhoto.setImageResource(building.image);
-            buildingPrice.setText("" + (int) (building.price * Math.pow(3.0, (double) building.level)));
+            buildingPrice.setText("" + building.priceLevel);
             buyBuilding.setOnClickListener(buyBuildingClick);
             buildingLevel.setText("" + building.level);
             //buildingChecked.setImageResource(R.drawable.checked);
@@ -152,33 +152,30 @@ public class BuildingsAdapter extends ArrayAdapter<Building> {
     private boolean buyBuildingAction(ViewHolder viewHolder){
         UserInfo userInfo = MainContext.INSTANCE.getUserI();
 
-
-        if(viewHolder.building.level == 0 && userInfo.money >= viewHolder.building.price){
-            userInfo.money -= viewHolder.building.price;
-            userInfo.allPlanets.get(0).mapOfBuildings.get(viewHolder.building.key).level++;
+        if(viewHolder.building.level == 0 && userInfo.money >= viewHolder.building.priceLevel){
+            userInfo.money -= viewHolder.building.priceLevel;
             viewHolder.buyBuilding.setText("UPGRADE");
             viewHolder.infoBuyBuilding.setText("UPGRADE");
             viewHolder.buildingLevel.setText("1");
             viewHolder.buildingLevel.setVisibility(View.VISIBLE);
-            viewHolder.buildingPrice.setText("" + (int) (viewHolder.building.price * Math.pow(3.0, (double) viewHolder.building.level)));
+            viewHolder.building.setLevelTransition();
+            viewHolder.buildingPrice.setText("" + viewHolder.building.priceLevel);
             viewHolder.currentMoney.setText("" + userInfo.money);
             return true;
         }
         else
-            if(viewHolder.building.level > 0 && userInfo.money >=(int) (viewHolder.building.price * Math.pow(3.0, (double) viewHolder.building.level))){
+            if(viewHolder.building.level > 0 && userInfo.money >= viewHolder.building.priceLevel){
                 // Update Info
-                userInfo.money -= (int) (viewHolder.building.price * Math.pow(3.0, (double) (viewHolder.building.level)));
-                userInfo.allPlanets.get(0).mapOfBuildings.get(viewHolder.building.key).level++;
+                userInfo.money -= viewHolder.building.priceLevel;
                 // Update Layout
                 viewHolder.currentMoney.setText("" + userInfo.money);
+                viewHolder.building.setLevelTransition();
                 viewHolder.buildingLevel.setText(""  + (viewHolder.building.level));
-                viewHolder.buildingPrice.setText("" + (int) (viewHolder.building.price * Math.pow(3.0, (double) (viewHolder.building.level))));
+                viewHolder.buildingPrice.setText("" + viewHolder.building.priceLevel);
                 return true;
             }
 
         return false;
     }
-
-
 
 }

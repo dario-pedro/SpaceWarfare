@@ -9,15 +9,22 @@ public class Building {
     public String name;
     public String description;
     public int image;
-    public int price;
+    public int startPrice;
     public int level;
+    public int priceLevel;
 
     public Building(int key, String name, String description, int level, int price, int image) {
         this.key = key;
         this.name = name;
         this.description = description;
-        this.price = price;
+        this.startPrice = price;
         this.image = image;
         this.level = level;
+        this.priceLevel = price;
+    }
+
+    public void setLevelTransition(){
+        this.level++;
+        this.priceLevel = (int) (this.startPrice * Math.pow(3, this.level));
     }
 }

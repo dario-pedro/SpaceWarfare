@@ -30,9 +30,7 @@
     <string name="string_conquers">Conquers</string>
     <string name="string_ranking">Ranking</string>
 
-
     <!-- Objects keys -->
-
     <string name="key_Resource_Jeremejevite" translatable="false"> key_Resource_Jeremejevite </string>
     <string name="key_Resource_FireOpal" translatable="false"> key_Resource_FireOpal </string>
     <string name="key_Resource_Poudretteite" translatable="false"> key_Resource_Poudretteite </string>
@@ -46,23 +44,10 @@
     <string name="key_Resource_Taaffeite" translatable="false"> key_Resource_Taaffeite </string>
     <string name="key_Resource_RedDiamond" translatable="false"> key_Resource_RedDiamond </string>
 
+    <string name="key_Building_Mine" translatable="false"> key_Building_Mine </string>
     <string name="key_Building_Hangar" translatable="false"> key_Building_hangar </string>
     <string name="key_Building_ResearchLab" translatable="false"> key_Building_ResearchLab </string>
-    <string name="key_Building_NaniteFactory" translatable="false"> key_Building_NaniteFactory </string>
-    <string name="key_Building_RobotFactory" translatable="false"> key_Building_RobotFactory </string>
-    <string name="key_Building_TimeMachine" translatable="false"> key_Building_TimeMachine </string>
-
-    <string name="key_Building_MineIron" translatable="false"> key_Building_MineIron </string>
-    <string name="key_Building_MineBronze" translatable="false"> key_Building_MineBronze </string>
-    <string name="key_Building_MineSilver" translatable="false"> key_Building_MineSilver </string>
-    <string name="key_Building_MineGold" translatable="false"> key_Building_MineGold </string>
-    <string name="key_Building_MinePlatinum" translatable="false"> key_Building_MinePlatinum </string>
-    <string name="key_Building_MineRhodium" translatable="false"> key_Building_MineRhodium </string>
-    <string name="key_Building_MinePlutonium" translatable="false"> key_Building_MinePlutonium </string>
-    <string name="key_Building_MineDiamond" translatable="false"> key_Building_MineDiamond </string>
-    <string name="key_Building_MinePainite" translatable="false"> key_Building_MinePainite </string>
-    <string name="key_Building_MineBenitoite" translatable="false"> key_Building_MineBenitoite </string>
-    <string name="key_Building_MineDeuterium" translatable="false"> key_Building_MineDeuterium </string>
+    <string name="key_Building_DefenseWall" translatable="false"> key_Building_DefenseWall </string>
 
     <string name="key_Research_AsteroidPhysics" translatable="false"> key_Research_AsteroidPhysics </string>
     <string name="key_Research_BenitoiteAttracters" translatable="false"> key_Research_BenitoiteAttracters </string>
@@ -98,11 +83,6 @@
     <string name="key_Defense_AsteroidManipulator" translatable="false"> key_Defense_AsteroidManipulator </string>
     <string name="key_Defense_DarkMatterBeam" translatable="false"> key_Defense_DarkMatterBeam </string>
 
-
-    <string name="key_Building_Hangar2" translatable="false"> key_Building_hangar2 </string>
-    <string name="key_Building_Hangar3" translatable="false"> key_Building_hangar3 </string>
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="company_name_string">Company Name</string>
 </resources>
