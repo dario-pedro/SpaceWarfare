@@ -1,6 +1,7 @@
 package com.spacewarfare.resource;
 
 import android.content.Context;
+import android.os.CountDownTimer;
 import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.spacewarfare.building.Building;
 import com.spacewarfare.building.BuildingsAdapter;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by DidierRodriguesLopes on 04/02/17.
@@ -68,6 +70,7 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
         private ImageView resourcePhoto;
         private TextView resourceLevel;
         private TextView crystalsReceived;
+        private TextView timerResource;
 
         private RelativeLayout resourceInfoLayout;
         public Resource resource;
@@ -86,6 +89,7 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
             resourcePhoto = (ImageView) convertView.findViewById(R.id.ImageView_PhotoResource);
             resourceLevel = (TextView) convertView.findViewById(R.id.TextView_LevelResource);
             crystalsReceived = (TextView) convertView.findViewById(R.id.TextView_CrystalsReceived);
+            timerResource = (TextView) convertView.findViewById(R.id.TextView_TimerResource);
             resourceInfoLayout = (RelativeLayout) (MainContext.INSTANCE.getMainActivity()).findViewById(R.id.geralRelativeLayout);
             currentMoney = (TextView) resourceInfoLayout.findViewById(R.id.moneyTextView);
         }
@@ -101,6 +105,13 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
             resourceLevel.setText("" + resource.level);
             crystalsReceived.setText("" + resource.crystalsLevel);
             upgradeResource.setOnClickListener(upgradeResourceClick);
+            timerResource.setOnClickListener(extractResourceClick);
+
+            int totalSecs = resource.secondsTimer;
+            int hours = totalSecs / 3600;
+            int minutes = (totalSecs % 3600) / 60;
+            int seconds = totalSecs % 60;
+            timerResource.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
 
             // Setup Building info
             TextView TextView_infoName = (TextView) infoView.findViewById(R.id.TextView_infoName);
@@ -149,6 +160,32 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
             }
         };
 
+        private View.OnClickListener extractResourceClick = new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                new CountDownTimer(ViewHolder.this.resource.secondsTimer * 1000, 1000) { // adjust the milli seconds here
+
+                    public void onTick(long millisUntilFinished) {
+                        timerResource.setText(""+String.format("%02d:%02d:%02d",
+                                TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
+                                TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
+                                TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+                    }
+
+                    public void onFinish() {
+                        Snackbar.make(v, resource.crystalsLevel + " crystals were earned!", Snackbar.LENGTH_SHORT).show();
+                        MainContext.INSTANCE.getUserI().money += ViewHolder.this.resource.crystalsLevel;
+                        ViewHolder.this.currentMoney.setText("" + MainContext.INSTANCE.getUserI().money);
+                        int totalSecs = resource.secondsTimer;
+                        int hours = totalSecs / 3600;
+                        int minutes = (totalSecs % 3600) / 60;
+                        int seconds = totalSecs % 60;
+                        timerResource.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
+                    }
+                }.start();
+            }
+        };
+
         private boolean upgradeResourceAction(ResourcesAdapter.ViewHolder viewHolder){
             UserInfo userInfo = MainContext.INSTANCE.getUserI();
 
@@ -165,6 +202,7 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
             }
             return false;
         }
+
 
     }
 }
