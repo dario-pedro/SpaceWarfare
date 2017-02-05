@@ -8,6 +8,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.spacewarfare.login.LoginActivity;
+import com.spacewarfare.utils.ServerConstants;
+
 
 public class LauncherActivity extends Activity {
 
@@ -37,7 +40,9 @@ public class LauncherActivity extends Activity {
                 tvD.startAnimation(fade);
 
                 finish();
-                Intent i = new Intent(getBaseContext(), MainActivity.class);
+                Intent i = (ServerConstants.debug_mode) ?
+                        new Intent(getBaseContext(), MainActivity.class)
+                        :new Intent(getBaseContext(), LoginActivity.class);
                 startActivity(i);
             }
 
