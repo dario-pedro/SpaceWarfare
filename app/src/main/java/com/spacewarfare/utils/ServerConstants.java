@@ -12,6 +12,6 @@ public class ServerConstants {
     /**
      * SET THIS VARIABLE TO TRUE TO SKIP DEBUG
      */
-    public static final boolean debug_mode = false;
+    public static final boolean debug_mode = true;
 
 }
