@@ -17,14 +17,14 @@ public class UserInfo {
     public String password;
     public int _id;
     public List<Planet> allPlanets;
-    public int money;
+    public long money;
 
     public UserInfo(String _name, String _password) {
         this.name = _name;
         this.password = _password;
         this._id = name.hashCode();
         this.allPlanets = new ArrayList<>();
-        this.money = 1000000;
+        this.money = Long.MAX_VALUE/100000;
     }
 
     public String get_password() {

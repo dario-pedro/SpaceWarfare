@@ -3,4 +3,6 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="navDrawerBGColor">#e4171935</color>
+    <color name="navDrawerBGSelectedColor">#e40a0a17</color>
 </resources>

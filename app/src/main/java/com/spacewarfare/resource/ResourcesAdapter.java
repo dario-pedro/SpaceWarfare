@@ -2,7 +2,9 @@ package com.spacewarfare.resource;
 
 import android.content.Context;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,9 @@ import com.spacewarfare.building.BuildingsAdapter;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.LogRecord;
+
+import cn.iwgang.countdownview.CountdownView;
 
 /**
  * Created by DidierRodriguesLopes on 04/02/17.
@@ -38,10 +43,10 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.resource_row, parent, false);
 
-            if(MainContext.INSTANCE.getUserI().allPlanets.get(0).mapOfBuildings.get(R.string.key_Building_Mine).level <= position)
-                convertView.setVisibility(View.GONE);
-            else
+            if(MainContext.INSTANCE.getUserI().allPlanets.get(0).mapOfBuildings.get(R.string.key_Building_Mine).level > position)
                 convertView.setVisibility(View.VISIBLE);
+            else
+                convertView.setVisibility(View.GONE);
 
             holder = new ResourcesAdapter.ViewHolder(convertView);
             convertView.setTag(holder);
@@ -49,10 +54,10 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
         } else {
             holder = (ResourcesAdapter.ViewHolder) convertView.getTag();
 
-            if(MainContext.INSTANCE.getUserI().allPlanets.get(0).mapOfBuildings.get(R.string.key_Building_Mine).level <= position)
-                convertView.setVisibility(View.GONE);
-            else
+            if(MainContext.INSTANCE.getUserI().allPlanets.get(0).mapOfBuildings.get(R.string.key_Building_Mine).level > position)
                 convertView.setVisibility(View.VISIBLE);
+            else
+                convertView.setVisibility(View.GONE);
         }
 
         parent.findViewById(R.id.moneyTextView);
@@ -62,7 +67,7 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
         return convertView;
     }
 
-    private class ViewHolder {
+    private class ViewHolder{
         private TextView resourceName;
         private Button upgradeResource;
         private TextView priceToUpgradeResource;
@@ -79,8 +84,14 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
         public View infoView;
         private Button infoUpgradeResource;
         private Button infoCancelResource;
+        private CountdownView mCvCountdownView;
+
+        private Handler vHandler;
 
         public ViewHolder(View convertView) {
+
+            vHandler = new Handler();
+
             resourceName = (TextView) convertView.findViewById(R.id.TextView_NameResource);
             upgradeResource = (Button) convertView.findViewById(R.id.Button_UpgradeResource);
             priceToUpgradeResource = (TextView) convertView.findViewById(R.id.TextView_PriceResource);
@@ -89,7 +100,8 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
             resourcePhoto = (ImageView) convertView.findViewById(R.id.ImageView_PhotoResource);
             resourceLevel = (TextView) convertView.findViewById(R.id.TextView_LevelResource);
             crystalsReceived = (TextView) convertView.findViewById(R.id.TextView_CrystalsReceived);
-            timerResource = (TextView) convertView.findViewById(R.id.TextView_TimerResource);
+            //timerResource = (TextView) convertView.findViewById(R.id.TextView_TimerResource);
+            mCvCountdownView = (CountdownView)convertView.findViewById(R.id.timerResource);
             resourceInfoLayout = (RelativeLayout) (MainContext.INSTANCE.getMainActivity()).findViewById(R.id.geralRelativeLayout);
             currentMoney = (TextView) resourceInfoLayout.findViewById(R.id.moneyTextView);
         }
@@ -105,13 +117,16 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
             resourceLevel.setText("" + resource.level);
             crystalsReceived.setText("" + resource.crystalsLevel);
             upgradeResource.setOnClickListener(upgradeResourceClick);
-            timerResource.setOnClickListener(extractResourceClick);
+            //timerResource.setOnClickListener(extractResourceClick);
+            mCvCountdownView.updateShow(1000*resource.secondsTimer);
+            mCvCountdownView.setOnClickListener(extractResourceClick);
+            mCvCountdownView.setOnCountdownEndListener(endCDT);
 
-            int totalSecs = resource.secondsTimer;
+            /*int totalSecs = resource.secondsTimer;
             int hours = totalSecs / 3600;
             int minutes = (totalSecs % 3600) / 60;
             int seconds = totalSecs % 60;
-            timerResource.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
+            timerResource.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));*/
 
             // Setup Building info
             TextView TextView_infoName = (TextView) infoView.findViewById(R.id.TextView_infoName);
@@ -160,16 +175,35 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
             }
         };
 
+        private CountdownView.OnCountdownEndListener endCDT = new CountdownView.OnCountdownEndListener() {
+            @Override
+            public void onEnd(CountdownView cv) {
+                Snackbar.make(cv, resource.crystalsLevel + " crystals were earned!", Snackbar.LENGTH_SHORT).show();
+                MainContext.INSTANCE.getUserI().money += ViewHolder.this.resource.crystalsLevel;
+                ViewHolder.this.currentMoney.setText("" + MainContext.INSTANCE.getUserI().money);
+                mCvCountdownView.updateShow(1000*resource.secondsTimer);
+            }
+        };
+
         private View.OnClickListener extractResourceClick = new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
+                mCvCountdownView.start(resource.secondsTimer*1000);
+
+
+                /*
                 new CountDownTimer(ViewHolder.this.resource.secondsTimer * 1000, 1000) { // adjust the milli seconds here
 
-                    public void onTick(long millisUntilFinished) {
-                        timerResource.setText(""+String.format("%02d:%02d:%02d",
-                                TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
-                                TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
-                                TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+                    public void onTick(final long millisUntilFinished) {
+                        vHandler.post(new Runnable() {
+                                          @Override
+                                          public void run() {
+                                              timerResource.setText("" + String.format("%02d:%02d:%02d",
+                                                      TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
+                                                      TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
+                                                      TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+                                          }
+                                      });
                     }
 
                     public void onFinish() {
@@ -182,8 +216,9 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
                         int seconds = totalSecs % 60;
                         timerResource.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
                     }
-                }.start();
+                }.start();*/
             }
+
         };
 
         private boolean upgradeResourceAction(ResourcesAdapter.ViewHolder viewHolder){
@@ -202,7 +237,5 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
             }
             return false;
         }
-
-
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -30,8 +31,7 @@
                     android:layout_centerVertical="true"
                     android:id="@+id/ImageView_PhotoResource"
                     android:layout_margin="10dp"
-                    android:scaleType="fitXY"
-                    android:background="@drawable/building_hangar" />
+                    android:scaleType="fitXY" />
 
                 <Button
                     android:layout_width="25dp"
@@ -110,7 +110,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:gravity="center_vertical"
+                        android:gravity="left"
                         android:text="2000"
                         android:textColor="#FFFFFF" />
 
@@ -127,7 +127,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="35"
+                    android:layout_weight="99"
                     android:text="UPGRADE"
                     android:id="@+id/Button_UpgradeResource"
                     android:textAppearance="?android:attr/textAppearanceSmall"
@@ -135,6 +135,28 @@
                     android:layout_marginLeft="-10dp"
                     android:background="@drawable/btn" />
 
+                <cn.iwgang.countdownview.CountdownView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    app:isHideTimeBackground="true"
+                    app:isShowDay="false"
+                    app:isConvertDaysToHours="true"
+                    app:isShowHour="true"
+                    app:isShowMinute="true"
+                    app:isShowSecond="true"
+                    app:isShowMillisecond="false"
+                    app:timeTextColor="#FFFFFF"
+                    app:timeTextSize="22sp"
+                    app:isTimeTextBold="true"
+                    app:suffixGravity="bottom"
+                    app:suffixTextColor="#FFFFFF"
+                    app:suffixTextSize="12sp"
+                    android:id="@+id/timerResource" />
+
+                <!--
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -143,7 +165,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="00:00:00"
                     android:id="@+id/TextView_TimerResource"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF" /> -->
                 </LinearLayout>
 
             <LinearLayout
@@ -171,7 +193,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:gravity="center_vertical"
+                    android:gravity="left"
                     android:text="2000"
                     android:textColor="#FFFFFF" />
             </LinearLayout>

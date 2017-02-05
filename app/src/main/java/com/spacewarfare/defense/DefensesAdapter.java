@@ -48,12 +48,22 @@ public class DefensesAdapter extends ArrayAdapter<Defense> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.default_row, parent, false);
 
+            if(MainContext.INSTANCE.getUserI().allPlanets.get(0).mapOfBuildings.get(R.string.key_Building_DefenseWall).level*3 > position)
+                convertView.setVisibility(View.VISIBLE);
+            else
+                convertView.setVisibility(View.GONE);
+
             holder = new ViewHolder(convertView);
 
             convertView.setTag(holder);
         }
         else{
                 holder = (ViewHolder) convertView.getTag();
+
+                if(MainContext.INSTANCE.getUserI().allPlanets.get(0).mapOfBuildings.get(R.string.key_Building_DefenseWall).level*3 > position)
+                    convertView.setVisibility(View.VISIBLE);
+                else
+                    convertView.setVisibility(View.GONE);
             }
 
         parent.findViewById(R.id.moneyTextView);

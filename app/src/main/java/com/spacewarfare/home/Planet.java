@@ -61,9 +61,9 @@ public class Planet {
         //Create Buildings --> REDEFINE LATER!!
         this.mapOfBuildings = new LinkedHashMap<Integer, Building>();
         Building mine = new Building(R.string.key_Building_Mine, "Mine", "It is responsible for the extraction of valuable gem stones. Have you already met Red Diamond? If so you are doing it well.", 1, 500, R.drawable.building_mine);
-        Building hangar = new Building(R.string.key_Building_Hangar, "Hangar", "It is a closed building structure to hold space craft in protective storage. Their space crafts only leave to attack, spy, conquer or defend their planet.", 0, 1000, R.drawable.building_hangar);
-        Building defenseWall = new Building(R.string.key_Building_DefenseWall, "Defense Wall", "It is the first line the enemy sees when he wants to destroy, conquer or spy our planet. Believe me, they will wish their space crafts had never left.", 0, 1000, R.drawable.building_defensewall);
-        Building researchLab = new Building(R.string.key_Building_ResearchLab, "Research Lab", "It is a facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.", 0, 1000, R.drawable.building_researchlab);
+        Building hangar = new Building(R.string.key_Building_Hangar, "Hangar", "It is a closed building structure to hold space craft in protective storage. Their space crafts only leave to attack, spy, conquer or defend their planet.", 1, 1000, R.drawable.building_hangar);
+        Building defenseWall = new Building(R.string.key_Building_DefenseWall, "Defense Wall", "It is the first line the enemy sees when he wants to destroy, conquer or spy our planet. Believe me, they will wish their space crafts had never left.", 1, 1000, R.drawable.building_defensewall);
+        Building researchLab = new Building(R.string.key_Building_ResearchLab, "Research Lab", "It is a facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.", 1, 1000, R.drawable.building_researchlab);
         mapOfBuildings.put(R.string.key_Building_Mine, mine);
         mapOfBuildings.put(R.string.key_Building_Hangar, hangar);
         mapOfBuildings.put(R.string.key_Building_DefenseWall, defenseWall);

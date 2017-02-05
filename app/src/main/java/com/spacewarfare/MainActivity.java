@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity
 
         startNavigationMenu = NavigationMenu.HOME;
         navigationMenuView = new NavigationMenuView(this, startNavigationMenu);
+
         onNavigationItemSelected(navigationMenuView.getCurrentMenuItem());
 
     }
@@ -91,6 +92,8 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+
+
 
         if (id == R.id.nav_home) {
             //NavigationMenu.HOME.activateNavigationMenu(this,item);
@@ -143,8 +146,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_rankings) {
 
         }
-        NavigationMenu.find(item.getItemId()).activateNavigationMenu(this, item);
+
         closeDrawer();
+        item.setCheckable(true);
+        item.setChecked(true);
 
         return true;
     }

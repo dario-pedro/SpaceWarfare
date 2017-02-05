@@ -28,5 +28,6 @@ dependencies {
     compile 'com.android.support:design:25.1.0'
     compile 'org.rajawali3d:rajawali:1.0.186-SNAPSHOT@aar'
     compile 'com.android.support:support-v4:25.1.0'
+    compile 'com.github.iwgang:countdownview:2.1.3'
     testCompile 'junit:junit:4.12'
 }

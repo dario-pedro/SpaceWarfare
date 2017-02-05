@@ -15,7 +15,7 @@ public class Resource {
     public int level;
     public double efficiencyLevel;
     public int secondsTimer;
-    public int priceLevel;
+    public long priceLevel;
     public int crystalsLevel;
 
     public Resource(int key, String name, double efficiencyLevel, int startPrice, int level, int secondsTimer, int image, String description) {
@@ -33,7 +33,7 @@ public class Resource {
 
     public void setLevelTransition(){
         this.level++;
-        this.priceLevel = (int) (this.startPrice * Math.pow(3, this.level));
+        this.priceLevel = (long) (this.priceLevel * Math.pow(2, this.level));
         this.efficiencyLevel += 0.05;
         this.crystalsLevel = (int) Math.round(10*secondsTimer*efficiencyLevel);
     }
