@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
 import com.spacewarfare.UserInfo;
@@ -26,11 +27,18 @@ import java.util.logging.LogRecord;
 
 import cn.iwgang.countdownview.CountdownView;
 
+import static java.lang.Thread.sleep;
+
+
+
 /**
  * Created by DidierRodriguesLopes on 04/02/17.
  */
 
 public class ResourcesAdapter extends ArrayAdapter<Resource> {
+
+    final int maxProgress = 100;
+    final int secToMS = 1000;
 
     public ResourcesAdapter(Context context, List<Resource> resources) {
         super(context, R.layout.resource_row, resources);
@@ -75,7 +83,7 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
         private ImageView resourcePhoto;
         private TextView resourceLevel;
         private TextView crystalsReceived;
-        private TextView timerResource;
+        //private TextView timerResource;
 
         private RelativeLayout resourceInfoLayout;
         public Resource resource;
@@ -84,7 +92,8 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
         public View infoView;
         private Button infoUpgradeResource;
         private Button infoCancelResource;
-        private CountdownView mCvCountdownView;
+        private CountdownView timerResource;
+        private RoundCornerProgressBar progressBarResource;
 
         private Handler vHandler;
 
@@ -101,7 +110,8 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
             resourceLevel = (TextView) convertView.findViewById(R.id.TextView_LevelResource);
             crystalsReceived = (TextView) convertView.findViewById(R.id.TextView_CrystalsReceived);
             //timerResource = (TextView) convertView.findViewById(R.id.TextView_TimerResource);
-            mCvCountdownView = (CountdownView)convertView.findViewById(R.id.timerResource);
+            timerResource = (CountdownView)convertView.findViewById(R.id.timerResource);
+            progressBarResource = (RoundCornerProgressBar) convertView.findViewById(R.id.progressBarResource);
             resourceInfoLayout = (RelativeLayout) (MainContext.INSTANCE.getMainActivity()).findViewById(R.id.geralRelativeLayout);
             currentMoney = (TextView) resourceInfoLayout.findViewById(R.id.moneyTextView);
         }
@@ -118,15 +128,9 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
             crystalsReceived.setText("" + resource.crystalsLevel);
             upgradeResource.setOnClickListener(upgradeResourceClick);
             //timerResource.setOnClickListener(extractResourceClick);
-            mCvCountdownView.updateShow(1000*resource.secondsTimer);
-            mCvCountdownView.setOnClickListener(extractResourceClick);
-            mCvCountdownView.setOnCountdownEndListener(endCDT);
-
-            /*int totalSecs = resource.secondsTimer;
-            int hours = totalSecs / 3600;
-            int minutes = (totalSecs % 3600) / 60;
-            int seconds = totalSecs % 60;
-            timerResource.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));*/
+            timerResource.updateShow(resource.secondsTimer*secToMS);
+            timerResource.setOnClickListener(extractingResourceClick);
+            timerResource.setOnCountdownEndListener(extractResourceClick);
 
             // Setup Building info
             TextView TextView_infoName = (TextView) infoView.findViewById(R.id.TextView_infoName);
@@ -175,48 +179,41 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
             }
         };
 
-        private CountdownView.OnCountdownEndListener endCDT = new CountdownView.OnCountdownEndListener() {
+        private CountdownView.OnCountdownEndListener extractResourceClick = new CountdownView.OnCountdownEndListener() {
             @Override
             public void onEnd(CountdownView cv) {
+                progressBarResource.setProgress(maxProgress);
                 Snackbar.make(cv, resource.crystalsLevel + " crystals were earned!", Snackbar.LENGTH_SHORT).show();
                 MainContext.INSTANCE.getUserI().money += ViewHolder.this.resource.crystalsLevel;
                 ViewHolder.this.currentMoney.setText("" + MainContext.INSTANCE.getUserI().money);
-                mCvCountdownView.updateShow(1000*resource.secondsTimer);
+                timerResource.updateShow(resource.secondsTimer*secToMS);
+                progressBarResource.setProgress(0);
             }
         };
 
-        private View.OnClickListener extractResourceClick = new View.OnClickListener() {
+        private View.OnClickListener extractingResourceClick = new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                mCvCountdownView.start(resource.secondsTimer*1000);
+                timerResource.start(resource.secondsTimer*secToMS);
 
-
-                /*
-                new CountDownTimer(ViewHolder.this.resource.secondsTimer * 1000, 1000) { // adjust the milli seconds here
-
-                    public void onTick(final long millisUntilFinished) {
-                        vHandler.post(new Runnable() {
-                                          @Override
-                                          public void run() {
-                                              timerResource.setText("" + String.format("%02d:%02d:%02d",
-                                                      TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
-                                                      TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
-                                                      TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
-                                          }
-                                      });
+                // Start lengthy operation in a background thread
+                new Thread(new Runnable() {
+                    public void run() {
+                        while (progressBarResource.getProgress() < maxProgress) {
+                            try {
+                                sleep(1000);
+                                // Update the progress bar
+                                progressBarResource.post(new Runnable() {
+                                    public void run() {
+                                        progressBarResource.setProgress((maxProgress*(resource.secondsTimer - timerResource.getSecond()))/resource.secondsTimer);
+                                    }
+                                });
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
-
-                    public void onFinish() {
-                        Snackbar.make(v, resource.crystalsLevel + " crystals were earned!", Snackbar.LENGTH_SHORT).show();
-                        MainContext.INSTANCE.getUserI().money += ViewHolder.this.resource.crystalsLevel;
-                        ViewHolder.this.currentMoney.setText("" + MainContext.INSTANCE.getUserI().money);
-                        int totalSecs = resource.secondsTimer;
-                        int hours = totalSecs / 3600;
-                        int minutes = (totalSecs % 3600) / 60;
-                        int seconds = totalSecs % 60;
-                        timerResource.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
-                    }
-                }.start();*/
+                }).start();
             }
 
         };

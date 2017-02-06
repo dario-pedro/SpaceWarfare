@@ -281,7 +281,8 @@ public class LoginActivity extends AppCompatActivity implements
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
-            mEmailView.setError(getString(R.string.error_field_required));
+            String a = getString(R.string.error_field_required);
+            mEmailView.setError(a);
             focusView = mEmailView;
             cancel = true;
         } else if (!validateUserInfo.isEmailValid(email)) {

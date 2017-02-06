@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "917748909531",
+    "project_id": "space-warfare"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917748909531:android:7d90a7dd8c68e7fb",
+        "android_client_info": {
+          "package_name": "com.spacewarfare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "917748909531-p2i5egai3tl11m4fv1hdisaak4o9ilhe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHCTebriRZsJ32F-5IhPzHobZjFDZ0540"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
