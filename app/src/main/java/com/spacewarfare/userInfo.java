@@ -1,13 +1,8 @@
 package com.spacewarfare;
 
-import android.os.CountDownTimer;
-
 import com.spacewarfare.home.Planet;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.Timer;
 import java.util.List;
 
 
