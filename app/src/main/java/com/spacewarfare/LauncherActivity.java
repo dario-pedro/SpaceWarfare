@@ -40,9 +40,9 @@ public class LauncherActivity extends Activity {
                 tvD.startAnimation(fade);
 
                 finish();
-                Intent i = (ServerConstants.debug_mode) ?
-                        new Intent(getBaseContext(), MainActivity.class)
-                        :new Intent(getBaseContext(), LoginActivity.class);
+                Intent i = (ServerConstants.require_login) ?
+                        new Intent(getBaseContext(),LoginActivity.class)
+                        :new Intent(getBaseContext(), MainActivity.class);
                 startActivity(i);
             }
 
