@@ -36,7 +36,7 @@ public class RemoteFetch {
     public static final String debug = (ServerConstants.debug_mode) ? "?XDEBUG_SESSION_START="+ServerConstants.debug_portid : "";
 
 
-    public static String test(String username,String password)
+    public static Boolean test(String username,String password)
     {
         try{
             URL url = new URL(String.format(_link + "test.php"+debug));
@@ -71,10 +71,9 @@ public class RemoteFetch {
                 stringBuilder.append(line+"\n");
 
             httpURLConnection.disconnect();
-            Thread.sleep(2000);
-            return stringBuilder.toString().trim();
+            Thread.sleep(100);
 
-
+            return "1".equals(stringBuilder.toString().trim());
 
 
         } catch (ProtocolException e) {
@@ -88,7 +87,7 @@ public class RemoteFetch {
         }
 
 
-        return "";
+        return false;
     }
 
     public static String handle_login(String email, String password) {
