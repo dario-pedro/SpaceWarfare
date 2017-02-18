@@ -15,6 +15,6 @@ public class ServerConstants {
     public static final boolean require_login = true;
 
 
-    public static final boolean debug_mode = true;
+    public static final boolean debug_mode = false;
 
 }
