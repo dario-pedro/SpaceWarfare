@@ -26,8 +26,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
@@ -48,12 +50,24 @@ public class HomeFragment extends Fragment {
     ViewGroup curr_container;
     RajawaliSurfaceView surface;
 
+    LinearLayout planetHolder;
+
+    boolean showPlanet = false;
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View homeView =  inflater.inflate(R.layout.empty_fragment, container, false);
+
+
+        /**
+         * Planet Renderer
+         */
+
+        planetHolder = (LinearLayout) homeView.findViewById(R.id.planetFrameID);
+
         renderer = new Renderer(MainContext.INSTANCE.getMainActivity());
 
         surface = new RajawaliSurfaceView(MainContext.INSTANCE.getMainActivity());
@@ -65,12 +79,24 @@ public class HomeFragment extends Fragment {
 
         surface.setSurfaceRenderer(renderer);
 
+        showPlanet = true;
+
         // Add mSurface to your root view
-        container.addView(surface, new android.app.ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT));
+        planetHolder.removeAllViews();
+        //LinearLayout.LayoutParams layoutParams =  new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        planetHolder.addView(surface);
 
 
+
+        /**
+         * Planet Name
+         */
+
+        TextView planetNameView = (TextView) homeView.findViewById(R.id.planetNameID);
+        planetNameView.setText(MainContext.INSTANCE.getUserI().allPlanets.get(0).name);
 
         curr_container = container;
+
 
         return homeView;
 
@@ -79,6 +105,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        showPlanet = true;
     }
 
     @Override
@@ -96,10 +123,37 @@ public class HomeFragment extends Fragment {
     }
 
 
-    private void destroySurface(){
-        curr_container.removeView(surface);
-        surface.destroyDrawingCache();
-        surface = null;
+    public void destroySurface(){
+        showPlanet = false;
+        if(planetHolder!= null )
+            planetHolder.removeView(surface);
+
+        if(surface!=null)
+            surface.destroyDrawingCache();
+            surface = null;
         renderer = null;
     }
+
+    public void hidePlanet(){
+
+        if(surface!=null && showPlanet) {
+            surface.setVisibility(View.GONE);
+            showPlanet = false;
+        }
+
+
+
+    }
+
+    public void showPlanet(){
+
+        if(surface!=null && !showPlanet) {
+            surface.setVisibility(View.VISIBLE);
+            showPlanet = true;
+        }
+
+
+
+    }
+
 }
