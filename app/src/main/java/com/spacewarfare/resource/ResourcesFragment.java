@@ -42,7 +42,7 @@ public class ResourcesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.list_fragment, container, false);
 
-        List<Resource> resources = new ArrayList<Resource>(MainContext.INSTANCE.getUserI().allPlanets.get(0).mapOfResources.values());
+        List<Resource> resources = availableResources();
         ListAdapter resourcesAdapter = new ResourcesAdapter(MainContext.INSTANCE.getMainActivity(), resources);
 
         ListView resourcesListView = (ListView) v.findViewById(R.id.geralListView);
@@ -51,11 +51,20 @@ public class ResourcesFragment extends Fragment {
         return v;
     }
 
+    private List<Resource> availableResources(){
+        List<Resource> resources = new ArrayList<Resource>(MainContext.INSTANCE.getUserI().allPlanets.get(0).mapOfResources.values());
+
+
+        return resources;
+    }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Buildings");
     }
+
+
 
     @Override
     public void onResume() {

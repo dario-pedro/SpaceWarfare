@@ -1,10 +1,8 @@
 package com.spacewarfare.resource;
 
 import android.content.Context;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,13 +15,9 @@ import android.widget.TextView;
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
-import com.spacewarfare.UserInfo;
-import com.spacewarfare.building.Building;
-import com.spacewarfare.building.BuildingsAdapter;
+import com.spacewarfare.others.UserInfo;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.LogRecord;
 
 import cn.iwgang.countdownview.CountdownView;
 
@@ -51,10 +45,10 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.resource_row, parent, false);
 
-            if(MainContext.INSTANCE.getUserI().allPlanets.get(0).mapOfBuildings.get(R.string.key_Building_Mine).level > position)
+          /*  if(MainContext.INSTANCE.getUserI().allPlanets.get(0).mapOfBuildings.get(R.string.key_Building_Mine).level > position)
                 convertView.setVisibility(View.VISIBLE);
             else
-                convertView.setVisibility(View.GONE);
+                convertView.setVisibility(View.GONE);*/
 
             holder = new ResourcesAdapter.ViewHolder(convertView);
             convertView.setTag(holder);
@@ -62,10 +56,10 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
         } else {
             holder = (ResourcesAdapter.ViewHolder) convertView.getTag();
 
-            if(MainContext.INSTANCE.getUserI().allPlanets.get(0).mapOfBuildings.get(R.string.key_Building_Mine).level > position)
+           /* if(MainContext.INSTANCE.getUserI().allPlanets.get(0).mapOfBuildings.get(R.string.key_Building_Mine).level > position)
                 convertView.setVisibility(View.VISIBLE);
             else
-                convertView.setVisibility(View.GONE);
+                convertView.setVisibility(View.GONE);*/
         }
 
         parent.findViewById(R.id.moneyTextView);
@@ -122,6 +116,7 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
             // Setup Building row
             currentMoney.setText("" + MainContext.INSTANCE.getUserI().money);
             resourceName.setText(resource.name);
+            resourceName.setOnClickListener(extractingResourceClick);
             resourcePhoto.setImageResource(resource.image);
             priceToUpgradeResource.setText("" + resource.priceLevel);
             resourceLevel.setText("" + resource.level);
@@ -131,6 +126,7 @@ public class ResourcesAdapter extends ArrayAdapter<Resource> {
             timerResource.updateShow(resource.secondsTimer*secToMS);
             timerResource.setOnClickListener(extractingResourceClick);
             timerResource.setOnCountdownEndListener(extractResourceClick);
+            progressBarResource.setOnClickListener(extractingResourceClick);
 
             // Setup Building info
             TextView TextView_infoName = (TextView) infoView.findViewById(R.id.TextView_infoName);

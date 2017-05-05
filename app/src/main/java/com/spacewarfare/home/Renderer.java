@@ -16,9 +16,7 @@ import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Sphere;
 import org.rajawali3d.renderer.RajawaliRenderer;
 
-/**
- * Created by clintonmedbery on 4/6/15.
- */
+
 public class Renderer extends RajawaliRenderer implements View.OnTouchListener {
 
 
@@ -41,13 +39,16 @@ public class Renderer extends RajawaliRenderer implements View.OnTouchListener {
 
         directionalLight = new DirectionalLight(1f, .2f, -1.0f);
         directionalLight.setColor(0.1f, 0.1f, 0.1f);
-        directionalLight.setPower(1);
+        directionalLight.setPower(3);
         getCurrentScene().addLight(directionalLight);
 
         Material material = new Material();
         material.enableLighting(true);
         material.setDiffuseMethod(new DiffuseMethod.Lambert());
         material.setColor(0);
+
+
+
 
         Texture earthTexture = new Texture("Earth", R.drawable.planet_10);
         try{
@@ -57,11 +58,13 @@ public class Renderer extends RajawaliRenderer implements View.OnTouchListener {
             Log.d("DEBUG", "TEXTURE ERROR");
         }
 
+
+
         earthSphere = new Sphere(1, 24, 24);
         earthSphere.setMaterial(material);
         getCurrentScene().addChild(earthSphere);
         getCurrentCamera().setZ(4.2f);
-
+        getCurrentScene().addLight(directionalLight);
 
 
     }
@@ -139,9 +142,11 @@ public class Renderer extends RajawaliRenderer implements View.OnTouchListener {
             }
             earthSphere.setMaterial(material);
 
+            earthSphere.setBackSided(false);
+
             counter++;
 
-            if(LIGHT) getCurrentScene().addLight(directionalLight);
+            //if(LIGHT) getCurrentScene().addLight(directionalLight);
             return true;
 
         }

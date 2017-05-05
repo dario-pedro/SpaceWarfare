@@ -2,6 +2,7 @@ package com.spacewarfare;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 
 import com.spacewarfare.building.BuildingsFragment;
 import com.spacewarfare.defense.DefensesFragment;
+import com.spacewarfare.home.HomeFragment;
 import com.spacewarfare.navigation.*;
 import com.spacewarfare.research.ResearchesFragment;
 import com.spacewarfare.resource.ResourcesFragment;
@@ -93,14 +95,18 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-
+        Fragment fragment = new HomeFragment(); // by default use home
 
         if (id == R.id.nav_home) {
-            //NavigationMenu.HOME.activateNavigationMenu(this,item);
+            setTitle("FragmentResources");
+            //HomeFragment fragment = new HomeFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame, fragment, "FragmentResources");
+            fragmentTransaction.commit();
         } else if (id == R.id.nav_resources) {
 
             setTitle("FragmentResources");
-            ResourcesFragment fragment = new ResourcesFragment();
+            /*ResourcesFragment*/ fragment = new ResourcesFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame, fragment, "FragmentResources");
             fragmentTransaction.commit();
@@ -108,7 +114,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_buildings) {
 
             setTitle("FragmentBuildings");
-            BuildingsFragment fragment = new BuildingsFragment();
+            /*BuildingsFragment*/ fragment = new BuildingsFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame, fragment, "FragmentBuildings");
             fragmentTransaction.commit();
@@ -116,7 +122,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_research) {
 
             setTitle("FragmentResearch");
-            ResearchesFragment fragment = new ResearchesFragment();
+            /*ResearchesFragment*/ fragment = new ResearchesFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame, fragment, "FragmentResearches");
             fragmentTransaction.commit();
@@ -124,7 +130,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_ships) {
 
             setTitle("FragmentShip");
-            ShipsFragment fragment = new ShipsFragment();
+            /*ShipsFragment*/ fragment = new ShipsFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame, fragment, "FragmentDefense");
             fragmentTransaction.commit();
@@ -132,7 +138,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_defense) {
 
             setTitle("FragmentDefense");
-            DefensesFragment fragment = new DefensesFragment();
+            /*DefensesFragment*/ fragment = new DefensesFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame, fragment, "FragmentDefense");
             fragmentTransaction.commit();

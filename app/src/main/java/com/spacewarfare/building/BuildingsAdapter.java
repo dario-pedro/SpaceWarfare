@@ -14,7 +14,7 @@ import android.widget.Button;
 
 import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
-import com.spacewarfare.UserInfo;
+import com.spacewarfare.others.UserInfo;
 
 import java.util.List;
 

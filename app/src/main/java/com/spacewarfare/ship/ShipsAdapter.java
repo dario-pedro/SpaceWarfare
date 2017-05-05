@@ -3,10 +3,7 @@ package com.spacewarfare.ship;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Typeface;
 import android.support.design.widget.Snackbar;
-import android.text.SpannableString;
-import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,9 +18,7 @@ import android.widget.TextView;
 
 import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
-import com.spacewarfare.UserInfo;
-import com.spacewarfare.defense.Defense;
-import com.spacewarfare.defense.DefensesAdapter;
+import com.spacewarfare.others.UserInfo;
 
 import java.lang.reflect.Field;
 import java.util.List;

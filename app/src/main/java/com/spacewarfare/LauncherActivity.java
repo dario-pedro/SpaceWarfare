@@ -20,8 +20,8 @@ public class LauncherActivity extends Activity {
         setContentView(R.layout.activity_launcher);
 
         final ImageView iv = (ImageView) findViewById(R.id.imageView);
-        final TextView tv = (TextView) findViewById(R.id.launcher_text_Dario);
-        final TextView tvD = (TextView) findViewById(R.id.launcher_text_Didier);
+        final TextView tv = (TextView) findViewById(R.id.launcher_text_Space);
+        final TextView tvD = (TextView) findViewById(R.id.launcher_text_Warfa);
 
         final Animation rotate = AnimationUtils.loadAnimation(getBaseContext(), R.anim.rotate);
         final Animation fade = AnimationUtils.loadAnimation(getBaseContext(),R.anim.abc_fade_out);

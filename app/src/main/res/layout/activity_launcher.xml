@@ -18,8 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Dário"
-            android:id="@+id/launcher_text_Dario"
+            android:text="Space"
+            android:id="@+id/launcher_text_Space"
             android:textColor="#000000"
             android:textSize="60dp"
             android:gravity="center|bottom"
@@ -39,12 +39,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Didier"
-            android:id="@+id/launcher_text_Didier"
+            android:text="Warfare"
             android:textColor="#000000"
             android:textSize="60dp"
             android:gravity="center|top"
-            />
+            android:id="@+id/launcher_text_Warfa" />
 
     </LinearLayout>
 

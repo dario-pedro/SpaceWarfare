@@ -3,10 +3,7 @@ package com.spacewarfare.defense;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Typeface;
 import android.support.design.widget.Snackbar;
-import android.text.SpannableString;
-import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,15 +15,10 @@ import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
-import com.spacewarfare.UserInfo;
-import com.spacewarfare.building.Building;
-import com.spacewarfare.building.BuildingsAdapter;
-
-import org.w3c.dom.Text;
+import com.spacewarfare.others.UserInfo;
 
 import java.lang.reflect.Field;
 import java.util.List;

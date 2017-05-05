@@ -22,6 +22,8 @@ package com.spacewarfare;
 import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 
+import com.spacewarfare.others.UserInfo;
+
 
 public enum MainContext {
     INSTANCE;

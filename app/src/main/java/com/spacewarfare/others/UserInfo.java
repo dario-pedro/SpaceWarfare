@@ -1,4 +1,4 @@
-package com.spacewarfare;
+package com.spacewarfare.others;
 
 import com.spacewarfare.home.Planet;
 

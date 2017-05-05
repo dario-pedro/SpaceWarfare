@@ -49,6 +49,7 @@ import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 import com.spacewarfare.MainActivity;
+import com.spacewarfare.MainContext;
 import com.spacewarfare.R;
 import com.spacewarfare.utils.ServerConstants;
 import com.spacewarfare.utils.ValidateUserInfo;
@@ -536,6 +537,8 @@ public class LoginActivity extends AppCompatActivity implements
             showProgress(false);
 
             if (success) {
+
+
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 finish();
             } else {

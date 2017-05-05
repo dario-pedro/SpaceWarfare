@@ -12,7 +12,7 @@ public class ServerConstants {
     /**
      * SET THIS VARIABLE TO TRUE TO SKIP DEBUG
      */
-    public static final boolean require_login = true;
+    public static final boolean require_login = false;
 
 
     public static final boolean debug_mode = false;
